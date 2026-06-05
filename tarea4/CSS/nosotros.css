@@ -1,3 +1,8 @@
+/* Estilos de footer */ 
+body
+{
+    background-color: #4a5362;
+}
 
 .card2{
     background-color: #1E293B;
@@ -5,6 +10,12 @@
     text-align: center;
     padding: 10px;
     font-family: Plus Jakarta Sans, sans-serif;
+    transition: transform box-shadow 1.0s ease;
+}
+
+.card2:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .btn{
@@ -23,12 +34,13 @@
     object-position: center;   
 }
 
-h2
+#dev
 {
     margin: 20px;
     font-family: Space Grotesk, sans-serif;
+    color: #f8facf;
 }
-
+/*. Estilos de footer */
 
 
 
