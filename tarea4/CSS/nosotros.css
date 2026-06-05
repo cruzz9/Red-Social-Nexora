@@ -1,0 +1,34 @@
+
+.card2{
+    background-color: #1E293B;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-family: Plus Jakarta Sans, sans-serif;
+}
+
+.btn{
+    background-color: #0EA5E9;
+    color: white;
+}
+
+.devops{
+    margin:20px;
+}
+
+.card2 img{
+    width: 100%;            
+    aspect-ratio: 1 / 1;       
+    object-fit: cover;         
+    object-position: center;   
+}
+
+h2
+{
+    margin: 20px;
+    font-family: Space Grotesk, sans-serif;
+}
+
+
+
+
