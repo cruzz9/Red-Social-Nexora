@@ -6,18 +6,21 @@ body {
 .card2 {
     background-color: #1E293B;
     color: white;
+    height: 100%;
     text-align: center;
-    padding: 10px;
+    padding: 16px;
     font-family: Plus Jakarta Sans, sans-serif;
     transition: transform box-shadow 1.0s ease;
+    border-radius: 20px;
+    overflow: hidden;
 }
 
 .card2:hover {
-    transform: scale(1.1);
+    transform: scale(1.03);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.btn {
+.card2 .btn {
     background-color: #0EA5E9;
     color: white;
 }
@@ -28,13 +31,14 @@ body {
 
 .card2 img {
     width: 100%;
-    height: 100% !important;
-    aspect-ratio: 1 / 1 !important;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     object-position: center;
+    border-radius: 15px;
 }
 
 #dev {
+    text-align: center;
     margin: 20px;
     font-family: Space Grotesk, sans-serif;
     color: #f8facf;
@@ -42,7 +46,7 @@ body {
 
 /*. Estilos de footer */
 
-/*Estilos leo*/
+/*Estilos Sobre nosotros*/
 
 /*  SECCIÓN */
 
@@ -300,102 +304,86 @@ body {
     }
 }
 
-/*Ajuste de estilo de carrusel*/
-
-/* 1. Forzar a la fila de Bootstrap a ser una línea horizontal infinita */
-.carrusel-flex-container {
-    display: flex !important;
-    flex-wrap: nowrap !important;
-    /* Evita estrictamente que la tarjeta 7 baje */
-    overflow-x: auto !important;
-    /* Activa el scroll horizontal */
-    scroll-behavior: smooth;
-    padding-bottom: 20px;
-    /* Espacio para que el efecto hover no se corte */
-
-    /* Configuración de Scroll Snap (Efecto imán) */
-    scroll-snap-type: x mandatory;
-
-    /* Ocultar barra de scroll estética */
-    scrollbar-width: none;
-    /* Firefox */
-    -ms-overflow-style: none;
-    /* IE/Edge */
+/* Carrusel*/
+#carouselDevops {
+    position: relative;
+    padding: 0 70px;
 }
 
-/* Ocultar barra de scroll en Chrome, Safari y Opera */
-.carrusel-flex-container::-webkit-scrollbar {
-    display: none;
+@media (max-width: 768px) {
+    #carouselDevops {
+        padding: 0 40px;
+    }
 }
 
-/* 2. Asegurar que el contenedor padre no corte ni bloquee el flujo horizontal */
-.devops {
-    margin: 20px;
-    overflow: visible !important;
+.carousel-item .card {
+    height: 100%;
 }
 
-/* 3. Forzar el tamaño exacto de cada una de las 7 tarjetas */
-.col.liz {
-    /* flex: 0 0 calc(100% / 6); -> Si quieres que entren exactamente 6 en pantalla y la 7 se asome */
-    flex: 0 0 250px !important;
-    /* Ajusta este número (ej. 240px o 250px) para cambiar el ancho de las tarjetas */
-    max-width: none !important;
-    scroll-snap-align: start;
-    /* Alineación al deslizar */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
 }
 
-/*Estilos de uriel*/
+/*Estilos de Conectando Mentes*/
 
 .container1 {
     display: flex;
     justify-content: space-between;
-    flex-direction: column;
+    align-items: center;
     flex-direction: row;
-    border-radius: 10px;
+    gap: 20px;
     padding: 20px;
+}
+
+@media(max-width:768px) {
+    .container1 {
+        flex-direction: column;
+    }
 }
 
 .unirse {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
-
-    .btn {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        text-align: center;
-        align-content: center;
-        background-color: #0EA5E9;
-        color: #1E293B;
-        font-weight: bold;
-        margin: 20px;
-        height: 80px;
-        width: 250px;
-        margin-left: 250px;
-
-        &:hover {
-            transform: scale(1.05);
-            background-color: #10B981;
-            color: #F8FAFC;
-        }
-    }
 }
 
+.unirse .btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: center;
+    align-content: center;
+    background-color: #0EA5E9;
+    color: #1E293B;
+    font-weight: bold;
+    margin: 20px;
+    height: 80px;
+    width: 250px;
+    margin-left: 250px;
+}
+
+.unirse .btn:hover {
+    transform: scale(1.05);
+    background-color: #10B981;
+    color: #F8FAFC;
+}
+
+
 #conecta {
-    justify-content: center;
-    align-items: center;
+
     color: #f8facf;
-    ;
+
     font-size: 2rem;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: bold;
     margin: 20px;
-
-    &:hover {
-        transform: scale(1.2);
-    }
 }
 
-/*estilos mauro*/
+#conecta:hover {
+    transform: scale(1.2);
+}
+
+
+/*estilos Barra de navegación*/
 
 #header {
     background-color: #1E293B;
