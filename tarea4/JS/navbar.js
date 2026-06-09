@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const currentPath = window.location.pathname.split("/").pop();
 
   links.forEach(link => {
-    link.classList.remove("active");
+    link.classList.remove("nav-active");
   });
 
 
@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const linkPage = link.getAttribute("href");
 
     if (linkPage === currentPath) {
-      link.classList.add("active");
+      link.classList.add("nav-active");
     }
 
   });
