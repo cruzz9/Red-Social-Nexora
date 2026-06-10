@@ -385,10 +385,11 @@ body {
 
 /*estilos Barra de navegación*/
 
-#header {
-    background-color: #1E293B;
+#header{
+     background-color: #1E293B !important;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px;
     gap: 40px;
     font-family: 'Space Grotesk', sans-serif;
@@ -410,7 +411,7 @@ body {
     color: #0EA5E9;
 }
 
-.active {
+.nav-active {
     color: #0EA5E9 !important;
 }
 
@@ -418,3 +419,4 @@ body {
     height: 60px;
     width: 60px;
 }
+

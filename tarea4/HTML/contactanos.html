@@ -1,0 +1,98 @@
+<!-- Formulario con los campos Nombre, telefono email y Mensaje -->
+<!-- crear las alertas-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../CSS/nosotros.css">
+    <link rel="stylesheet" href="../CSS/contactanos.css">
+
+</head>
+<!-------------------------------------------------------------------->
+
+<body>
+    <!--parte 1 Mauro-->
+   <header>
+  <nav id="header"></nav>
+</header>
+
+
+    <section id="formulario">
+        <div class="row">
+
+            <div class="col">
+                <img class="img-fluid" id="imgContactanos" src="../assets/contactanosHTML.jpeg" alt="NEXORA">
+            </div>
+
+            <div class="col">
+                <div class="row d-flex flex-column align-items-center">
+                    <label for="nameIpt" class="formFormat"> Nombre: </label>
+                    <input id="nameIpt" type="text" class="form-control w-75">
+                    <div id="nameAlert" class="alert alert-danger" style="display:none;">
+                        Debes ingresar tu nombre.
+                    </div>
+                </div>
+
+                <div class="row d-flex flex-column align-items-center">
+                    <label for="emailIpt" class="formFormat"> Email: </label>
+                    <input id="emailIpt" type="email" class="form-control w-75">
+
+                    <div id="emailAlert" class="alert alert-danger" style="display:none;">
+                        Debes ingresar tu correo.
+                    </div>
+                </div>
+
+                <div class=" row d-flex flex-column align-items-center">
+                    <label for="phoneIpt" class="formFormat"> Telefono: </label>
+
+                    <input id="phoneIpt" type="number" class="form-control w-75">
+                    <div id="phoneAlert" class="alert alert-danger" style="display:none;">
+                        Debes ingresar tu teléfono.
+                    </div>
+                </div>
+
+                <div class="row d-flex flex-column align-items-center">
+                    <label for="messageIpt" class="formFormat"> Mensaje: </label>
+
+                    <textarea id="messageIpt" class="form-control w-75"></textarea>
+                    <div id="messageAlert" class="alert alert-danger" style="display:none;">
+                        Debes ingresar tu mensaje.
+                    </div>
+                </div>
+
+                <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-3"></div>
+                    <div id="btnContainer">
+                        <button id="formBtn" type="submit" class="btn btn-primary  btnFormat">Enviar</button>
+                        <button id="delBtn" type="button" class="btn btn-danger btnFormat">Borrar</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="../JS/navbar.js" type="module"></script>
+</body>
+
+</html>
