@@ -1,0 +1,72 @@
+
+#messageIpt {
+    height: 100px;
+}
+
+
+.formFormat{
+ font-family: 'Space Grotesk', sans-serif;
+    color: #F8FAFC;
+    
+
+}
+
+/*
+.btnFormat{
+     font-family: 'Space Grotesk', sans-serif;
+    color: #F8FAFC;
+
+}
+
+#formBtn{
+    background-color: #0EA5E9;
+}
+*/
+
+#btnContainer {
+    display: flex;
+    justify-content:center;
+    margin-top: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    margin: 5px;
+}
+
+#formBtn {
+    background: #0d6efd;
+    color: white;
+}
+
+#delBtn {
+    background: #dc3545;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+#imgContactanos{
+    width: 100%;
+border-radius: 12px; 
+
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 5px;
+}
+
+
+
+/* Truco: Quitar el difuminado cuando pasas el mouse por encima */
+
+
+
+
+
+
+

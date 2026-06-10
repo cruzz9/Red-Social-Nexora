@@ -1,0 +1,120 @@
+// Inputs
+const nameIpt = document.getElementById("nameIpt");
+const lastIpt = document.getElementById("lastIpt");
+const emailIpt = document.getElementById("emailIpt");
+const phoneIpt = document.getElementById("phoneIpt");
+const messageIpt = document.getElementById("messageIpt");
+
+// Alertas
+const nameAlert = document.getElementById("nameAlert");
+const lastAlert = document.getElementById("lastAlert");
+const emailAlert = document.getElementById("emailAlert");
+const phoneAlert = document.getElementById("phoneAlert");
+const messageAlert = document.getElementById("messageAlert");
+
+// Botones
+const formBtn = document.getElementById("formBtn");
+const delBtn = document.getElementById("delBtn");
+
+// Expresiones regulares
+const regexEmail = (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/);
+
+const regexName =(/^[A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+(?:[' -][A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+)*$/);
+
+const regexPhone = (/^[0-9]{10}$/);
+
+// Validación
+formBtn.addEventListener("click", (e) => {
+
+    e.preventDefault();
+
+    let formularioValido = true;
+
+    // Nombre
+    if (
+        !regexName.test(nameIpt.value) ||
+        nameIpt.value.length < 3 ||
+        nameIpt.value.length > 10
+    ) {
+        nameAlert.style.display = "block";
+        nameAlert.innerText =
+            "El nombre debe contener entre 3 y 10 letras.";
+        formularioValido = false;
+    } else {
+        nameAlert.style.display = "none";
+    }
+
+    // Apellido
+    if (
+        !regexName.test(lastIpt.value) ||
+        lastIpt.value.length < 3 ||
+        lastIpt.value.length > 10
+    ) {
+        lastAlert.style.display = "block";
+        lastAlert.innerText =
+            "El apellido debe contener entre 3 y 10 letras.";
+        formularioValido = false;
+    } else {
+        lastAlert.style.display = "none";
+    }
+
+    // Correo
+    if (!regexEmail.test(emailIpt.value)) {
+        emailAlert.style.display = "block";
+        emailAlert.innerText =
+            "Ingrese un correo electrónico válido.";
+        formularioValido = false;
+    } else {
+        emailAlert.style.display = "none";
+    }
+
+    // Teléfono
+    if (!regexPhone.test(phoneIpt.value)) {
+        phoneAlert.style.display = "block";
+        phoneAlert.innerText =
+            "Ingrese un teléfono de 10 dígitos.";
+        formularioValido = false;
+    } else {
+        phoneAlert.style.display = "none";
+    }
+
+    // Mensaje
+    if (
+        messageIpt.value.length === 0 ||
+        messageIpt.value.length > 250
+    ) {
+        messageAlert.style.display = "block";
+        messageAlert.innerText =
+            "El mensaje debe contener entre 1 y 250 caracteres.";
+        formularioValido = false;
+    } else {
+        messageAlert.style.display = "none";
+    }
+
+    if (formularioValido) {
+        alert("Formulario enviado correctamente.");
+    }
+
+});
+
+// Limitar teléfono a 10 dígitos
+phoneIpt.addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "").slice(0, 10);
+});
+
+// Botón borrar
+delBtn.addEventListener("click", () => {
+
+    nameIpt.value = "";
+    lastIpt.value = "";
+    emailIpt.value = "";
+    phoneIpt.value = "";
+    messageIpt.value = "";
+
+    nameAlert.style.display = "none";
+    lastAlert.style.display = "none";
+    emailAlert.style.display = "none";
+    phoneAlert.style.display = "none";
+    messageAlert.style.display = "none";
+
+});

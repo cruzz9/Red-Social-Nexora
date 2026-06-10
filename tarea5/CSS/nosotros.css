@@ -1,0 +1,422 @@
+/* Estilos de footer */
+body {
+    background-color: #1E293B;
+}
+
+.card2 {
+    background-color: #1E293B;
+    color: white;
+    height: 100%;
+    text-align: center;
+    padding: 16px;
+    font-family: Plus Jakarta Sans, sans-serif;
+    transition: transform box-shadow 1.0s ease;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card2:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card2 .btn {
+    background-color: #0EA5E9;
+    color: white;
+}
+
+.devops {
+    margin: 20px;
+}
+
+.card2 img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 15px;
+}
+
+#dev {
+    text-align: center;
+    margin: 20px;
+    font-family: Space Grotesk, sans-serif;
+    color: #f8facf;
+}
+
+/*. Estilos de footer */
+
+/*Estilos Sobre nosotros*/
+
+/*  SECCIÓN */
+
+.sobre-proyecto {
+    /* Espacio superior e inferior */
+    padding: 80px 0;
+}
+
+/* TÍTULO */
+
+.titulo {
+    color: #f8facf;
+    ;
+
+    /* Grosor */
+    font-weight: 700;
+
+    /* Espaciado entre letras */
+    letter-spacing: 3px;
+
+    text-align: center;
+
+    /* Separación inferior */
+    margin-bottom: 60px;
+
+    font-family: Space Grotesk, sans-serif;
+
+}
+
+/* TARJETA EXTERIOR */
+
+.card-neon {
+
+    position: relative;
+    min-height: 260px;
+    /**/
+
+    /* Grosor del borde */
+    padding: 2px;
+
+    /* Bordes redondeados */
+    border-radius: 18px;
+
+    /* Oculta contenido sobrante */
+    overflow: hidden;
+
+    /* Animación */
+    transition: all .35s ease;
+}
+
+/* BORDE DE COLOR */
+
+.card-neon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /**/
+    padding: 2px;
+    border-radius: 18px;
+    z-index: 1;
+    /**/
+
+    /* Deja visible únicamente el borde */
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+
+    mask-composite: exclude;
+    /**/
+
+}
+
+/* TRIÁNGULO SUPERIOR DERECHO */
+
+.card-neon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 90px;
+    height: 90px;
+    z-index: 2;
+    clip-path: polygon(
+            /**/
+            100% 0,
+            0 0,
+            100% 100%);
+}
+
+/* INTERIOR DE LA TARJETA */
+
+.card-content {
+    background: #1E293B;
+    height: 100%;
+
+    /* Espaciado interno */
+    padding: 30px 22px;
+
+    /* Posicionamiento */
+    position: relative;
+
+    z-index: 3;
+    /**/
+
+    /* Misma forma del recorte */
+    clip-path: polygon(0 0,
+            81.5% 0,
+            100% 18.5%,
+            100% 100%,
+            0 100%);
+}
+
+/* TARJETA NARANJA */
+
+.orange {
+    box-shadow:
+        0 0 10px rgba(245, 158, 11, .8),
+        /**/
+        0 0 20px rgba(245, 158, 11, .5),
+        0 0 40px rgba(245, 158, 11, .2);
+}
+
+.orange::before {
+
+    background:
+        linear-gradient(
+            /**/
+            135deg,
+            #F59E0B 0%,
+            #FCD34D 30%,
+            transparent 65%);
+}
+
+.orange::after {
+    background:
+        rgba(245, 158, 11, .25);
+}
+
+/* TARJETA AZUL */
+
+.blue {
+    box-shadow:
+        0 0 10px rgba(14, 165, 233, .8),
+        0 0 20px rgba(14, 165, 233, .5),
+        0 0 40px rgba(14, 165, 233, .2);
+}
+
+.blue::before {
+    background:
+        linear-gradient(
+            /**/
+            135deg,
+            #0EA5E9 0%,
+            #67E8F9 30%,
+            transparent 65%);
+}
+
+.blue::after {
+    background:
+        rgba(14, 165, 233, .25);
+}
+
+/* TARJETA VERDE*/
+
+.green {
+    box-shadow:
+        0 0 10px rgba(16, 185, 129, .8),
+        0 0 20px rgba(16, 185, 129, .5),
+        0 0 40px rgba(16, 185, 129, .2);
+}
+
+.green::before {
+    background:
+        linear-gradient(135deg,
+            #10B981 0%,
+            #6EE7B7 30%,
+            transparent 65%);
+}
+
+.green::after {
+    background:
+        rgba(16, 185, 129, .25);
+}
+
+/* TARJETA MORADA */
+
+.purple {
+    box-shadow:
+        0 0 10px rgba(192, 132, 252, .8),
+        0 0 20px rgba(192, 132, 252, .5),
+        0 0 40px rgba(192, 132, 252, .2);
+}
+
+.purple::before {
+    background:
+        linear-gradient(135deg,
+            #C084FC 0%,
+            #E9D5FF 30%,
+            transparent 65%);
+}
+
+.purple::after {
+    background:
+        rgba(192, 132, 252, .25);
+}
+
+/* EFECTO HOVER */
+
+.card-neon:hover {
+    transform:
+        /**/
+        translateY(-8px);
+    /**/
+}
+
+/* TÍTULOS */
+
+.card-title {
+    color: #f8facf;
+    ;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+/* TEXTO */
+
+.card-text {
+    color: #CBD5E1;
+    font-size: .95rem;
+    line-height: 1.7;
+}
+
+/* RESPONSIVE */
+
+
+@media(max-width:1200px) {
+
+    /**/
+    .card-title {
+        font-size: 1.7rem;
+        /**/
+    }
+}
+
+@media(max-width:768px) {
+    .card-neon {
+        min-height: 220px;
+    }
+
+    .card-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Carrusel*/
+#carouselDevops {
+    position: relative;
+    padding: 0 70px;
+}
+
+@media (max-width: 768px) {
+    #carouselDevops {
+        padding: 0 40px;
+    }
+}
+
+.carousel-item .card {
+    height: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+/*Estilos de Conectando Mentes*/
+
+.container1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 20px;
+    padding: 20px;
+}
+
+@media(max-width:768px) {
+    .container1 {
+        flex-direction: column;
+    }
+}
+
+.unirse {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.unirse .btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    text-align: center;
+    align-content: center;
+    background-color: #0EA5E9;
+    color: #1E293B;
+    font-weight: bold;
+    margin: 20px;
+    height: 80px;
+    width: 250px;
+    margin-left: 250px;
+}
+
+.unirse .btn:hover {
+    transform: scale(1.05);
+    background-color: #10B981;
+    color: #F8FAFC;
+}
+
+
+#conecta {
+
+    color: #f8facf;
+
+    font-size: 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+    margin: 20px;
+}
+
+#conecta:hover {
+    transform: scale(1.2);
+}
+
+
+/*estilos Barra de navegación*/
+
+#header{
+     background-color: #1E293B !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 40px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+
+
+.headersection {
+    justify-content: center;
+    gap: 50px;
+}
+
+
+.nav-link {
+    color: #F8FAFC;
+}
+
+.nav-link:hover {
+    color: #0EA5E9;
+}
+
+.nav-active {
+    color: #0EA5E9 !important;
+}
+
+#nexoralogo {
+    height: 60px;
+    width: 60px;
+}
+
