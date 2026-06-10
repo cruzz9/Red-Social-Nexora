@@ -21,7 +21,7 @@
 </head>
 <!-------------------------------------------------------------------->
 
-<body>
+<body id="bodyContactanos">
     <!--parte 1 Mauro-->
    <header>
   <nav id="header"></nav>
@@ -36,10 +36,10 @@
             </div>
 
             <div class="col">
-
                 <div class="row d-flex flex-column align-items-center">
                     <label for="nameIpt" class="formFormat"> Nombre: </label>
-                    <input id="nameIpt" type="text" class="form-control w-75">
+
+                    <input id="nameIpt" type="text" class="form-control w-75" placeholder="Escribe tu nombre aquí...">
                     <div id="nameAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu nombre.
                     </div>
@@ -55,7 +55,7 @@
 
                 <div class="row d-flex flex-column align-items-center">
                     <label for="emailIpt" class="formFormat"> Email: </label>
-                    <input id="emailIpt" type="email" class="form-control w-75">
+                    <input id="emailIpt" type="email" class="form-control w-75" placeholder="ejemplo@correo.com">
 
                     <div id="emailAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu correo.
@@ -64,8 +64,8 @@
 
                 <div class=" row d-flex flex-column align-items-center">
                     <label for="phoneIpt" class="formFormat"> Telefono: </label>
+                    <input id="phoneIpt" type="number" class="form-control w-75" placeholder="Ej. 1234567890">
 
-                    <input id="phoneIpt" type="number" class="form-control w-75">
                     <div id="phoneAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu teléfono.
                     </div>
@@ -74,7 +74,7 @@
                 <div class="row d-flex flex-column align-items-center">
                     <label for="messageIpt" class="formFormat"> Mensaje: </label>
 
-                    <textarea id="messageIpt" class="form-control w-75"></textarea>
+                    <textarea id="messageIpt" class="form-control w-75" placeholder="Escribe tu mensaje o consulta aquí..."></textarea>
                     <div id="messageAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu mensaje.
                     </div>
@@ -90,7 +90,6 @@
             </div>
 
         </div>
-    
 
 
 
