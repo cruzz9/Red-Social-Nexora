@@ -385,38 +385,3 @@ body {
 
 /*estilos Barra de navegación*/
 
-#header{
-     background-color: #1E293B !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    gap: 40px;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-
-
-.headersection {
-    justify-content: center;
-    gap: 50px;
-}
-
-
-.nav-link {
-    color: #F8FAFC;
-}
-
-.nav-link:hover {
-    color: #0EA5E9;
-}
-
-.nav-active {
-    color: #0EA5E9 !important;
-}
-
-#nexoralogo {
-    height: 60px;
-    width: 60px;
-}
-

@@ -3,12 +3,12 @@ const header = document.getElementById("header");
 header.innerHTML = `
 <div class="nav nav-underline">
     <img id="nexoralogo" src="../assets/nexoralogo.png" alt="Logo Nexora">
-    <a class="nav-link" href="#">Nexora</a>
+    <a class="nav-link" href="index.html">Nexora</a>
 </div>
 
 <ul id="apages" class="nav nav-underline">
     <li class="nav-item">
-        <a class="nav-link" href="#">Inicio</a>
+        <a class="nav-link" href="index.html">Inicio</a>
     </li>
 
     <li class="nav-item">
