@@ -29,79 +29,81 @@
 
 
     <section id="formulario">
-        <div class="row">
+    <div class="row">
+        <div class="col">
+            <img class="img-fluid" id="imgContactanos" src="../assets/contactanosHTML.jpeg" alt="NEXORA">
+        </div>
 
-            <div class="col">
-                <img class="img-fluid" id="imgContactanos" src="../assets/contactanosHTML.jpeg" alt="NEXORA">
-            </div>
-
-            <div class="col">
+        <div class="col">
+            <!-- 🔽 AGREGAMOS EL FORM AQUÍ DENTRO -->
+            <form id="formContacto">
+                
+                <!-- Nombre -->
                 <div class="row d-flex flex-column align-items-center">
                     <label for="nameIpt" class="formFormat"> Nombre: </label>
-
-                    <input id="nameIpt" type="text" class="form-control w-75" placeholder="Escribe tu nombre aquí...">
+                    <input id="nameIpt" name="nombre" type="text" class="form-control w-75" placeholder="Escribe tu nombre aquí..." required>
                     <div id="nameAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu nombre.
                     </div>
                 </div>
 
+                <!-- Apellido -->
                 <div class="row d-flex flex-column align-items-center">
                     <label for="lastIpt" class="formFormat"> Apellido: </label>
-                    <input id="lastIpt" type="text" class="form-control w-75" placeholder="Escribe tu primer apellido">
+                    <input id="lastIpt" name="apellido" type="text" class="form-control w-75" placeholder="Escribe tu primer apellido" required>
                     <div id="lastAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu apellido.
                     </div>
                 </div>
 
+                <!-- Email -->
                 <div class="row d-flex flex-column align-items-center">
                     <label for="emailIpt" class="formFormat"> Email: </label>
-                    <input id="emailIpt" type="email" class="form-control w-75" placeholder="ejemplo@correo.com">
-
+                    <input id="emailIpt" name="email" type="email" class="form-control w-75" placeholder="ejemplo@correo.com" required>
                     <div id="emailAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu correo.
                     </div>
                 </div>
 
-                <div class=" row d-flex flex-column align-items-center">
+                <!-- Teléfono -->
+                <div class="row d-flex flex-column align-items-center">
                     <label for="phoneIpt" class="formFormat"> Telefono: </label>
-                    <input id="phoneIpt" type="number" class="form-control w-75" placeholder="Ej. 1234567890">
-
+                    <input id="phoneIpt" name="telefono" type="tel" class="form-control w-75" placeholder="Ej. 1234567890" required>
                     <div id="phoneAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu teléfono.
                     </div>
                 </div>
 
+                <!-- Mensaje -->
                 <div class="row d-flex flex-column align-items-center">
                     <label for="messageIpt" class="formFormat"> Mensaje: </label>
-
-                    <textarea id="messageIpt" class="form-control w-75" placeholder="Escribe tu mensaje o consulta aquí..."></textarea>
+                    <textarea id="messageIpt" name="mensaje" class="form-control w-75" placeholder="Escribe tu mensaje o consulta aquí..." required></textarea>
                     <div id="messageAlert" class="alert alert-danger" style="display:none;">
                         Debes ingresar tu mensaje.
                     </div>
                 </div>
 
+                <!-- Botones -->
                 <div class="row d-flex flex-column align-items-center">
                     <div class="row d-flex flex-column align-items-center mt-3"></div>
                     <div id="btnContainer">
-                        <button id="formBtn" type="submit" class="btn btn-primary  btnFormat">Enviar</button>
+                        <button id="formBtn" type="submit" class="btn btn-primary btnFormat">Enviar</button>
                         <button id="delBtn" type="button" class="btn btn-danger btnFormat">Borrar</button>
                     </div>
                 </div>
-            </div>
-
+                
+            </form>
+            <!-- 🔼 CIERRE DEL FORM -->
         </div>
-
-
-
-
-
-    </section>
+    </div>
+</section>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="../JS/navbar.js" type="module"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src ="../JS/contactanos.js"></script>
 </body>
 

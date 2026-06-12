@@ -1,3 +1,9 @@
+//SE INICIALIZA EL SERVICIO DE EMAILJS
+(function() {
+    emailjs.init({
+        publicKey: "fnjDTbXcSoYWGWp-R", //se agrega la public key de nuestro service
+    });
+})();
 // Inputs
 const nameIpt = document.getElementById("nameIpt");
 const lastIpt = document.getElementById("lastIpt");
@@ -91,10 +97,44 @@ formBtn.addEventListener("click", (e) => {
         messageAlert.style.display = "none";
     }
 
-    if (formularioValido) {
-        alert("Formulario enviado correctamente.");
-    }
+//ENVÍO CON EMAILJS (Solo si el formulario es válido)
+     if (formularioValido) {
+        // Cambiar el botón mientras se envía
+        const originalText = formBtn.textContent;
+        formBtn.textContent = 'Enviando...';
+        formBtn.disabled = true;
 
+        // Obtener el formulario (el section con id="formulario")
+        const form = document.getElementById("formContacto");
+
+        // Enviar con EmailJS
+        emailjs.sendForm('service_ny8ixa3', 'template_67c5beb', form)
+            .then(function() {
+                alert('¡Gracias! Tu mensaje ha sido enviado correctamente.');
+                
+                // Limpiar el formulario
+                nameIpt.value = "";
+                lastIpt.value = "";
+                emailIpt.value = "";
+                phoneIpt.value = "";
+                messageIpt.value = "";
+                
+                // Ocultar todas las alertas
+                nameAlert.style.display = "none";
+                lastAlert.style.display = "none";
+                emailAlert.style.display = "none";
+                phoneAlert.style.display = "none";
+                messageAlert.style.display = "none";
+                
+                // Restaurar el botón
+                formBtn.textContent = originalText;
+                formBtn.disabled = false;
+            }, function(error) {
+                alert('Hubo un error al enviar el mensaje: ' + JSON.stringify(error));
+                formBtn.textContent = originalText;
+                formBtn.disabled = false;
+            });
+    }
 });
 
 // Limitar teléfono a 10 dígitos
