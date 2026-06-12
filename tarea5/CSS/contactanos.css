@@ -1,16 +1,8 @@
 #bodyContactanos {
-    /* Creamos un degradado sutil de arriba a abajo usando los tonos oscuros de tu app */
 background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
-    /* TRUCO CLAVE 1: Hace que el fondo se quede congelado al hacer scroll */
     background-attachment: fixed;
-    
-    /* TRUCO CLAVE 2: Asegura que el degradado cubra toda la ventana del navegador */
     background-size: cover;
-    
-    /* Evita que el fondo se repita en mosaico */
     background-repeat: no-repeat;
-    
-    /* Asegura que el body ocupe al menos el 100% del alto de la pantalla */
     min-height: 100vh;
     margin: 0;
 }

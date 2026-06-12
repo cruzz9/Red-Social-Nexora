@@ -20,11 +20,11 @@ header.innerHTML = `
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">Nosotros</a>
+        <a class="nav-link" href="nosotros.html">Nosotros</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">Contáctanos</a>
+        <a class="nav-link" href="contactanos.html">Contáctanos</a>
     </li>
 </ul>
 `;
