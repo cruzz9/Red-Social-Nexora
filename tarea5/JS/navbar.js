@@ -1,8 +1,8 @@
 const header = document.getElementById("header");
 
 header.innerHTML = `
-<div class="nav nav-underline">
-    <img id="nexoralogo" src="../assets/nexoralogo.png" alt="Logo Nexora">
+<div class="nav nav-underline logo">
+    <img id="nexoralogo" src="./tarea5/assets/nexoralogo.png" alt="Logo Nexora">
     <a class="nav-link" href="index.html">Nexora</a>
 </div>
 
@@ -12,11 +12,11 @@ header.innerHTML = `
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">Perfil</a>
+        <a class="nav-link" href="perfil.html">Perfil</a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="#">Notificaciones</a>
+        <a class="nav-link" href="publicaciones.html">Publicaciones</a>
     </li>
 
     <li class="nav-item">
@@ -25,6 +25,10 @@ header.innerHTML = `
 
     <li class="nav-item">
         <a class="nav-link" href="contactanos.html">Contáctanos</a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link" href="login.html">Log in</a>
     </li>
 </ul>
 `;

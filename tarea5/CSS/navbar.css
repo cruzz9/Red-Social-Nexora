@@ -26,10 +26,16 @@
 }
 
 .nav-active {
-    color: #0EA5E9 !important;
+    color: #f4f6f7 !important;
 }
 
 #nexoralogo {
     height: 60px;
     width: 60px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    font-size: x-large;
 }
