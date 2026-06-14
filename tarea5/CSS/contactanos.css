@@ -1,5 +1,5 @@
 #bodyContactanos {
-background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
+    background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -7,15 +7,25 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
     margin: 0;
 }
 
+#tiutloContacto {
+    color: #F8FAFC;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+#parrafoContacto {
+    color: #F8FAFC;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
 #messageIpt {
     height: 100px;
 }
 
 
-.formFormat{
- font-family: 'Space Grotesk', sans-serif;
+.formFormat {
+    font-family: 'Space Grotesk', sans-serif;
     color: #F8FAFC;
-    
+
 
 }
 
@@ -33,7 +43,7 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
 
 #btnContainer {
     display: flex;
-    justify-content:center;
+    justify-content: center;
     margin-top: 2px;
 }
 
@@ -52,13 +62,14 @@ button {
     background: #0d6efd;
     color: #F8FAFC;
     font-family: 'Plus Jakarta Sans', sans-serif;
-      font-weight: bold;
+    font-weight: bold;
 }
+
 #formBtn:hover {
-   background: #10B981;
-   border: 1px solid #10B981;
-     color: #1E293B;
-     
+    background: #10B981;
+    border: 1px solid #10B981;
+    color: #1E293B;
+
 
 
 }
@@ -66,36 +77,27 @@ button {
 #delBtn {
     background: #dc3545;
     color: #F8FAFC;
-font-weight: bold;
+    font-weight: bold;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    
+
 }
 
 #delBtn:hover {
-  
-        background:#ffb3b3;
-        color: #dc3545;
 
-       
+    background: #ffb3b3;
+    color: #dc3545;
+
+
 }
 
 button:hover {
     transform: scale(1.05);
 }
-#imgContactanos{
+
+#imgContactanos {
     width: 100%;
-border-radius: 12px; 
+    border-radius: 12px;
 
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
-  margin: 10px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 10px;
 }
-
-
-
-
-
-
-
-
-
-

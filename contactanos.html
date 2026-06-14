@@ -23,80 +23,92 @@
 
 <body id="bodyContactanos">
     <!--parte 1 Mauro-->
-   <header>
-  <nav id="header"></nav>
-</header>
+    <header>
+        <nav id="header"></nav>
+    </header>
 
 
     <section id="formulario" class="pt-3">
-    <div class="row">
-        <div class="col">
-            <img class="img-fluid" id="imgContactanos" src="./tarea5/assets/contactanosHTML.jpeg" alt="NEXORA">
+
+        <div class="row container-fluid text-center">
+            <h1>
+                <h1 id="tiutloContacto">¡Queremos escucharte!</h1>
+                <p id="parrafoContacto">Envíanos tus dudas, comentarios o sugerencias. Tu opinión nos ayuda a seguir mejorando.</p>
+            </h1>
         </div>
+        <div class="row container-fluid">
+            <div class="col d-none d-md-block">
+                <img class="img-fluid" id="imgContactanos" src="./tarea5/assets/contactanosHTML.jpeg" alt="NEXORA">
+            </div>
 
-        <div class="col">
-            <!-- 🔽 AGREGAMOS EL FORM AQUÍ DENTRO -->
-            <form id="formContacto">
-                
-                <!-- Nombre -->
-                <div class="row d-flex flex-column align-items-center">
-                    <label for="nameIpt" class="formFormat"> Nombre: </label>
-                    <input id="nameIpt" name="nombre" type="text" class="form-control w-75" placeholder="Escribe tu nombre aquí..." required>
-                    <div id="nameAlert" class="alert alert-danger" style="display:none;">
-                        Debes ingresar tu nombre.
-                    </div>
-                </div>
+            <div class="col-md-4">
+                <!-- 🔽 AGREGAMOS EL FORM AQUÍ DENTRO -->
+                <form id="formContacto">
 
-                <!-- Apellido -->
-                <div class="row d-flex flex-column align-items-center">
-                    <label for="lastIpt" class="formFormat"> Apellido: </label>
-                    <input id="lastIpt" name="apellido" type="text" class="form-control w-75" placeholder="Escribe tu primer apellido" required>
-                    <div id="lastAlert" class="alert alert-danger" style="display:none;">
-                        Debes ingresar tu apellido.
+                    <!-- Nombre -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="nameIpt" class="formFormat"> Nombre: </label>
+                        <input id="nameIpt" name="nombre" type="text" class="form-control w-75"
+                            placeholder="Escribe tu nombre aquí..." required>
+                        <div id="nameAlert" class="alert alert-danger" style="display:none;">
+                            Debes ingresar tu nombre.
+                        </div>
                     </div>
-                </div>
 
-                <!-- Email -->
-                <div class="row d-flex flex-column align-items-center">
-                    <label for="emailIpt" class="formFormat"> Email: </label>
-                    <input id="emailIpt" name="email" type="email" class="form-control w-75" placeholder="ejemplo@correo.com" required>
-                    <div id="emailAlert" class="alert alert-danger" style="display:none;">
-                        Debes ingresar tu correo.
+                    <!-- Apellido -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="lastIpt" class="formFormat"> Apellido: </label>
+                        <input id="lastIpt" name="apellido" type="text" class="form-control w-75"
+                            placeholder="Escribe tu primer apellido" required>
+                        <div id="lastAlert" class="alert alert-danger" style="display:none;">
+                            Debes ingresar tu apellido.
+                        </div>
                     </div>
-                </div>
 
-                <!-- Teléfono -->
-                <div class="row d-flex flex-column align-items-center">
-                    <label for="phoneIpt" class="formFormat"> Telefono: </label>
-                    <input id="phoneIpt" name="telefono" type="tel" class="form-control w-75" placeholder="Ej. 1234567890" required>
-                    <div id="phoneAlert" class="alert alert-danger" style="display:none;">
-                        Debes ingresar tu teléfono.
+                    <!-- Email -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="emailIpt" class="formFormat"> Email: </label>
+                        <input id="emailIpt" name="email" type="email" class="form-control w-75"
+                            placeholder="ejemplo@correo.com" required>
+                        <div id="emailAlert" class="alert alert-danger" style="display:none;">
+                            Debes ingresar tu correo.
+                        </div>
                     </div>
-                </div>
 
-                <!-- Mensaje -->
-                <div class="row d-flex flex-column align-items-center">
-                    <label for="messageIpt" class="formFormat"> Mensaje: </label>
-                    <textarea id="messageIpt" name="mensaje" class="form-control w-75" placeholder="Escribe tu mensaje o consulta aquí..." required></textarea>
-                    <div id="messageAlert" class="alert alert-danger" style="display:none;">
-                        Debes ingresar tu mensaje.
+                    <!-- Teléfono -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="phoneIpt" class="formFormat"> Telefono: </label>
+                        <input id="phoneIpt" name="telefono" type="tel" class="form-control w-75"
+                            placeholder="Ej. 1234567890" required>
+                        <div id="phoneAlert" class="alert alert-danger" style="display:none;">
+                            Debes ingresar tu teléfono.
+                        </div>
                     </div>
-                </div>
 
-                <!-- Botones -->
-                <div class="row d-flex flex-column align-items-center">
-                    <div class="row d-flex flex-column align-items-center mt-3"></div>
-                    <div id="btnContainer">
-                        <button id="formBtn" type="submit" class="btn btn-primary btnFormat">Enviar</button>
-                        <button id="delBtn" type="button" class="btn btn-danger btnFormat">Borrar</button>
+                    <!-- Mensaje -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="messageIpt" class="formFormat"> Mensaje: </label>
+                        <textarea id="messageIpt" name="mensaje" class="form-control w-75"
+                            placeholder="Escribe tu mensaje o consulta aquí..." required></textarea>
+                        <div id="messageAlert" class="alert alert-danger" style="display:none;">
+                            Debes ingresar tu mensaje.
+                        </div>
                     </div>
-                </div>
-                
-            </form>
-            <!-- 🔼 CIERRE DEL FORM -->
+
+                    <!-- Botones -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <div class="row d-flex flex-column align-items-center mt-3"></div>
+                        <div id="btnContainer">
+                            <button id="formBtn" type="submit" class="btn btn-primary btnFormat">Enviar</button>
+                            <button id="delBtn" type="button" class="btn btn-danger btnFormat">Borrar</button>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- 🔼 CIERRE DEL FORM -->
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -104,7 +116,7 @@
         crossorigin="anonymous"></script>
     <script src="./tarea5/JS/navbar.js" type="module"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src ="./tarea5/JS/contactanos.js"></script>
+    <script src="./tarea5/JS/contactanos.js"></script>
 </body>
 
 </html>
