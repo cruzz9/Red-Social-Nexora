@@ -1,0 +1,5 @@
+#Archivos de macOS
+.DS_STORE
+
+#Configuración de VS Code
+.vscode/

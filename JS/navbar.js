@@ -2,7 +2,7 @@ const header = document.getElementById("header");
 
 header.innerHTML = `
 <div class="nav nav-underline logo">
-    <img id="nexoralogo" src="./tarea5/assets/nexoralogo.png" alt="Logo Nexora">
+    <img id="nexoralogo" src="./assets/nexoralogo.png" alt="Logo Nexora">
     <a class="nav-link" href="index.html">Nexora</a>
 </div>
 
