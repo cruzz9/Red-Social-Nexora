@@ -4,6 +4,9 @@ header.innerHTML = `
 <div class="nav nav-underline logo">
     <img id="nexoralogo" src="./assets/nexoralogo.png" alt="Logo Nexora">
     <a class="nav-link" href="index.html">Nexora</a>
+    <button id="btnMenu" class="hamburger">
+        ☰
+    </button>
 </div>
 
 <ul id="apages" class="nav nav-underline">
@@ -50,7 +53,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (linkPage === currentPath) {
       link.classList.add("nav-active");
-    }
+    }   
+
+    const btnMenu = document.getElementById("btnMenu");
+    const apages = document.getElementById("apages");
+
+    btnMenu.addEventListener("click", () => {
+        apages.classList.toggle("active");
+    });
 
   });
 
