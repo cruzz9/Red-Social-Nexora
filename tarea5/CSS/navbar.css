@@ -28,6 +28,31 @@
 .nav-active {
     color: #f4f6f7 !important;
 }
+/* Escritorio */
+.hamburger{
+    display: none;
+}
+
+#apages{
+    display: flex;
+}
+
+/* Móvil */
+@media (max-width: 768px){
+
+    .hamburger{
+        display: block;
+    }
+
+    #apages{
+        display: none;
+    }
+
+    #apages.active{
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 #nexoralogo {
     height: 60px;
