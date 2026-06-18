@@ -87,5 +87,46 @@ testController.addPost(
     "Cloud Engineer",
     "Diseñando arquitecturas escalables y gestionando servicios en la nube para proyectos de alto impacto."
 );
+
+document.addEventListener("DOMContentLoaded", () => {
+    
+    const prodRow = document.getElementById("prodRow");
+    if (!prodRow) return;
+    prodRow.innerHTML = "";
  
-console.log(testController.posts);
+    testController.posts.forEach((post) => {
+        prodRow.insertAdjacentHTML('beforeend', `  
+            <div class="post-card m-2">
+                <div class="post-header">
+                    <img src="${post.img !== '#' ? post.img : 'https://api.dicebear.com/7.x/bottts/svg?seed=' + post.nombre}" alt="Foto de perfil" class="profile-pic">
+    
+                    <div class="author-info">
+                        <div class="name-container">
+                            <span class="author-name">${post.nombre}</span>
+                            <span class="connection-degree"></span>
+                        </div>
+                        <p class="author-role">${post.rol}</p>
+                        <div class="post-meta">
+                            <span class="separator"></span>
+                            <span class="privacy-icon"></span>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="post-content">
+                    <p>
+                        ${post.descripcion}
+                    </p>
+                    <div class="container d-flex containerImage containerImageOculte">
+                        <img class="imageCard" src="..." alt="image">
+                    </div>
+                    <hr>
+                    <div class="container d-flex justify-content-end">
+                        <button type="button" class="btn btn-outline-primary btnCard"><i class="fa-regular fa-thumbs-up"></i></button>
+                        <button type="button" class="btn btn-outline-primary btnCard"><i class="fa-regular fa-comment"></i></button>
+                    </div>
+                </div>
+            </div>
+        `); 
+    });
+});
