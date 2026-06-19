@@ -55,12 +55,36 @@
 }
 
 #nexoralogo {
-    height: 60px;
-    width: 60px;
+    height: 75px;
+    width: 75px;
+}
+
+/*leo*/
+.logo .nav-link {
+    font-size: 2.2rem;
+    font-weight: 600;
 }
 
 .logo{
     display: flex;
     align-items: center;
-    font-size: x-large;
+    gap: 10px;
+}
+
+
+/*FOOTER*/
+#footer {
+    margin-top: 50px;
+}
+
+.footerNexora {
+    background-color: #1E293B;
+    color: #F8FAFC;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.footerNexora p {
+    margin: 0;
 }
