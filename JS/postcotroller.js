@@ -1,9 +1,9 @@
-class PostsController{
-    constructor(currentId = 0){    
-        this.posts = [ ];
-        this.currentId = currentId;    
+class PostsController {
+    constructor(currentId = 0) {
+        this.posts = [];
+        this.currentId = currentId;
     }
-    addPost(img, nombre, rol, descripcion){
+    addPost(img, nombre, rol, descripcion) {
         this.currentId++;
         const newPost = {
             id: this.currentId,
@@ -13,12 +13,34 @@ class PostsController{
             descripcion: descripcion,
         };
         this.posts.push(newPost);
-    
-    }
-}
+        this.saveToLocalStorage();
+
+
+    }//addPost
+
+    saveToLocalStorage() {
+        localStorage.setItem(
+            "posts",
+            JSON.stringify(this.posts)
+        );
+    }//saveToLocalStorage
+
+    loadPostsFromLocalStorage() {
+
+        const posts = localStorage.getItem("posts");
+
+        if (posts) {
+            this.posts = JSON.parse(posts);
+
+            this.currentId = this.posts[this.posts.length - 1].id;
+        }
+    }//loadPostsFromLocalStorage
+
+
+} //classPostsController
 
 const testController = new PostsController();
- testController.addPost(
+testController.addPost(
     "#",
     "Raul",
     "Developer Jr.",
@@ -89,11 +111,11 @@ testController.addPost(
 );
 
 document.addEventListener("DOMContentLoaded", () => {
-    
+
     const prodRow = document.getElementById("prodRow");
     if (!prodRow) return;
     prodRow.innerHTML = "";
- 
+
     testController.posts.forEach((post) => {
         prodRow.insertAdjacentHTML('beforeend', `  
             <div class="post-card m-2">
@@ -127,6 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </div>
             </div>
-        `); 
+        `);
     });
 });
