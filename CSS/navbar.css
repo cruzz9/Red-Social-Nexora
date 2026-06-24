@@ -1,0 +1,90 @@
+
+#header{
+     background-color: #1E293B !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    gap: 40px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+
+
+.headersection {
+    justify-content: center;
+    gap: 50px;
+}
+
+
+.nav-link {
+    color: #F8FAFC;
+}
+
+.nav-link:hover {
+    color: #0EA5E9;
+}
+
+.nav-active {
+    color: #f4f6f7 !important;
+}
+/* Escritorio */
+.hamburger{
+    display: none;
+}
+
+#apages{
+    display: flex;
+}
+
+/* Móvil */
+@media (max-width: 768px){
+
+    .hamburger{
+        display: block;
+    }
+
+    #apages{
+        display: none;
+    }
+
+    #apages.active{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+#nexoralogo {
+    height: 75px;
+    width: 75px;
+}
+
+/*leo*/
+.logo .nav-link {
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/*FOOTER*/
+#footer {
+    margin-top: 50px;
+}
+
+.footerNexora {
+    background-color: #1E293B;
+    color: #F8FAFC;
+    text-align: center;
+    padding: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.footerNexora p {
+    margin: 0;
+}

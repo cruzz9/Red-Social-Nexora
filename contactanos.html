@@ -1,0 +1,127 @@
+<!-- Formulario con los campos Nombre, telefono email y Mensaje -->
+<!-- crear las alertas-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/contactanos.css">
+    <link rel="stylesheet" href="./CSS/navbar.css">
+
+</head>
+<!-------------------------------------------------------------------->
+
+<body id="bodyContactanos">
+    <!--parte 1 Mauro-->
+    <header>
+        <nav id="header"></nav>
+    </header>
+
+
+    <section id="formulario" class="pt-3">
+
+        <div class="row container-fluid text-center">
+            <h1>
+                <h1 id="tiutloContacto">¡Queremos escucharte!</h1>
+                <p id="parrafoContacto">Envíanos tus dudas, comentarios o sugerencias. Tu opinión nos ayuda a seguir mejorando.</p>
+            </h1>
+        </div>
+        <div class="row container-fluid">
+            <div class="col d-none d-md-block">
+                <img class="img-fluid" id="imgContactanos" src="./assets/contactanosHTML.jpeg" alt="NEXORA">
+            </div>
+
+            <div class="col-md-4 mt-5">
+                <!-- 🔽 AGREGAMOS EL FORM AQUÍ DENTRO -->
+                <form id="formContacto">
+
+                    <!-- Nombre -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="nameIpt" class="formFormat w-75"> Nombre: </label>
+                        <input id="nameIpt" name="nombre" type="text" class="form-control w-75"
+                            placeholder="Escribe tu nombre aquí..." required>
+                        <div id="nameAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes ingresar tu nombre.
+                        </div>
+                    </div>
+
+                    <!-- Apellido -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="lastIpt" class="formFormat w-75"> Apellido: </label>
+                        <input id="lastIpt" name="apellido" type="text" class="form-control w-75"
+                            placeholder="Escribe tu primer apellido" required>
+                        <div id="lastAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes ingresar tu apellido.
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="emailIpt" class="formFormat w-75"> Email: </label>
+                        <input id="emailIpt" name="email" type="email" class="form-control w-75"
+                            placeholder="ejemplo@correo.com" required>
+                        <div id="emailAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes ingresar tu correo.
+                        </div>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="phoneIpt" class="formFormat w-75"> Telefono: </label>
+                        <input id="phoneIpt" name="telefono" type="tel" class="form-control w-75"
+                            placeholder="Ej. 1234567890" required>
+                        <div id="phoneAlert" class="alert alert-danger  w-75" style="display:none;">
+                            Debes ingresar tu teléfono.
+                        </div>
+                    </div>
+
+                    <!-- Mensaje -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <label for="messageIpt" class="formFormat w-75"> Mensaje: </label>
+                        <textarea id="messageIpt" name="mensaje" class="form-control w-75"
+                            placeholder="Escribe tu mensaje o consulta aquí..." required></textarea>
+                        <div id="messageAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes ingresar tu mensaje.
+                        </div>
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="row d-flex flex-column align-items-center">
+                        <div class="row d-flex flex-column align-items-center mt-3"></div>
+                        <div id="btnContainer">
+                            <button id="formBtn" type="submit" class="btn btn-primary btnFormat">Enviar</button>
+                            <button id="delBtn" type="button" class="btn btn-danger btnFormat">Borrar</button>
+                        </div>
+                    </div>
+
+                </form>
+                <!-- 🔼 CIERRE DEL FORM -->
+                 
+            </div>
+        </div>
+    </section>
+
+        <footer id="footer"></footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="./JS/navbar.js" type="module"></script>
+    <script src="./JS/footer.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="./JS/contactanos.js"></script>
+</body>
+
+</html>

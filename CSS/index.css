@@ -1,0 +1,151 @@
+/* Estilos globales para la tarjeta */
+#indexBody {
+    background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.containerCard{
+
+   
+    min-height: 100vh; /* Esto ya lo tienes, excelente */
+    
+    /* Agrega estas 3 líneas mágicas de Flexbox: */
+    
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    
+    /*
+    display: flex;
+    align-items: center;
+     justify-content: center;
+     margin: 10px;*/
+     
+     
+
+}
+
+.post-card {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #1E293B;
+  border: 1px solid #0EA5E9;
+  border-radius: 8px;
+  max-width: 800px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  
+  
+
+}
+
+/* Alineación del encabezado */
+.post-header {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+ 
+  
+}
+
+/* Foto de perfil redonda */
+.profile-pic {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+/* Contenedor de los textos del autor */
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fila del nombre */
+.name-container {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F8FAFC;
+}
+
+.connection-degree {
+  font-size: 12px;
+  color: #666666;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+/* Rol o cargo profesional */
+.author-role {
+  font-size: 12px;
+  color: #F8FAFC;
+  margin: 2px 0;
+  line-height: 1.3;
+}
+
+/* Fila de tiempo y privacidad */
+.post-meta {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  color: #666666;
+}
+
+.separator {
+  margin: 4px;
+}
+
+/* Cuerpo del texto de la publicación */
+.post-content {
+  font-size: 14px;
+  color: #F8FAFC;
+  line-height: 1.5;
+}
+
+.post-content p {
+  margin: 0px;
+}
+
+/* Estilo para el botón "más" */
+.see-more {
+  color: #666666;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 2px;
+}
+
+
+.imageCard{
+  display: block;
+  margin: 0 auto;
+    width: 50%;
+  height: 50%;
+  
+  object-fit: cover;
+
+}
+
+.containerImageOculte{
+  display: none  !important;
+}
+
+.containerImage{
+  background-color: black !important;
+}
+
+
+
+.btnCard{
+ margin-left: 2px;
+    margin-right: 2px;
+
+}
+
+

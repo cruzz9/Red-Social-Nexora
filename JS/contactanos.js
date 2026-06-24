@@ -75,10 +75,13 @@ formBtn.addEventListener("click", (e) => {
     }
 
     // Teléfono
-    if (!regexPhone.test(phoneIpt.value)) {
+    if (!regexPhone.test(phoneIpt.value) || 
+    /^(\d)\1{9}$/.test(phoneIpt.value) || 
+    phoneIpt.value === "1234567890" ||
+    phoneIpt.value === "0123456789") {
         phoneAlert.style.display = "block";
         phoneAlert.innerText =
-            "Ingrese un teléfono de 10 dígitos.";
+            "Ingrese un teléfono de 10 dígitos válido.";
         formularioValido = false;
     } else {
         phoneAlert.style.display = "none";

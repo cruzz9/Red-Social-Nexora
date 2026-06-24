@@ -1,6 +1,13 @@
 /* Estilos de footer */
 body {
-    background-color: #1E293B;
+
+background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+
 }
 
 .card2 {
@@ -327,27 +334,47 @@ body {
 
 /*Estilos de Conectando Mentes*/
 
-.container1 {
+/*.container1 {
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
     flex-direction: row;
     gap: 20px;
     padding: 20px;
+} */
+
+/*leo*/
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
+/*
 @media(max-width:768px) {
     .container1 {
         flex-direction: column;
     }
-}
+} */
 
+/*
 .unirse {
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
+} */
+
+.unirse {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/*
 .unirse .btn {
     font-family: 'Plus Jakarta Sans', sans-serif;
     text-align: center;
@@ -359,6 +386,27 @@ body {
     height: 80px;
     width: 250px;
     margin-left: 250px;
+} */
+
+/*leo*/
+.unirse .btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #0EA5E9;
+    color: #1E293B;
+    font-weight: bold;
+
+    padding: 15px 30px;
+    min-height: 80px;
+    width: 100%;
+    max-width: 280px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 20px;
 }
 
 .unirse .btn:hover {
@@ -367,56 +415,55 @@ body {
     color: #F8FAFC;
 }
 
-
+/*
 #conecta {
 
     color: #f8facf;
 
-    font-size: 2rem;
+    font-size: 3rem;
     font-family: 'Space Grotesk', sans-serif;
     font-weight: bold;
     margin: 20px;
+} */
+
+/*leo*/
+#conecta {
+    color: #f8facf;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: bold;
+    margin: 20px;
+    line-height: 1.1;
+    transition: transform 0.3s ease;
 }
 
 #conecta:hover {
-    transform: scale(1.2);
+    transform: scale(1.05);
 }
 
+/*leo*/
+@media (max-width: 768px) {
+
+    .container1 {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    #conecta {
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .unirse {
+        width: 100%;
+    }
+
+    .unirse .btn {
+        width: 90%;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+}
 
 /*estilos Barra de navegación*/
-
-#header{
-     background-color: #1E293B !important;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    gap: 40px;
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-
-
-.headersection {
-    justify-content: center;
-    gap: 50px;
-}
-
-
-.nav-link {
-    color: #F8FAFC;
-}
-
-.nav-link:hover {
-    color: #0EA5E9;
-}
-
-.nav-active {
-    color: #0EA5E9 !important;
-}
-
-#nexoralogo {
-    height: 60px;
-    width: 60px;
-}
 
