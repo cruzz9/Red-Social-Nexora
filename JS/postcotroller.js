@@ -13,9 +13,31 @@ class PostsController {
             descripcion: descripcion,
         };
         this.posts.push(newPost);
+        this.saveToLocalStorage();
 
-    }
-}
+
+    }//addPost
+
+    saveToLocalStorage() {
+        localStorage.setItem(
+            "posts",
+            JSON.stringify(this.posts)
+        );
+    }//saveToLocalStorage
+
+    loadPostsFromLocalStorage() {
+
+        const posts = localStorage.getItem("posts");
+
+        if (posts) {
+            this.posts = JSON.parse(posts);
+
+            this.currentId = this.posts[this.posts.length - 1].id;
+        }
+    }//loadPostsFromLocalStorage
+
+
+} //classPostsController
 
 const testController = new PostsController();
 testController.addPost(
@@ -96,69 +118,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     testController.posts.forEach((post) => {
         prodRow.insertAdjacentHTML('beforeend', `  
-       <div class="post-card m-2">
-
-                        <div class="d-flex justify-content-between">
-                            <div class="post-header">
-                                <img src="${post.img !== '#' ? post.img : 'https://api.dicebear.com/7.x/bottts/svg?seed=' + post.nombre}"
-                                    alt="Foto de perfil" class="profile-pic">
-
-                                <div class="author-info">
-                                    <div class="name-container">
-                                        <span class="author-name">${post.nombre}</span>
-                                        <span class="connection-degree"></span>
-                                    </div>
-                                    <p class="author-role">${post.rol}</p>
-                                    <div class="post-meta">
-                                        <span class="separator"></span>
-                                        <span class="privacy-icon"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="dropdown">
-                                    <button type="button" class="btnCardOptions" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class="fa-solid fa-ellipsis"></i>
-                                    </button>
-
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li>
-                                            <a class="dropdown-item" href="#">
-                                                <i class="fa-solid fa-pen me-2"></i> Editar
-                                            </a>
-                                        </li>
-
-                                        <li>
-                                            <hr class="dropdown-divider">
-                                        </li>
-
-                                        <li>
-                                            <a class="dropdown-item text-danger" href="#">
-                                                <i class="fa-solid fa-trash me-2"></i> Eliminar
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+            <div class="post-card m-2">
+                <div class="post-header">
+                    <img src="${post.img !== '#' ? post.img : 'https://api.dicebear.com/7.x/bottts/svg?seed=' + post.nombre}" alt="Foto de perfil" class="profile-pic">
+    
+                    <div class="author-info">
+                        <div class="name-container">
+                            <span class="author-name">${post.nombre}</span>
+                            <span class="connection-degree"></span>
                         </div>
-
-                        <div class="post-content">
-                            <p>
-                                ${post.descripcion}
-                            </p>
-                            <div class="container d-flex containerImage containerImageOculte">
-                                <img class="imageCard" src="..." alt="image">
-                            </div>
-                            <hr>
-                            <div class="container d-flex justify-content-end">
-                                <button type="button" class="btn btn-outline-primary btnCard"><i
-                                        class="fa-regular fa-thumbs-up"></i></button>
-                                <button type="button" class="btn btn-outline-primary btnCard"><i
-                                        class="fa-regular fa-comment"></i></button>
-                            </div>
+                        <p class="author-role">${post.rol}</p>
+                        <div class="post-meta">
+                            <span class="separator"></span>
+                            <span class="privacy-icon"></span>
                         </div>
                     </div>
+                </div>
+    
+                <div class="post-content">
+                    <p>
+                        ${post.descripcion}
+                    </p>
+                    <div class="container d-flex containerImage containerImageOculte">
+                        <img class="imageCard" src="..." alt="image">
+                    </div>
+                    <hr>
+                    <div class="container d-flex justify-content-end">
+                        <button type="button" class="btn btn-outline-primary btnCard"><i class="fa-regular fa-thumbs-up"></i></button>
+                        <button type="button" class="btn btn-outline-primary btnCard"><i class="fa-regular fa-comment"></i></button>
+                    </div>
+                </div>
+            </div>
         `);
     });
 });
