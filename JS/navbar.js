@@ -19,7 +19,7 @@ header.innerHTML = `
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="publicaciones.html">Publicaciones</a>
+        <a class="nav-link" href="cuenta.html">Crear cuenta</a>
     </li>
 
     <li class="nav-item">
