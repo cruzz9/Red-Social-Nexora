@@ -1,0 +1,54 @@
+#body-login{
+  background-color: #1E293B;
+  
+}
+
+@media (max-width: 768px) {
+  .section-login {
+    grid-template-columns: 1fr; /* Una sola columna en móviles */
+    gap: 20px;
+  }
+}
+
+.container{
+    margin: 200px;
+    max-width: 1200px;
+
+}
+
+.form-label{
+    font-family: 'Space Grotesk', sans-serif;
+    color: #F8FAFC;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.btn{
+    font-family: 'Space Grotesk', sans-serif;
+    color: #F8FAFC;
+    background-color: #0EA5E9;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    
+}
+
+.btn:hover {
+  background-color: #94A3B8; 
+}
+
+.form-text{
+    font-family: 'Space Grotesk', sans-serif;
+    color: #F8FAFC
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.05); 
+    border-radius: 15px; 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+}
+
+
+
+
