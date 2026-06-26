@@ -129,14 +129,14 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
 
     } else {
-        genderAlert.style.display = "none";
+        passwordConfirmAlert.style.display = "none";
     }
 
     if (isPassCorrect == true && (passwordIpt.value == passwordConfirmIpt.value)) {
         passwordConfirmAlert.style.display = "none";
 
     } else {
-        genderAlert.style.display = "none";
+         passwordConfirmAlert.style.display = "none";
     }
 
     if (isPassCorrect == true && (passwordIpt.value != passwordConfirmIpt.value)) {
@@ -144,7 +144,7 @@ formBtn.addEventListener("click", (e) => {
         passwordConfirmAlert.innerHTML = "Las contraseñas no coinciden";
         formularioValido = false;
     } else {
-        genderAlert.style.display = "none";
+         passwordConfirmAlert.style.display = "none";
     }
 
 

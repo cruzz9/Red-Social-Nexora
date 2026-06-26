@@ -48,7 +48,7 @@
 
                     <!-- Nombre -->
 
-                    <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="nameIpt" class="formFormat w-75"> Nombre: </label>
                         <input id="nameIpt" name="nombre" type="text" class="form-control w-75"
                             placeholder="Escribe tu nombre aquí..." required>
@@ -59,7 +59,7 @@
 
 
                     <!-- Apellido -->
-                    <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="lastIpt" class="formFormat w-75"> Apellido: </label>
                         <input id="lastIpt" name="apellido" type="text" class="form-control w-75"
                             placeholder="Escribe tu primer apellido" required>
@@ -69,7 +69,7 @@
                     </div>
 
                     <!--Fecha de nacimiento-->
-                    <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="dateIpt" class="formFormat w-75"> Fecha de nacimiento: </label>
                         <input id="dateIpt" name="fecha" type="date" class="form-control w-75">
                         <div id="dateAlert" class="alert alert-danger w-75" style="display:none;">
@@ -78,7 +78,7 @@
                     </div>
 
                     <!--genero-->
-                    <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="genderIpt" class="formFormat w-75"> Género: </label>
 
                         <select id="genderIpt" class="form-select w-75">
@@ -88,10 +88,14 @@
                             <option value="prefieroNoResponder">Prefiero no responder</option>
                         </select>
 
+                         <div id="genderAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes seleccionar una opción.
+                        </div>
+
                     </div>
 
                     <!-- Email -->
-                    <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="emailIpt" class="formFormat w-75"> Email: </label>
                         <input id="emailIpt" name="email" type="email" class="form-control w-75"
                             placeholder="ejemplo@correo.com" required>
@@ -101,7 +105,7 @@
                     </div>
 
                     <!-- Teléfono -->
-                    <div class="row d-flex flex-column align-items-center">
+                    <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="phoneIpt" class="formFormat w-75"> Teléfono: </label>
                         <input id="phoneIpt" name="telefono" type="tel" class="form-control w-75"
                             placeholder="Ej. 1234567890" required>
@@ -112,25 +116,39 @@
 
 
                     <!-- contraseña -->
-                    <div class="row d-flex flex-column align-items-center">
-                        <label for="paswordIpt" class="formFormat w-75"> Contraseña </label>
-                        <input id="paswordIpt" name="password" type="pas" class="form-control w-75"
+                    <div class="row d-flex flex-column align-items-center mt-1">
+                        <label for="passwordIpt" class="formFormat w-75"> Contraseña </label>
+                        <input id="passwordIpt" name="password" type="password" class="form-control w-75"
                             placeholder="Ingresa una contraseña" required>
-                        <div id="phoneAlert" class="alert alert-danger  w-75" style="display:none;">
+
+                        <ul class="listaPassword m-3 w-75">
+                            <li>La contraseña debe tener 8 caracteres</li>
+                            <li>1 Mayúscula</li>
+                            <li>1 minúscula</li>
+                            <li>1 número</li>
+                        </ul>
+
+                        <div id="passwordAlert" class="alert alert-danger  w-75" style="display:none;">
                             Debes ingresar tu contraseña.
                         </div>
                     </div>
 
 
+                    <!-- confirmar contraseña -->
+                    <div class="row d-flex flex-column align-items-center mt-1">
+                        <label for="passwordConfirmIpt" class="formFormat w-75"> Confirma tu contraseña</label>
+                        <input id="passwordConfirmIpt" name="passwordConfirm" type="password" class="form-control w-75"
+                            placeholder="Confirma tu contraseña" required>
+
+                        <div id="passwordConfirmAlert" class="alert alert-danger  w-75" style="display:none;">
+                            Debes reingresar tu contraseña
+                        </div>
+
+                    </div>
+
                     <!-- Botones -->
                     <div class="row d-flex flex-column align-items-center">
                         <div class="row mt-3">
-                            <div class="form-check form-switch ">
-                                <input class="form-check-input" type="checkbox" value="" id="checkNativeSwitch" switch>
-                                <label class="form-check-label" for="checkNativeSwitch">
-                                    Native switch haptics
-                                </label>
-                            </div>
                             <div id="btnContainer">
                                 <button id="formBtn" type="submit" class="btn btn-primary btnFormat">Crear</button>
                                 <button id="delBtn" type="button" class="btn btn-danger btnFormat">Cancelar</button>
