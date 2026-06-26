@@ -82,25 +82,23 @@ formBtn.addEventListener("click", (e) => {
     dateIpt.max = max.toISOString().split('T')[0];
     dateIpt.min = min.toISOString().split('T')[0];
 
-    if (dateIpt.value == "") {
+    if (dateIpt.value != "") {
+        if (dateIpt.value != "" && (dateUser > max || dateUser < min)) {
+            dateAlert.style.display = "block";
+            dateAlert.innerHTML = "Debes tener 12 años o mas para crear una cuenta";
+            formularioValido = false;
+        } else {
+            dateAlert.style.display = "none";
+        }
+    } else {
         dateAlert.style.display = "block";
         dateAlert.innerHTML = "El campo de fecha está vacío";
         formularioValido = false;
-    } else {
-        dateAlert.style.display = "none";
     }
-
-    if ( dateIpt.value!="" && (dateUser > max || dateUser < min)) {
-        dateAlert.style.display = "block";
-        dateAlert.innerHTML = "Debes tener 12 años o mas para crear una cuenta";
-        formularioValido = false;
-    } else {
-        dateAlert.style.display = "none";
-    }
+    
 
 
-
-    //genero
+//genero
     if (genderIpt.value == "") {
         genderAlert.style.display = "block";
         genderAlert.innerHTML = "Por favor, selecciona tu género antes de continuar.";
@@ -109,42 +107,40 @@ formBtn.addEventListener("click", (e) => {
         genderAlert.style.display = "none";
     }
 
+//Contraseña
+    if (passwordIpt.value != "") {
+        if (!regexPassword.test(passwordIpt.value)) {
+            passwordAlert.style.display = "block";
+            passwordAlert.innerHTML = "Contraseña inválida: usa mínimo 8 caracteres con al menos 1 mayúscula, 1 minúscula y 1 número (sin espacios ni acentos).";
+            formularioValido = false;
+        } else {
+            passwordAlert.style.display = "none";
 
-    //Contraseña
-    let isPassCorrect = false;
-    if (!regexPassword.test(passwordIpt.value) || passwordIpt.value.includes(" ")) {
+        }
+    } else {
         passwordAlert.style.display = "block";
-        passwordAlert.innerHTML = "Contraseña inválida: usa mínimo 8 caracteres con al menos 1 mayúscula, 1 minúscula y 1 número (sin espacios ni acentos).";
+        passwordAlert.innerHTML = "Este campo es requerido";
         formularioValido = false;
-
-    } else {
-        passwordAlert.style.display = "none";
-        isPassCorrect = true;
     }
 
+    
     //Confirmar contraseña
-    if (isPassCorrect == false) {
+    if (passwordConfirmIpt.value != ("")) {
+        if (passwordConfirmIpt.value != passwordIpt.value) {
+            passwordConfirmAlert.style.display = "block";
+            passwordConfirmAlert.innerHTML = "Las contraseñas no coinciden.";
+            formularioValido = false;
+        } else if (!regexPassword.test(passwordConfirmIpt.value)) {
+            passwordConfirmAlert.style.display = "block";
+            passwordConfirmAlert.innerHTML = "Ingresa un formato válido";
+            formularioValido = false;
+        } else {
+            passwordConfirmAlert.style.display = "none";
+        }
+    } else {
         passwordConfirmAlert.style.display = "block";
-        passwordConfirmAlert.innerHTML = "Formato de contraseña invállido. Siga el formato establecido";
+        passwordConfirmAlert.innerHTML = "Este campo es requerido";
         formularioValido = false;
-
-    } else {
-        passwordConfirmAlert.style.display = "none";
-    }
-
-    if (isPassCorrect == true && (passwordIpt.value == passwordConfirmIpt.value)) {
-        passwordConfirmAlert.style.display = "none";
-
-    } else {
-         passwordConfirmAlert.style.display = "none";
-    }
-
-    if (isPassCorrect == true && (passwordIpt.value != passwordConfirmIpt.value)) {
-        passwordConfirmAlert.style.display = "block";
-        passwordConfirmAlert.innerHTML = "Las contraseñas no coinciden";
-        formularioValido = false;
-    } else {
-         passwordConfirmAlert.style.display = "none";
     }
 
 
