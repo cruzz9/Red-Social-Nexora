@@ -178,4 +178,83 @@
 
 }
 
+/*LEO*/
+.style-pointer {
+    display: flex;
+    align-items: center;
+    gap: 12px;                
+    cursor: pointer;
+    user-select: none;
+    transition: opacity 0.2s ease;
+}
 
+.style-pointer:hover {
+    opacity: 0.85;
+}
+
+.style-pointer h2 {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 26px;          
+    font-weight: 600;          
+    color: #F8FAFC;          
+}
+
+#textoNuevaDuda {
+    background-color: #0B0F19; 
+    color: #F8FAFC !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;           
+    border: 1px solid #0EA5E9; 
+    border-radius: 8px;        
+    padding: 12px;
+    resize: none;             
+    width: 100%;
+    transition: box-shadow 0.2s ease;
+}
+
+#textoNuevaDuda:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(14, 165, 233, 0.4); 
+}
+
+#textoNuevaDuda::placeholder {
+    color: #94A3B8 !important; 
+    opacity: 1 !important;     
+}
+
+#btnPublicarDudaCard {
+    background-color: #10B981; 
+    color: #F8FAFC;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-radius: 50px;       
+    padding: 6px 20px;
+    font-weight: 600;
+    font-size: 12px;           
+    border: 1px solid #10B981;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#btnPublicarDudaCard:hover {
+    background-color: #059669; 
+    border-color: #059669;
+}
+
+#btnCancelarDuda {
+    background-color: #ef4444;
+    color: #F8FAFC;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    border-radius: 50px;       
+    padding: 6px 20px;
+    font-weight: 600;
+    font-size: 12px;           
+    border: 1px solid #ef4444;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+#btnCancelarDuda:hover {
+    background-color: #dc2626; 
+    border-color: #dc2626;
+}
