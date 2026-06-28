@@ -35,7 +35,33 @@
         <div class="container d-flex ">
 
             <div class="col">
-                <div id="prodRow" class="row  justify-content-center ">
+
+                <div class="container my-4 p-3 rounded shadow-sm post-card" style="position: relative;">
+                    <h3 class="mb-3 text-primary"><i class="fa-solid fa-pen-to-square me-2"></i>Nueva Publicación</h3>
+                    
+                    <form id="postForm">
+                        <div class="mb-3">
+                            <label for="inputNombre" class="form-label fw-bold" style="color:aliceblue">Nombre Completo</label>
+                            <input type="text" class="form-control" id="inputNombre" placeholder="Ej. Raul Medina" required>
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="inputRol" class="form-label fw-bold" style="color:aliceblue">Rol o Especialidad</label>
+                            <input type="text" class="form-control" id="inputRol" placeholder="Ej. Developer Jr. / Specialist" required>
+                        </div>
+                
+                        <div class="mb-3">
+                            <label for="textareaDescripcion" class="form-label fw-bold" style="color:aliceblue">¿Qué quieres compartir hoy?</label>
+                            <textarea class="form-control" id="textareaDescripcion" rows="3" placeholder="Escribe aquí tu idea, duda técnica o mensaje..." required></textarea>
+                        </div>
+                
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">
+                            <i class="fa-solid fa-paper-plane me-2"></i>Publicar en Tiempo Real
+                        </button>
+                    </form>
+                </div>
+                
+                <div id="prodRow" class="row  justify-content-center p-3">
                     <!-- aqui empieza la tarjeta -->
                     
                     <!-- aqui temrina la tarjeta-->
