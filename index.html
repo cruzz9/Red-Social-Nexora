@@ -31,6 +31,55 @@
         <nav id="header"></nav>
     </header>
 
+    <!--LEO-->
+  <div class="post-card m-2 w-100 mx-auto" id="seccionPublicarDudaFija">
+    <div class="p-1">
+        <div class="style-pointer" id="toggleDudaForm" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+    
+    <div class="text-white" style="background-color: #0ea5e9 !important; width: 42px; height: 42px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; font-weight: 400; padding-bottom: 4px; line-height: 1; user-select: none;">
+        +
+    </div>
+    
+    <h2>Publicar Duda</h2>
+</div>
+
+        <div id="dudaFormContainer" class="d-none mt-3">
+            <textarea id="textoNuevaDuda" class="form-control mb-3" rows="3" placeholder="Escribe tu duda detalladamente aquí..."></textarea>
+            
+            <div class="mb-3 text-center containerImage" style="border-radius: 8px; overflow: hidden;">
+                <img id="preview" class="imageCard" src="" alt="Vista previa" style="display: none;">
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+                
+                <div>
+                    <label for="imagen" class="btnCardOptions" style="padding: 6px 16px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;">
+                        <i class="fa-solid fa-camera-retro" style="font-size: 1.2rem;"></i>
+                    </label>
+                    <input type="file" id="imagen" accept="image/*" style="display: none;">
+                </div>
+
+                <div class="d-flex gap-2">
+    <button type="button" id="btnCancelarDuda" class="btn">
+        CANCELAR
+    </button>
+
+    <button type="button" id="btnPublicarDudaCard">
+        PUBLICAR
+    </button>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div id="prodRow" class="w-100 d-flex flex-column align-items-center justify-content-center">
+            </div>
+        
+    </div>
+</section>
+
+
     <section>
         <div class="container d-flex ">
 
