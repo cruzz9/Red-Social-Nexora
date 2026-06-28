@@ -258,3 +258,55 @@
     background-color: #dc2626; 
     border-color: #dc2626;
 }
+
+
+/* Estilo base para tarjetas oscuras */
+.custom-card-bg {
+    background-color: #1E293B !important; /* Color de fondo oscuro de superficie */
+    border-radius: 0.5rem; /* Bordes suaves */
+}
+
+/* Control del efecto Fijo (Sticky) para los costados */
+.custom-sticky-aside {
+    /* El "top" define la distancia en píxeles desde el borde superior de la pantalla al hacer scroll */
+    top: 24px !important; 
+    
+    /* Garantiza que si el contenido lateral llega a ser muy largo por pantallas pequeñas, 
+       permita scroll interno individual en vez de romperse */
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    
+    /*  Oculta la barra de scroll en los laterales para un look más limpio */
+    scrollbar-width: none; 
+}
+.custom-sticky-aside::-webkit-scrollbar {
+    display: none;
+}
+
+/* Detalles estéticos para los enlaces de tendencias */
+.trend-link {
+    color: #0EA5E9; /* Color celeste / acento activo */
+    transition: color 0.2s ease-in-out;
+}
+
+.trend-link:hover {
+    color: #F59E0B; /* Color naranja al pasar el cursor (Insight Focus) */
+}
+/* Botón de inicio de sesión personalizado con la identidad Nexora */
+.btn-login-accent {
+    background-color: #0EA5E9 !important; /* Color de interacción activa / celeste */
+    color: #F8FAFC !important;            /* Texto primario claro */
+    border: none;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+/* Efecto hover utilizando el color de éxito o iluminación de la paleta */
+.btn-login-accent:hover {
+    background-color: #10B981 !important; /* Cambia a verde de optimización al pasar el cursor */
+    color: #F8FAFC !important;
+}
+
+/* Pequeño efecto de pulsación para mejorar la experiencia de usuario (UX) */
+.btn-login-accent:active {
+    transform: scale(0.98);
+}

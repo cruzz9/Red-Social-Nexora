@@ -37,6 +37,23 @@ class PostsController {
         }
     }//loadPostsFromLocalStorage
 
+    eliminarPost(id) {
+        // Mantiene en el arreglo todos los posts MENOS el que coincide con el ID que queremos borrar
+        this.posts = this.posts.filter(post => post.id !== id);
+        // Guardamos los cambios actualizados en el almacenamiento local
+        this.saveToLocalStorage();
+    }//eliminar post
+
+    //Buscar el objeto por ID y modificar su descripción
+    editarPost(id, nuevaDescripcion) {
+        // Buscamos el post exacto en el arreglo
+        const post = this.posts.find(p => p.id === id);
+        if (post) {
+            post.descripcion = nuevaDescripcion;
+            this.saveToLocalStorage(); // Guardamos la actualización
+        }
+    }//editar post
+
 
 } //classPostsController
 
@@ -103,21 +120,24 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <i class="fa-solid fa-ellipsis"></i>
                             </button>
 
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fa-solid fa-pen me-2"></i> Editar
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-danger" href="#">
-                                        <i class="fa-solid fa-trash me-2"></i> Eliminar
-                                    </a>
-                                </li>
-                            </ul>
+                           
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item btn-editar" href="#" data-id="${post.id}">
+                                <i class="fa-solid fa-pen me-2"></i> Editar
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item text-danger btn-eliminar" href="#" data-id="${post.id}">
+                                <i class="fa-solid fa-trash me-2"></i> Eliminar
+                                </a>
+                            </li>
+                        </ul>
                         </div>
                     </div>
 
@@ -139,6 +159,50 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     renderFeed();
+
+    if (prodRow) {
+        prodRow.addEventListener("click", (evento) => {
+            // Evitamos que el enlace '#' recargue o mueva la pantalla hacia arriba
+            evento.preventDefault();
+
+            // 1. LÓGICA DE ELIMINACIÓN
+            // Buscamos si el usuario hizo clic en el botón Eliminar (o dentro de él)
+            const botonEliminar = evento.target.closest(".btn-eliminar");
+            if (botonEliminar) {
+                const idPost = parseInt(botonEliminar.getAttribute("data-id"));
+                
+                // Ventana de confirmación pedagógica estándar
+                const confirmar = confirm("¿Estás seguro de que deseas eliminar esta publicación?");
+                if (confirmar) {
+                    testController.eliminarPost(idPost); // Lo borra de la lógica
+                    renderFeed(); // Re-renderiza la interfaz al instante
+                }
+                return;
+            }
+
+            // 2. LÓGICA DE EDICIÓN
+            // Buscamos si el usuario hizo clic en el botón Editar
+            const botonEditar = evento.target.closest(".btn-editar");
+            if (botonEditar) {
+                const idPost = parseInt(botonEditar.getAttribute("data-id"));
+                
+                // Obtenemos el post actual para mostrar el texto previo en la alerta
+                const postActual = testController.posts.find(p => p.id === idPost);
+                
+                if (postActual) {
+                    // Usamos un prompt interactivo sencillo para actualizar el texto
+                    const nuevoTexto = prompt("Edita el contenido de tu publicación:", postActual.descripcion);
+                    
+                    // Validamos que el usuario no haya cancelado o dejado vacío el campo
+                    if (nuevoTexto !== null && nuevoTexto.trim() !== "") {
+                        testController.editarPost(idPost, nuevoTexto.trim()); // Lo actualiza en la lógica
+                        renderFeed(); // Re-renderiza la interfaz al instante
+                    }
+                }
+                return;
+            }
+        });
+    }
 
     const toggleDudaForm = document.getElementById("toggleDudaForm");
     const dudaFormContainer = document.getElementById("dudaFormContainer");
