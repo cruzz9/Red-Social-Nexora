@@ -107,7 +107,8 @@ button:hover {
     color:#5e5c5cfb;
 }
 
-.listaPassword{
+.listaPassword, 
+.listaArea{
       color: #F8FAFC;
 
 }
