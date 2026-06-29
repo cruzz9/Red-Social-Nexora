@@ -68,6 +68,53 @@
                         </div>
                     </div>
 
+                    <!--Rol-->
+                    <div class="row d-flex flex-column align-items-center mt-1">
+                        <label for="roleIpt" class="formFormat w-75">Rol: </label>
+
+                        <select id="roleIpt" class="form-select w-75">
+                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="profesionista">Profesionista</option>
+                        </select>
+
+                        <div id="roleAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes seleccionar una opción.
+                        </div>
+
+                    </div>
+
+                    <!--Áred de Interés-->
+                    <div class="row d-flex flex-column align-items-center mt-1">
+                        <label for="areaIpt" class="formFormat w-75">Área de Interés: </label>
+
+                        <select id="areaIpt" class="form-select w-75">
+                            <option value="" disabled selected hidden>Selecciona una categoría </option>
+                            <option value="technology"> Tecnología y Software</option>
+                            <option value="classic">Ingenierias Clásicas</option>
+                            <option value="applied">Ingenierias Aplicadas</option>
+                            <option value="math">Matemáticas y Ciencias Fundamentales</option>
+
+                        </select>
+<!--
+                        <ul class="listaArea m-3 w-75">
+                            <li>Tecnología y Software: Programación, IA, ciberseguridad y sistemas digitales.</li>
+                            <li>Ingeniería:Diseño de máquinas, estructuras, electricidad y procesos industriales.</li>
+                            <li>Ingeniería Aplicada:Sistemas complejos como mecatrónica, materiales y dispositivos
+                                técnicos.</li>
+                            <li> Matemáticas y Ciencias: Estudia números, modelos y leyes del universo. Matemáticas
+                                aplicadas, Estadística, Física, Actuaría.</li>
+                        </ul>
+-->
+
+                        <div id="roleAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes seleccionar una opción.
+                        </div>
+
+                    </div>
+
+
+
                     <!--Fecha de nacimiento-->
                     <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="dateIpt" class="formFormat w-75"> Fecha de nacimiento: </label>
@@ -88,7 +135,7 @@
                             <option value="prefieroNoResponder">Prefiero no responder</option>
                         </select>
 
-                         <div id="genderAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="genderAlert" class="alert alert-danger w-75" style="display:none;">
                             Debes seleccionar una opción.
                         </div>
 
