@@ -79,6 +79,25 @@ if (testController.posts.length === 0) {
     testController.addPost("#", "Valeria", "Cloud Engineer", "Diseñando arquitecturas escalables en la nube.");
 }
 
+function mostrarAlerta (mensaje, tipo = "danger"){
+    const alertContainer = 
+    document.getElementById("alertContainer");
+
+    if(!alertContainer) return;
+
+    alertContainer.innerHTML =  `
+   <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+            ${mensaje}
+            <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="alert"
+                aria-label="Close">
+            </button>
+        </div>
+    `;
+}
+
 // 4. Renderizado en el DOM al cargar la estructura HTML
 document.addEventListener("DOMContentLoaded", () => {
     const prodRow = document.getElementById("prodRow");
@@ -258,9 +277,11 @@ document.addEventListener("DOMContentLoaded", () => {
             const descripcionDuda = textoNuevaDuda.value.trim();
 
             if (descripcionDuda === "") {
-                alert("Por favor, escribe tu duda antes de publicar.");
+                mostrarAlerta("Por favor, escribe tu duda antes de publicar.");
                 return;
             }
+
+            document.getElementById("alertContainer").innerHTML="";
 
             testController.addPost(
                 imagenBase64, 
