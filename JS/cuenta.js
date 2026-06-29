@@ -8,8 +8,8 @@ const emailIpt = document.getElementById("emailIpt");
 const phoneIpt = document.getElementById("phoneIpt");
 const passwordIpt = document.getElementById("passwordIpt");
 const passwordConfirmIpt = document.getElementById("passwordConfirmIpt");
-const rolIpt = document.getElementById("rolIpt");
-const specialtyIpt = document.getElementById("specialtyIpt");
+const roleIpt = document.getElementById("roleIpt");
+const areaIpt = document.getElementById("areaIpt");
 
 // Alertas
 const nameAlert = document.getElementById("nameAlert");
@@ -20,8 +20,8 @@ const emailAlert = document.getElementById("emailAlert");
 const phoneAlert = document.getElementById("phoneAlert");
 const passwordAlert = document.getElementById("passwordAlert");
 const passwordConfirmAlert = document.getElementById("passwordConfirmAlert");
-const rolAlert = document.getElementById("rolAlert");
-const specialtyAlert = document.getElementById("specialtyAlert");
+const roleAlert = document.getElementById("roleAlert");
+const areaAlert = document.getElementById("areaAlert");
 
 // Botones
 const formBtn = document.getElementById("formBtn");
@@ -173,22 +173,21 @@ formBtn.addEventListener("click", (e) => {
     }
 
     //Rol
-    if (rolIpt.value == "") {
-        rolAlert.style.display = "block";
-        rolAlert.innerHTML = "Por favor, selecciona tu rol.";
+    if (roleIpt.value == "") {
+        roleAlert.style.display = "block";
+        roleAlert.innerHTML = "Por favor, selecciona tu rol.";
         formularioValido = false;
     } else {
-        rolAlert.style.display = "none";
+        roleAlert.style.display = "none";
     }
 
     //Especialidad
-
-    if (rolIpt.value == "") {
-        specialtyAlert.style.display = "block";
-        specialtyAlert.innerHTML = "Por favor, selecciona tu rol.";
+    if (areaIpt.value == "") {
+        areaAlert.style.display = "block";
+        areaAlert.innerHTML = "Por favor, selecciona tu especialidad.";
         formularioValido = false;
     } else {
-        specialtyAlert.style.display = "none";
+        areaAlert.style.display = "none";
     }
 
     //Crear Formato JSON
@@ -210,8 +209,9 @@ phoneIpt.addEventListener("input", function () {
 });
 
 // Botón borrar
-delBtn.addEventListener("click", () => {
-
+delBtn.addEventListener("click", (e) => {
+     e.preventDefault();
+    console.log("Cancelar presionado");
     nameIpt.value = "";
     lastIpt.value = "";
     dateIpt.value = "";
@@ -220,8 +220,8 @@ delBtn.addEventListener("click", () => {
     passwordConfirmIpt.value = "";
     emailIpt.value = "";
     phoneIpt.value = "";
-    rolIpt.value="";
-    specialtyIpt.value="";
+    roleIpt.value="";
+    areaAlert.value="";
 
 
     nameAlert.style.display = "none";
@@ -232,7 +232,7 @@ delBtn.addEventListener("click", () => {
     passwordConfirmAlert.style.display = "none";
     emailAlert.style.display = "none";
     phoneAlert.style.display = "none";
-    rolAlert.style.display="none";
-    specialtyAlert.style.display="";
+    roleAlert.style.display="none";
+    areaAlert.style.display="none";
 
 });
