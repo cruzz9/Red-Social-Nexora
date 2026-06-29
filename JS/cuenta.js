@@ -168,7 +168,7 @@ formBtn.addEventListener("click", (e) => {
         phoneAlert.style.display = "none";
     }
 
-    //Crear Formato JSON
+    // Crear Formato JSON
     if (formularioValido) {
         // Cambiar el botón mientras se envía
         const originalText = formBtn.textContent;
