@@ -220,6 +220,8 @@ delBtn.addEventListener("click", () => {
     passwordConfirmIpt.value = "";
     emailIpt.value = "";
     phoneIpt.value = "";
+    rolIpt.value="";
+    specialtyIpt.value="";
 
 
     nameAlert.style.display = "none";
@@ -230,6 +232,7 @@ delBtn.addEventListener("click", () => {
     passwordConfirmAlert.style.display = "none";
     emailAlert.style.display = "none";
     phoneAlert.style.display = "none";
-
+    rolAlert.style.display="none";
+    specialtyAlert.style.display="";
 
 });
