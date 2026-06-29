@@ -3,26 +3,25 @@
 const nameIpt = document.getElementById("nameIpt");
 const lastIpt = document.getElementById("lastIpt");
 const dateIpt = document.getElementById("dateIpt");
-//
 const genderIpt = document.getElementById("genderIpt");
-//
 const emailIpt = document.getElementById("emailIpt");
 const phoneIpt = document.getElementById("phoneIpt");
 const passwordIpt = document.getElementById("passwordIpt");
 const passwordConfirmIpt = document.getElementById("passwordConfirmIpt");
-
+const rolIpt = document.getElementById("rolIpt");
+const specialtyIpt = document.getElementById("specialtyIpt");
 
 // Alertas
 const nameAlert = document.getElementById("nameAlert");
 const lastAlert = document.getElementById("lastAlert");
 const dateAlert = document.getElementById("dateAlert");
-//
 const genderAlert = document.getElementById("genderAlert");
-//
 const emailAlert = document.getElementById("emailAlert");
 const phoneAlert = document.getElementById("phoneAlert");
 const passwordAlert = document.getElementById("passwordAlert");
 const passwordConfirmAlert = document.getElementById("passwordConfirmAlert");
+const rolAlert = document.getElementById("rolAlert");
+const specialtyAlert = document.getElementById("specialtyAlert");
 
 // Botones
 const formBtn = document.getElementById("formBtn");
@@ -36,6 +35,20 @@ const regexName = (/^[A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+(?:[' -][A-Za-zÑñÁ�
 const regexPhone = (/^[0-9]{10}$/);
 
 const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
+
+
+//Cargar rango de fechas
+dateIpt.addEventListener("click", () => {
+    const hoy = new Date();
+    const max = new Date(hoy);
+    const dateUser = new Date(dateIpt.value);
+    max.setFullYear(hoy.getFullYear() - 12);
+    const min = new Date(hoy);
+    min.setFullYear(hoy.getFullYear() - 120);
+    dateIpt.max = max.toISOString().split('T')[0];
+    dateIpt.min = min.toISOString().split('T')[0];
+});
+
 
 // Validación
 formBtn.addEventListener("click", (e) => {
@@ -73,15 +86,6 @@ formBtn.addEventListener("click", (e) => {
     }
 
     //fecha
-    const hoy = new Date();
-    const max = new Date(hoy);
-    const dateUser = new Date(dateIpt.value);
-    max.setFullYear(hoy.getFullYear() - 12);
-    const min = new Date(hoy);
-    min.setFullYear(hoy.getFullYear() - 120);
-    dateIpt.max = max.toISOString().split('T')[0];
-    dateIpt.min = min.toISOString().split('T')[0];
-
     if (dateIpt.value != "") {
         if (dateIpt.value != "" && (dateUser > max || dateUser < min)) {
             dateAlert.style.display = "block";
@@ -95,10 +99,10 @@ formBtn.addEventListener("click", (e) => {
         dateAlert.innerHTML = "El campo de fecha está vacío";
         formularioValido = false;
     }
-    
 
 
-//genero
+
+    //genero
     if (genderIpt.value == "") {
         genderAlert.style.display = "block";
         genderAlert.innerHTML = "Por favor, selecciona tu género antes de continuar.";
@@ -107,7 +111,7 @@ formBtn.addEventListener("click", (e) => {
         genderAlert.style.display = "none";
     }
 
-//Contraseña
+    //Contraseña
     if (passwordIpt.value != "") {
         if (!regexPassword.test(passwordIpt.value)) {
             passwordAlert.style.display = "block";
@@ -123,7 +127,7 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
     }
 
-    
+
     //Confirmar contraseña
     if (passwordConfirmIpt.value != ("")) {
         if (passwordConfirmIpt.value != passwordIpt.value) {
@@ -166,6 +170,25 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
     } else {
         phoneAlert.style.display = "none";
+    }
+
+    //Rol
+    if (rolIpt.value == "") {
+        rolAlert.style.display = "block";
+        rolAlert.innerHTML = "Por favor, selecciona tu rol.";
+        formularioValido = false;
+    } else {
+        rolAlert.style.display = "none";
+    }
+
+    //Especialidad
+
+    if (rolIpt.value == "") {
+        specialtyAlert.style.display = "block";
+        specialtyAlert.innerHTML = "Por favor, selecciona tu rol.";
+        formularioValido = false;
+    } else {
+        specialtyAlert.style.display = "none";
     }
 
     //Crear Formato JSON
