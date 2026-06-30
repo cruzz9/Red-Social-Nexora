@@ -38,11 +38,11 @@
             </h1>
         </div>
         <div class="row container-fluid">
-            <div class="col d-none d-md-block">
+            <div class="col d-none d-md-block d-flex align-items-center mt-5">
                 <img class="img-fluid" id="imgCuenta" src="./assets/cuentaHTML.jpeg" alt="NEXORA">
             </div>
 
-            <div class="col-md-4 mt-5">
+            <div class="col-md-6 mt-5">
                 <!-- 🔽 AGREGAMOS EL FORM AQUÍ DENTRO -->
                 <form id="formContacto">
 
@@ -96,7 +96,7 @@
                             <option value="math">Matemáticas y Ciencias Fundamentales</option>
 
                         </select>
-<!--
+                        <!--
                         <ul class="listaArea m-3 w-75">
                             <li>Tecnología y Software: Programación, IA, ciberseguridad y sistemas digitales.</li>
                             <li>Ingeniería:Diseño de máquinas, estructuras, electricidad y procesos industriales.</li>
@@ -169,10 +169,10 @@
                             placeholder="Ingresa una contraseña" required>
 
                         <ul class="listaPassword m-3 w-75">
-                            <li>La contraseña debe tener 8 caracteres</li>
-                            <li>1 Mayúscula</li>
-                            <li>1 minúscula</li>
-                            <li>1 número</li>
+                            <li id="lengthPassword" class="invalid">La contraseña debe tener 8 caracteres</li>
+                            <li id="mayuscPassword" class="invalid">1 Mayúscula</li>
+                            <li id="minuscPassword" class="invalid">1 minúscula</li>
+                            <li id="numberPassword" class="invalid">1 número</li>
                         </ul>
 
                         <div id="passwordAlert" class="alert alert-danger  w-75" style="display:none;">
