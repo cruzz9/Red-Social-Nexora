@@ -37,6 +37,39 @@ const regexPhone = (/^[0-9]{10}$/);
 
 const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
 
+
+   //Validar contraseña con lista
+
+    function validateRequirement(elementId, requirement) {
+        const element = document.getElementById(elementId);
+
+        if (requirement) {
+            element.classList.remove("invalid");
+            element.classList.add("valid");
+        } else {
+            element.classList.remove("valid");
+            element.classList.add("invalid");
+        }//else
+    }//  validateRequirement
+
+    passwordIpt.addEventListener("input", (evento) => {
+    
+        const password = evento.target.value;
+
+        validateRequirement("lengthPassword", password.length>= 8);
+        validateRequirement("mayuscPassword", /[A-Z]/.test(password));
+        validateRequirement("minuscPassword", /[a-z]/.test(password));
+     validateRequirement("numberPassword", /[0-9]/.test(password));
+    });
+
+
+
+
+
+
+
+
+
 // Validación
 formBtn.addEventListener("click", (e) => {
 
@@ -95,10 +128,10 @@ formBtn.addEventListener("click", (e) => {
         dateAlert.innerHTML = "El campo de fecha está vacío";
         formularioValido = false;
     }
-    
 
 
-//genero
+
+    //genero
     if (genderIpt.value == "") {
         genderAlert.style.display = "block";
         genderAlert.innerHTML = "Por favor, selecciona tu género antes de continuar.";
@@ -107,7 +140,7 @@ formBtn.addEventListener("click", (e) => {
         genderAlert.style.display = "none";
     }
 
-//Contraseña
+     //Contraseña
     if (passwordIpt.value != "") {
         if (!regexPassword.test(passwordIpt.value)) {
             passwordAlert.style.display = "block";
@@ -123,7 +156,7 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
     }
 
-    
+
     //Confirmar contraseña
     if (passwordConfirmIpt.value != ("")) {
         if (passwordConfirmIpt.value != passwordIpt.value) {
