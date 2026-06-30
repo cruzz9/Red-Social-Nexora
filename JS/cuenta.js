@@ -111,6 +111,13 @@ formBtn.addEventListener("click", (e) => {
     }
 
     //fecha
+    const hoy = new Date();
+    const max = new Date(hoy);
+    const dateUser = new Date(dateIpt.value);
+    max.setFullYear(hoy.getFullYear() - 12);
+    const min = new Date(hoy);
+    min.setFullYear(hoy.getFullYear() - 120);
+
     if (dateIpt.value != "") {
         if (dateIpt.value != "" && (dateUser > max || dateUser < min)) {
             dateAlert.style.display = "block";
@@ -217,11 +224,13 @@ formBtn.addEventListener("click", (e) => {
 
     //Crear Formato JSON
     if (formularioValido) {
+        
         // Cambiar el botón mientras se envía
         const originalText = formBtn.textContent;
+
         formBtn.textContent = 'Creando...';
         formBtn.disabled = true;
-
+     
 
         //AQUI DEBE IR EL JSON---------------------------
 
@@ -236,7 +245,7 @@ phoneIpt.addEventListener("input", function () {
 // Botón borrar
 delBtn.addEventListener("click", (e) => {
      e.preventDefault();
-    console.log("Cancelar presionado");
+
     nameIpt.value = "";
     lastIpt.value = "";
     dateIpt.value = "";
@@ -246,7 +255,7 @@ delBtn.addEventListener("click", (e) => {
     emailIpt.value = "";
     phoneIpt.value = "";
     roleIpt.value="";
-    areaAlert.value="";
+    areaIpt.value="";
 
 
     nameAlert.style.display = "none";
