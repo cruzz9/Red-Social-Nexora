@@ -43,14 +43,26 @@ function validarEmail(email) {
 }
 
 // Autenticar usuario
+// En login.js, modificar la función autenticarUsuario:
+
 function autenticarUsuario(email, password) {
+    // Ya lee del LocalStorage correctamente
     const usuariosAlmacenados = JSON.parse(localStorage.getItem('usuarios') || '[]');
+    
+    // Para debugging (puedes quitarlo en producción)
+    console.log('Usuarios registrados:', usuariosAlmacenados);
     
     const usuarioEncontrado = usuariosAlmacenados.find(
         usuario => usuario.email === email && usuario.password === password
     );
     
-    return usuarioEncontrado;
+    if (usuarioEncontrado) {
+        console.log('Usuario encontrado:', usuarioEncontrado);
+        return usuarioEncontrado;
+    } else {
+        console.log('No se encontró el usuario');
+        return null;
+    }
 }
 
 // Mostrar mensaje de error con SweetAlert2
@@ -71,7 +83,7 @@ function mostrarExito(mensaje) {
         title: '¡Éxito!',
         text: mensaje,
         showConfirmButton: false,
-        timer: 2000,
+        timer: 1000,
         timerProgressBar: true
     });
 }
