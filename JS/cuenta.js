@@ -62,14 +62,6 @@ const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
     });
 
 
-
-
-
-
-
-
-
-
 //Cargar rango de fechas
 dateIpt.addEventListener("click", () => {
     const hoy = new Date();
