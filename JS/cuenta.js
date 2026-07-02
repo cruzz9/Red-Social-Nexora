@@ -3,26 +3,25 @@
 const nameIpt = document.getElementById("nameIpt");
 const lastIpt = document.getElementById("lastIpt");
 const dateIpt = document.getElementById("dateIpt");
-//
 const genderIpt = document.getElementById("genderIpt");
-//
 const emailIpt = document.getElementById("emailIpt");
 const phoneIpt = document.getElementById("phoneIpt");
 const passwordIpt = document.getElementById("passwordIpt");
 const passwordConfirmIpt = document.getElementById("passwordConfirmIpt");
-
+const roleIpt = document.getElementById("roleIpt");
+const areaIpt = document.getElementById("areaIpt");
 
 // Alertas
 const nameAlert = document.getElementById("nameAlert");
 const lastAlert = document.getElementById("lastAlert");
 const dateAlert = document.getElementById("dateAlert");
-//
 const genderAlert = document.getElementById("genderAlert");
-//
 const emailAlert = document.getElementById("emailAlert");
 const phoneAlert = document.getElementById("phoneAlert");
 const passwordAlert = document.getElementById("passwordAlert");
 const passwordConfirmAlert = document.getElementById("passwordConfirmAlert");
+const roleAlert = document.getElementById("roleAlert");
+const areaAlert = document.getElementById("areaAlert");
 
 // Botones
 const formBtn = document.getElementById("formBtn");
@@ -36,6 +35,45 @@ const regexName = (/^[A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+(?:[' -][A-Za-zÑñÁ�
 const regexPhone = (/^[0-9]{10}$/);
 
 const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
+
+
+   //Validar contraseña con lista
+
+    function validateRequirement(elementId, requirement) {
+        const element = document.getElementById(elementId);
+
+        if (requirement) {
+            element.classList.remove("invalid");
+            element.classList.add("valid");
+        } else {
+            element.classList.remove("valid");
+            element.classList.add("invalid");
+        }//else
+    }//  validateRequirement
+
+    passwordIpt.addEventListener("input", (evento) => {
+    
+        const password = evento.target.value;
+
+        validateRequirement("lengthPassword", password.length>= 8);
+        validateRequirement("mayuscPassword", /[A-Z]/.test(password));
+        validateRequirement("minuscPassword", /[a-z]/.test(password));
+     validateRequirement("numberPassword", /[0-9]/.test(password));
+    });
+
+
+//Cargar rango de fechas
+dateIpt.addEventListener("click", () => {
+    const hoy = new Date();
+    const max = new Date(hoy);
+    const dateUser = new Date(dateIpt.value);
+    max.setFullYear(hoy.getFullYear() - 12);
+    const min = new Date(hoy);
+    min.setFullYear(hoy.getFullYear() - 120);
+    dateIpt.max = max.toISOString().split('T')[0];
+    dateIpt.min = min.toISOString().split('T')[0];
+});
+
 
 // Validación
 formBtn.addEventListener("click", (e) => {
@@ -79,8 +117,6 @@ formBtn.addEventListener("click", (e) => {
     max.setFullYear(hoy.getFullYear() - 12);
     const min = new Date(hoy);
     min.setFullYear(hoy.getFullYear() - 120);
-    dateIpt.max = max.toISOString().split('T')[0];
-    dateIpt.min = min.toISOString().split('T')[0];
 
     if (dateIpt.value != "") {
         if (dateIpt.value != "" && (dateUser > max || dateUser < min)) {
@@ -95,10 +131,10 @@ formBtn.addEventListener("click", (e) => {
         dateAlert.innerHTML = "El campo de fecha está vacío";
         formularioValido = false;
     }
-    
 
 
-//genero
+
+    //genero
     if (genderIpt.value == "") {
         genderAlert.style.display = "block";
         genderAlert.innerHTML = "Por favor, selecciona tu género antes de continuar.";
@@ -107,7 +143,7 @@ formBtn.addEventListener("click", (e) => {
         genderAlert.style.display = "none";
     }
 
-//Contraseña
+         //Contraseña
     if (passwordIpt.value != "") {
         if (!regexPassword.test(passwordIpt.value)) {
             passwordAlert.style.display = "block";
@@ -123,7 +159,7 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
     }
 
-    
+
     //Confirmar contraseña
     if (passwordConfirmIpt.value != ("")) {
         if (passwordConfirmIpt.value != passwordIpt.value) {
@@ -168,13 +204,33 @@ formBtn.addEventListener("click", (e) => {
         phoneAlert.style.display = "none";
     }
 
-    // Crear Formato JSON
+    //Rol
+    if (roleIpt.value == "") {
+        roleAlert.style.display = "block";
+        roleAlert.innerHTML = "Por favor, selecciona tu rol.";
+        formularioValido = false;
+    } else {
+        roleAlert.style.display = "none";
+    }
+
+    //Especialidad
+    if (areaIpt.value == "") {
+        areaAlert.style.display = "block";
+        areaAlert.innerHTML = "Por favor, selecciona tu especialidad.";
+        formularioValido = false;
+    } else {
+        areaAlert.style.display = "none";
+    }
+
+    //Crear Formato JSON
     if (formularioValido) {
+        
         // Cambiar el botón mientras se envía
         const originalText = formBtn.textContent;
+
         formBtn.textContent = 'Creando...';
         formBtn.disabled = true;
-
+     
 
         //AQUI DEBE IR EL JSON---------------------------
 
@@ -187,7 +243,8 @@ phoneIpt.addEventListener("input", function () {
 });
 
 // Botón borrar
-delBtn.addEventListener("click", () => {
+delBtn.addEventListener("click", (e) => {
+     e.preventDefault();
 
     nameIpt.value = "";
     lastIpt.value = "";
@@ -197,6 +254,8 @@ delBtn.addEventListener("click", () => {
     passwordConfirmIpt.value = "";
     emailIpt.value = "";
     phoneIpt.value = "";
+    roleIpt.value="";
+    areaIpt.value="";
 
 
     nameAlert.style.display = "none";
@@ -207,6 +266,7 @@ delBtn.addEventListener("click", () => {
     passwordConfirmAlert.style.display = "none";
     emailAlert.style.display = "none";
     phoneAlert.style.display = "none";
-
+    roleAlert.style.display="none";
+    areaAlert.style.display="none";
 
 });
