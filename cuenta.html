@@ -31,18 +31,17 @@
     <section id="formulario" class="pt-3">
 
         <div class="row container-fluid text-center">
-            <h1>
-                <h1 id="tiutloCuenta">Únete a Nexora</h1>
-                <p id="parrafoCuenta">Crea tu cuenta y forma parte una comunidad que te conecta con lo que más te
-                    importa.</p>
-            </h1>
+            <h1 id="tiutloCuenta">Únete a Nexora</h1>
+            <p id="parrafoCuenta">Crea tu cuenta y forma parte una comunidad que te conecta con lo que más te
+                importa.</p>
+
         </div>
         <div class="row container-fluid">
-            <div class="col d-none d-md-block">
-                <img class="img-fluid" id="imgCuenta" src="./assets/cuentaHTML.jpeg" alt="NEXORA">
+            <div class="col d-none d-md-block mt-5">
+                <img class="img-fluid" id="imgCuenta" src="./assets/crearCuentaHTMLDos.png" alt="NEXORA">
             </div>
 
-            <div class="col-md-4 mt-5">
+            <div class="col-md-6 mt-5">
                 <!-- 🔽 AGREGAMOS EL FORM AQUÍ DENTRO -->
                 <form id="formContacto">
 
@@ -68,6 +67,53 @@
                         </div>
                     </div>
 
+                    <!--Rol-->
+                    <div class="row d-flex flex-column align-items-center mt-1">
+                        <label for="roleIpt" class="formFormat w-75">Rol: </label>
+
+                        <select id="roleIpt" class="form-select w-75">
+                            <option value="" disabled selected hidden>Selecciona una opción</option>
+                            <option value="estudiante">Estudiante</option>
+                            <option value="profesionista">Profesionista</option>
+                        </select>
+
+                        <div id="roleAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes seleccionar una opción.
+                        </div>
+
+                    </div>
+
+                    <!--Áred de Interés-->
+                    <div class="row d-flex flex-column align-items-center mt-1">
+                        <label for="areaIpt" class="formFormat w-75">Área de Interés: </label>
+
+                        <select id="areaIpt" class="form-select w-75">
+                            <option value="" disabled selected hidden>Selecciona una categoría </option>
+                            <option value="technology"> Tecnología y Software</option>
+                            <option value="classic">Ingenierias Clásicas</option>
+                            <option value="applied">Ingenierias Aplicadas</option>
+                            <option value="math">Matemáticas y Ciencias Fundamentales</option>
+
+                        </select>
+                        <!--
+                        <ul class="listaArea m-3 w-75">
+                            <li>Tecnología y Software: Programación, IA, ciberseguridad y sistemas digitales.</li>
+                            <li>Ingeniería:Diseño de máquinas, estructuras, electricidad y procesos industriales.</li>
+                            <li>Ingeniería Aplicada:Sistemas complejos como mecatrónica, materiales y dispositivos
+                                técnicos.</li>
+                            <li> Matemáticas y Ciencias: Estudia números, modelos y leyes del universo. Matemáticas
+                                aplicadas, Estadística, Física, Actuaría.</li>
+                        </ul>
+-->
+
+                        <div id="areaAlert" class="alert alert-danger w-75" style="display:none;">
+                            Debes seleccionar una opción.
+                        </div>
+
+                    </div>
+
+
+
                     <!--Fecha de nacimiento-->
                     <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="dateIpt" class="formFormat w-75"> Fecha de nacimiento: </label>
@@ -88,7 +134,7 @@
                             <option value="prefieroNoResponder">Prefiero no responder</option>
                         </select>
 
-                         <div id="genderAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="genderAlert" class="alert alert-danger w-75" style="display:none;">
                             Debes seleccionar una opción.
                         </div>
 
@@ -122,10 +168,10 @@
                             placeholder="Ingresa una contraseña" required>
 
                         <ul class="listaPassword m-3 w-75">
-                            <li>La contraseña debe tener 8 caracteres</li>
-                            <li>1 Mayúscula</li>
-                            <li>1 minúscula</li>
-                            <li>1 número</li>
+                            <li id="lengthPassword" class="invalid">La contraseña debe tener 8 caracteres</li>
+                            <li id="mayuscPassword" class="invalid">1 Mayúscula</li>
+                            <li id="minuscPassword" class="invalid">1 minúscula</li>
+                            <li id="numberPassword" class="invalid">1 número</li>
                         </ul>
 
                         <div id="passwordAlert" class="alert alert-danger  w-75" style="display:none;">

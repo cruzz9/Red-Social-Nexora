@@ -1,6 +1,12 @@
-#body-login{
-  background-color: #1E293B;
-  
+body {
+
+background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
+
 }
 
 @media (max-width: 768px) {
@@ -35,7 +41,8 @@
 }
 
 .btn:hover {
-  background-color: #94A3B8; 
+    background: #10B981;
+    border: 1px solid #10B981; 
 }
 
 .form-text{
