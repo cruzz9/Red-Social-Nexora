@@ -268,5 +268,14 @@ delBtn.addEventListener("click", (e) => {
     phoneAlert.style.display = "none";
     roleAlert.style.display="none";
     areaAlert.style.display="none";
+    
+    lengthPassword.classList.remove("valid");
+    lengthPassword.classList.add("invalid");
+    mayuscPassword.classList.remove("valid");
+    mayuscPassword.classList.add("invalid");
+    minuscPassword.classList.remove("valid");
+    minuscPassword.classList.add("invalid");
+    numberPassword.classList.remove("valid");
+    numberPassword.classList.add("invalid")
 
 });
