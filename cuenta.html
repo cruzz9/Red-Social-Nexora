@@ -51,7 +51,7 @@
                         <label for="nameIpt" class="formFormat w-75"> Nombre: </label>
                         <input id="nameIpt" name="nombre" type="text" class="form-control w-75"
                             placeholder="Escribe tu nombre aquí..." required>
-                        <div id="nameAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="nameAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes ingresar tu nombre.
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         <label for="lastIpt" class="formFormat w-75"> Apellido: </label>
                         <input id="lastIpt" name="apellido" type="text" class="form-control w-75"
                             placeholder="Escribe tu primer apellido" required>
-                        <div id="lastAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="lastAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes ingresar tu apellido.
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                             <option value="profesionista">Profesionista</option>
                         </select>
 
-                        <div id="roleAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="roleAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes seleccionar una opción.
                         </div>
 
@@ -106,7 +106,7 @@
                         </ul>
 -->
 
-                        <div id="areaAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="areaAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes seleccionar una opción.
                         </div>
 
@@ -118,7 +118,7 @@
                     <div class="row d-flex flex-column align-items-center mt-1">
                         <label for="dateIpt" class="formFormat w-75"> Fecha de nacimiento: </label>
                         <input id="dateIpt" name="fecha" type="date" class="form-control w-75">
-                        <div id="dateAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="dateAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes ingresar tu fecha de nacimiento.
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                             <option value="prefieroNoResponder">Prefiero no responder</option>
                         </select>
 
-                        <div id="genderAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="genderAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes seleccionar una opción.
                         </div>
 
@@ -145,7 +145,7 @@
                         <label for="emailIpt" class="formFormat w-75"> Email: </label>
                         <input id="emailIpt" name="email" type="email" class="form-control w-75"
                             placeholder="ejemplo@correo.com" required>
-                        <div id="emailAlert" class="alert alert-danger w-75" style="display:none;">
+                        <div id="emailAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes ingresar tu correo.
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                         <label for="phoneIpt" class="formFormat w-75"> Teléfono: </label>
                         <input id="phoneIpt" name="telefono" type="tel" class="form-control w-75"
                             placeholder="Ej. 1234567890" required>
-                        <div id="phoneAlert" class="alert alert-danger  w-75" style="display:none;">
+                        <div id="phoneAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes ingresar tu teléfono.
                         </div>
                     </div>
@@ -167,6 +167,10 @@
                         <input id="passwordIpt" name="password" type="password" class="form-control w-75"
                             placeholder="Ingresa una contraseña" required>
 
+                                  <div id="passwordAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
+                            Debes ingresar tu contraseña.
+                        </div>
+                        
                         <ul class="listaPassword m-3 w-75">
                             <li id="lengthPassword" class="invalid">La contraseña debe tener 8 caracteres</li>
                             <li id="mayuscPassword" class="invalid">1 Mayúscula</li>
@@ -174,9 +178,7 @@
                             <li id="numberPassword" class="invalid">1 número</li>
                         </ul>
 
-                        <div id="passwordAlert" class="alert alert-danger  w-75" style="display:none;">
-                            Debes ingresar tu contraseña.
-                        </div>
+                
                     </div>
 
 
@@ -186,7 +188,7 @@
                         <input id="passwordConfirmIpt" name="passwordConfirm" type="password" class="form-control w-75"
                             placeholder="Confirma tu contraseña" required>
 
-                        <div id="passwordConfirmAlert" class="alert alert-danger  w-75" style="display:none;">
+                        <div id="passwordConfirmAlert" class="alert alert-danger  p-1 w-75 m-1" style="display:none;">
                             Debes reingresar tu contraseña
                         </div>
 
