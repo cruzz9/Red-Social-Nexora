@@ -310,3 +310,13 @@
 .btn-login-accent:active {
     transform: scale(0.98);
 }
+
+.alert-danger{
+ background-color: #7F1D1D;
+    border: 1px solid #991B1B;
+    color: #FEE2E2;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(127, 29, 29, .25);
+}

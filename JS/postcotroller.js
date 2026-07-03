@@ -74,7 +74,7 @@ function mostrarAlerta (mensaje, tipo = "danger"){
     if(!alertContainer) return;
 
     alertContainer.innerHTML =  `
-       <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+       <div class="alert alert-${tipo} alert-dismissible fade show alert-danger  p-3 w-100 m-1"" role="alert">
             ${mensaje}
             <button
                 type="button"
