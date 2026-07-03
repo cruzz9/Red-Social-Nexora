@@ -233,8 +233,43 @@ formBtn.addEventListener("click", (e) => {
      
 
         //AQUI DEBE IR EL JSON---------------------------
+        // 1. Crear el objeto con los datos del usuario
+    const nuevoUsuario = {
+        nombre: nameIpt.value.trim(),
+        apellido: lastIpt.value.trim(),
+        fechaNacimiento: dateIpt.value,
+        genero: genderIpt.value,
+        email: emailIpt.value.trim(),
+        telefono: phoneIpt.value,
+        password: passwordIpt.value, 
+        rol: roleIpt.value,
+        area: areaIpt.value
+    };
 
-    }
+    // 2. Obtener los usuarios ya guardados o inicializar un arreglo vacío si es el primero
+    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+    // 3. Añadir el nuevo registro a la lista
+    usuariosGuardados.push(nuevoUsuario);
+
+    // 4. Guardar la lista actualizada de vuelta en el localStorage en formato String
+    localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
+    // 5. Simular éxito y limpiar o redirigir
+    setTimeout(() => {
+        alert("¡Cuenta creada con éxito! Ya puedes iniciar sesión.");
+    
+    // Aquí puedes disparar la lógica de tu botón 'delBtn' para limpiar los campos
+    delBtn.click(); 
+    
+    // Restaurar el botón de envío
+    formBtn.textContent = originalText;
+    formBtn.disabled = false;
+    
+    window.location.href = "login.html";
+
+    }, 1500);//setTimeout
+
+
+    }//if formularioValido
 });
 
 // Limitar teléfono a 10 dígitos
