@@ -85,11 +85,14 @@ button:hover {
 }
 
 #imgContactanos {
-    width: 100%;
-    border-radius: 12px;
-
+    max-width: 80%;      /* La imagen nunca ocupará más del 80% de su columna */
+    max-height: 500px;   /* Altura máxima para que no sea demasiado alta */
+    width: auto;         /* Mantiene la proporción */
+    height: auto;
+   /* border-radius: 12px; */
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
     margin: 10px;
+    object-fit: contain; /* Evita deformaciones */
 }
 
 
