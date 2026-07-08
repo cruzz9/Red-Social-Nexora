@@ -161,6 +161,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const usuario = JSON.parse(usuarioLogueado);
         mostrarExito(`Ya has iniciado sesión como ${usuario.nombre}`);
     }
+
+    // Manejar clic en "Crear Cuenta"
+    document.getElementById('btnCrearCuenta').addEventListener('click', function() {
+    window.location.href = './cuenta.html'; // Cambia a tu página de crear cuenta
+});
 });
 
 // Función para cerrar sesión (útil para otras páginas)
@@ -173,5 +178,5 @@ function cerrarSesion() {
 window.cerrarSesion = cerrarSesion;
 // Manejar clic en "Crear Cuenta"
 document.getElementById('btnCrearCuenta').addEventListener('click', function() {
-    window.location.href = './registro.html'; // Cambia a tu página de registro
+    window.location.href = './cuenta.html'; // Cambia a tu página de crear cuenta
 });
