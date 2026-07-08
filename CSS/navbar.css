@@ -28,29 +28,82 @@
 .nav-active {
     color: #f4f6f7 !important;
 }
-/* Escritorio */
-.hamburger{
+
+/*==========================
+        ESCRITORIO
+==========================*/
+
+.logo{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#btnMenu{
     display: none;
+    margin-left: auto; /* Empuja el botón a la derecha */
 }
 
 #apages{
     display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
-/* Móvil */
-@media (max-width: 768px){
+@media (max-width:768px){
 
-    .hamburger{
+    .logo{
+        display: flex;
+        align-items: center;
+    }
+
+    #btnMenu{
         display: block;
+        margin-left: auto;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 35px;
+        cursor: pointer;
     }
 
     #apages{
-        display: none;
+
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+
+        display: flex;
+        flex-wrap: wrap;          /* Permite varias columnas */
+        justify-content: space-around;
+
+        background: #1E293B;
+
+        max-height: 0;
+        overflow: hidden;
+
+        transition: max-height .35s ease;
+
+        padding: 0;
     }
 
     #apages.active{
-        display: flex;
-        flex-direction: column;
+        max-height: 300px; /* Ajusta según la cantidad de enlaces */
+        padding: 20px 0;
+    }
+
+    #apages li{
+        list-style: none;
+        width: 23%;          /* 3 columnas */
+        text-align: center;
+        margin: 12px 0;
+    }
+
+    #apages a{
+        color: white;
+        text-decoration: none;
     }
 }
 
