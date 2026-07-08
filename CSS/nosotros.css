@@ -88,7 +88,7 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
 .card-neon {
 
     position: relative;
-    min-height: 260px;
+    min-height: 180px;
     /**/
 
     /* Grosor del borde */
@@ -147,7 +147,7 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
 /* INTERIOR DE LA TARJETA */
 
 .card-content {
-    background: #1E293B;
+
     height: 100%;
 
     /* Espaciado interno */
@@ -285,8 +285,10 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
 
 .card-text {
     color: #CBD5E1;
-    font-size: .95rem;
+    font-size: 1rem;
     line-height: 1.7;
+    text-align: justify;
+    text-align-last: center; 
 }
 
 /* RESPONSIVE */

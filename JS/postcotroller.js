@@ -11,11 +11,13 @@ class PostsController {
             nombre: nombre,
             rol: rol,
             descripcion: descripcion,
-            comentarios: [] 
+            comentarios: [],
+            likes: []
         };
         this.posts.push(newPost);
         this.saveToLocalStorage();
     }//addPost
+    
 
     saveToLocalStorage() {
         localStorage.setItem(
@@ -24,13 +26,20 @@ class PostsController {
         );
     }//saveToLocalStorage
 
-    loadPostsFromLocalStorage() {
-        const posts = localStorage.getItem("posts");
-        if (posts) {
-            this.posts = JSON.parse(posts);
-            this.currentId = this.posts[this.posts.length - 1].id;
-        }
-    }//loadPostsFromLocalStorage
+   loadPostsFromLocalStorage() {
+    const posts = localStorage.getItem("posts");
+    if (posts) {
+        this.posts = JSON.parse(posts);
+        this.currentId = this.posts[this.posts.length - 1].id;
+        
+        //Migración: Agregar likes a posts antiguos
+        this.posts.forEach(post => {
+            if (!post.likes) post.likes = [];
+        });
+        this.saveToLocalStorage();
+    }
+
+}//loadPostsFromLocalStorage
 
     eliminarPost(id) {
         this.posts = this.posts.filter(post => post.id !== id);
@@ -47,6 +56,21 @@ class PostsController {
             this.saveToLocalStorage();
         }
     }//editar post
+
+    toggleLike(id, usuario = "Tú") {  
+        const post = this.posts.find(p => p.id === id);
+        if (post) {
+            if (!post.likes) post.likes = [];
+            
+            const index = post.likes.indexOf(usuario);
+            if (index === -1) {
+                post.likes.push(usuario);
+            } else {
+                post.likes.splice(index, 1);
+            }
+            this.saveToLocalStorage();
+        }
+    }
 } //classPostsController
 
 // 1. Instanciamos nuestro controlador
@@ -73,17 +97,13 @@ function mostrarAlerta (mensaje, tipo = "danger"){
     const alertContainer = document.getElementById("alertContainer");
     if(!alertContainer) return;
 
-    alertContainer.innerHTML =  `
-       <div class="alert alert-${tipo} alert-dismissible fade show alert-danger  p-3 w-100 m-1"" role="alert">
-            ${mensaje}
-            <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="alert"
-                aria-label="Close">
-            </button>
-        </div>
-    `;
+alertContainer.innerHTML = `
+   <div class="alert alert-${tipo} alert-dismissible fade show p-3 w-100 m-1" role="alert">
+        ${mensaje}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+`;
+
 }
 
 // 4. Renderizado en el DOM al cargar la estructura HTML
@@ -138,7 +158,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         ${imagenAdjuntaHtml}
                         <hr>
                         <div class="container d-flex justify-content-end align-items-center gap-2 mb-3">
-                            <button type="button" class="btn btn-outline-primary btnCard"><i class="fa-regular fa-thumbs-up"></i></button>
+                        <button type="button" class="btn btn-outline-primary btnCard btn-like" data-id="${post.id}">
+                            <i class="${(post.likes && post.likes.includes('Tú')) ? 'fa-solid' : 'fa-regular'} fa-thumbs-up"></i>
+                            <span class="ms-2 like-count">${post.likes ? post.likes.length : 0}</span>
+                        </button>
                             <button type="button" class="btn btn-outline-primary btnCard btnMostrarComentarios"><i class="fa-regular fa-comment"></i></button>
                         </div>
                         <div class="comentarios" style="display:none;">
@@ -235,6 +258,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // --- LISTENERS DEL FEED (PRODROW) ---
     prodRow.addEventListener("click", (evento) => {
         if(evento.target.closest("a")) evento.preventDefault();
+
+        const botonLike = evento.target.closest(".btn-like");
+        if (botonLike) {
+        const idPost = Number(botonLike.dataset.id);
+        testController.toggleLike(idPost);
+        renderFeed();
+        return;
+        }
 
         // ACCIÓN: ELIMINAR
         const botonEliminar = evento.target.closest(".btn-eliminar");
