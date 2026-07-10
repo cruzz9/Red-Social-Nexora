@@ -324,7 +324,12 @@ document.addEventListener("DOMContentLoaded", () => {
             comentarios.style.display = comentarios.style.display === "none" ? "block" : "none";
             return;
         }
-
+/*      Aqui es donde liz puede hacer la lógica para publicar comentarios, pero la dejó comentada para que no se ejecute automáticamente.
+        // 6. PUBLICAR COMENTARIO
+        // Detectamos si el clic fue en un botón de publicar comentario
+        // Esto se hace para que no se ejecute la lógica de publicar comentario al hacer clic en cualquier otro lugar del feed
+        // y solo se ejecute cuando se haga clic en el botón específico de publicar comentario.
+        
         // PUBLICAR COMENTARIO
         const botonComentario = evento.target.closest(".btn-comentar");
         if (botonComentario) {
@@ -340,5 +345,6 @@ document.addEventListener("DOMContentLoaded", () => {
             renderFeed();
             return;
         }
+*/
     });
 });

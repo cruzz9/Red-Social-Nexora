@@ -13,7 +13,7 @@ if (usuarioLogueado) {
         <li class="nav-item">
             <a class="nav-link text-danger" href="#" id="btnCerrarSesion">Cerrar Sesión</a>
         </li>
-    `;git 
+    ` 
 } else {
     // Si no hay sesión, mostramos el enlace tradicional de ingreso
     botonSesionHTML = `
