@@ -207,12 +207,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (inputImagen) inputImagen.value = "";
         if (dudaFormContainer) dudaFormContainer.classList.add("d-none");
         
-        // Restauramos el botón a modo "Publicar"
+        // Restauramos el botón a su modo original conservando el icono de FontAwesome
         if (btnPublicarDudaCard) {
-            btnPublicarDudaCard.textContent = "Publicar";
+            btnPublicarDudaCard.innerHTML = `<i class="fa-solid fa-paper-plane me-2"></i>Publicar en Tiempo Real`;
             btnPublicarDudaCard.dataset.editId = "";
         }
-        if (btnCancelarDuda) btnCancelarDuda.classList.add("d-none");
     };
 
     if (btnCancelarDuda) {
