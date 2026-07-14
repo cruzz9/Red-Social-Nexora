@@ -71,6 +71,15 @@ class PostsController {
             this.saveToLocalStorage();
         }
     }
+
+    addComentario(id, texto){
+        const post = this.posts.find(p => p.id ===id);
+        if(post){
+            if(!post.comentarios) post.comentarios = [];
+            post.comentarios.push(texto);
+            this.saveToLocalStorage();
+        } 
+    }
 } //classPostsController
 
 // 1. Instanciamos nuestro controlador
@@ -207,12 +216,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (inputImagen) inputImagen.value = "";
         if (dudaFormContainer) dudaFormContainer.classList.add("d-none");
         
-        // Restauramos el botón a modo "Publicar"
+        // Restauramos el botón a su modo original conservando el icono de FontAwesome
         if (btnPublicarDudaCard) {
-            btnPublicarDudaCard.textContent = "Publicar";
+            btnPublicarDudaCard.innerHTML = `<i class="fa-solid fa-paper-plane me-2"></i>Publicar en Tiempo Real`;
             btnPublicarDudaCard.dataset.editId = "";
         }
-        if (btnCancelarDuda) btnCancelarDuda.classList.add("d-none");
     };
 
     if (btnCancelarDuda) {
@@ -325,21 +333,28 @@ document.addEventListener("DOMContentLoaded", () => {
             comentarios.style.display = comentarios.style.display === "none" ? "block" : "none";
             return;
         }
-
+         // Aqui es donde liz puede hacer la lógica para publicar comentarios, pero la dejó comentada para que no se ejecute automáticamente.
+        // 6. PUBLICAR COMENTARIO
+        // Detectamos si el clic fue en un botón de publicar comentario
+        // Esto se hace para que no se ejecute la lógica de publicar comentario al hacer clic en cualquier otro lugar del feed
+        // y solo se ejecute cuando se haga clic en el botón específico de publicar comentario.
+        
         // PUBLICAR COMENTARIO
         const botonComentario = evento.target.closest(".btn-comentar");
         if (botonComentario) {
-            const id = Number(botonComentario.dataset.id);
-            const post = testController.posts.find(p => p.id === id);
+            const idPost = Number(botonComentario.dataset.id);
             const contenedor = botonComentario.closest(".comentarios");
             const input = contenedor.querySelector(".comentario-input");
-            const texto = input.value.trim();
+            const textoComentario = input.value.trim();
 
-            if (texto === "") return;
-            post.comentarios.push(texto);
-            testController.saveToLocalStorage();
+            if (textoComentario === "") {
+           alert("Por favor escribe un comentario");
+            return;
+            }
+            testController.addComentario(isPost, textoComentario);
             renderFeed();
             return;
         }
+
     });
 });

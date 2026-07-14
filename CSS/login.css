@@ -57,5 +57,12 @@ form {
 }
 
 
+.form-control:focus,
+.form-control:focus-within{
+    outline: none !important;
+  border: 4px solid #0EA5E9 !important;
+  box-shadow: 0 0 8px 2px rgba(14, 165, 233, 0.45) !important;
+}
+
 
 
