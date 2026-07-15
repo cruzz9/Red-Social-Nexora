@@ -15,7 +15,7 @@ if (usuarioLogueado) {
         </li>
     ` 
 } else {
-    // Si no hay sesión, mostramos el enlace tradicional de ingreso
+    // Si no hay sesión, ocultamos "Perfil" y dejamos "Log in" tradicional
     botonSesionHTML = `
         <li class="nav-item">
             <a class="nav-link" href="login.html">Log in</a>
@@ -55,6 +55,22 @@ header.innerHTML = `
 
 // 4. Esperamos a que el DOM esté completamente cargado para activar la lógica interactiva
 window.addEventListener("DOMContentLoaded", () => {
+
+    if(usuarioLogueado){
+        const links = document.querySelectorAll("#apages .nav-link");
+       links.forEach(link => {
+            if (link.getAttribute("href") === "cuenta.html" || link.textContent.trim() === "Crear cuenta") {
+                link.parentElement.remove(); // Elimina el <li> completo del HTML
+            }
+        });
+    } else {
+        const links = document.querySelectorAll("#apages .nav-link");
+        links.forEach(link => {
+            if (link.getAttribute("href") === "perfil.html" || link.textContent.trim() === "Perfil") {
+                link.parentElement.remove(); // Elimina el <li> completo del HTML
+            }
+        });
+    }
 
     // Gestión del estado activo (subrayado de la página actual)
     const links = document.querySelectorAll(".nav-link");
