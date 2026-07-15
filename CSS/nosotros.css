@@ -88,8 +88,7 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
 .card-neon {
 
     position: relative;
-    min-height: 180px;
-    /**/
+    height: 205px;
 
     /* Grosor del borde */
     padding: 2px;
@@ -397,16 +396,19 @@ background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #050
     color: #1E293B;
     font-weight: bold;
 
-    padding: 15px 30px;
-    min-height: 80px;
     width: 100%;
-    max-width: 280px;
+    max-width: 380px;
+
+    padding: 18px 40px;
+    min-height: 90px;
+
+    font-size: 1.8rem;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 10px;
+    border-radius: 15px;
     text-decoration: none;
     margin: 20px;
 }

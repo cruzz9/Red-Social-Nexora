@@ -24,10 +24,8 @@ const delBtn = document.getElementById("delBtn");
 
 // Expresiones regulares
 const regexEmail = (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/);
-
 const regexName =(/^[A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+(?:[' -][A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+)*$/);
-
-const regexPhone = (/^[0-9]{10}$/);
+const regexPhone = /^\d{10}$/;
 
 // Validación
 formBtn.addEventListener("click", (e) => {
@@ -75,17 +73,49 @@ formBtn.addEventListener("click", (e) => {
     }
 
     // Teléfono
-    if (!regexPhone.test(phoneIpt.value) || 
-    /^(\d)\1{9}$/.test(phoneIpt.value) || 
+    // if (!regexPhone.test(phoneIpt.value) || 
+    // /^(\d)\1{9}$/.test(phoneIpt.value) || 
+    // phoneIpt.value === "1234567890" ||
+    // phoneIpt.value === "0123456789") {
+    //     phoneAlert.style.display = "block";
+    //     phoneAlert.innerText =
+    //         "Ingrese un teléfono de 10 dígitos válido.";
+    //     formularioValido = false;
+    // } else {
+    //     phoneAlert.style.display = "none";
+    // }
+
+        // Teléfono
+
+const regexPhone = /^\d{10}$/;
+const numerosRepetidos = /^(\d)\1{9}$/;
+
+if (!regexPhone.test(phoneIpt.value.trim())) {
+
+    phoneAlert.style.display = "block";
+    phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
+    formularioValido = false;
+
+} else if (numerosRepetidos.test(phoneIpt.value)) {
+
+    phoneAlert.style.display = "block";
+    phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
+    formularioValido = false;
+
+} else if (
     phoneIpt.value === "1234567890" ||
-    phoneIpt.value === "0123456789") {
-        phoneAlert.style.display = "block";
-        phoneAlert.innerText =
-            "Ingrese un teléfono de 10 dígitos válido.";
-        formularioValido = false;
-    } else {
-        phoneAlert.style.display = "none";
-    }
+    phoneIpt.value === "0123456789"
+) {
+
+    phoneAlert.style.display = "block";
+    phoneAlert.innerText = "Ingrese un teléfono válido.";
+    formularioValido = false;
+
+} else {
+
+    phoneAlert.style.display = "none";
+
+}
 
     // Mensaje
     if (

@@ -29,11 +29,8 @@ const delBtn = document.getElementById("delBtn");
 
 // Expresiones regulares
 const regexEmail = (/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/);
-
 const regexName = (/^[A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+(?:[' -][A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+)*$/);
-
-const regexPhone = (/^[0-9]{10}$/);
-
+const regexPhone = /^\d{10}$/;
 const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
 
 
@@ -191,53 +188,85 @@ formBtn.addEventListener("click", (e) => {
 
     // Teléfono
 
-    const numerosRepetidos = /^(\d)\1{9}$/;
+    // const numerosRepetidos = /^(\d)\1{9}$/;
 
-    function telefonoInvalido(numero) {
-        const contador = {};
+    // function telefonoInvalido(numero) {
+    //     const contador = {};
 
-        for (const digito of numero) {
-            contador[digito] = (contador[digito] || 0) + 1;
+    //     for (const digito of numero) {
+    //         contador[digito] = (contador[digito] || 0) + 1;
 
-            if (contador[digito] >= 9) {
-                return true;
-            }
-        }
+    //         if (contador[digito] >= 9) {
+    //             return true;
+    //         }
+    //     }
 
-        return false;
-    }
+    //     return false;
+    // }
 
-    if (!regexPhone.test(phoneIpt.value)) {
+    // if (!regexPhone.test(phoneIpt.value)) {
 
-        phoneAlert.style.display = "block";
-        phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
-        formularioValido = false;
+    //     phoneAlert.style.display = "block";
+    //     phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
+    //     formularioValido = false;
 
-    } else if (numerosRepetidos.test(phoneIpt.value)) {
+    // } else if (numerosRepetidos.test(phoneIpt.value)) {
 
-        phoneAlert.style.display = "block";
-        phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
-        formularioValido = false;
+    //     phoneAlert.style.display = "block";
+    //     phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
+    //     formularioValido = false;
 
-    } else if (telefonoInvalido(phoneIpt.value)) {
+    // } else if (telefonoInvalido(phoneIpt.value)) {
 
-        phoneAlert.style.display = "block";
-        phoneAlert.innerText = "El teléfono no puede contener 9 dígitos iguales.";
-        formularioValido = false;
+    //     phoneAlert.style.display = "block";
+    //     phoneAlert.innerText = "El teléfono no puede contener 9 dígitos iguales.";
+    //     formularioValido = false;
 
-    } else if (
-        phoneIpt.value === "1234567890" ||
-        phoneIpt.value === "0123456789"
-    ) {
+    // } else if (
+    //     phoneIpt.value === "1234567890" ||
+    //     phoneIpt.value === "0123456789"
+    // ) {
 
-        phoneAlert.style.display = "block";
-        phoneAlert.innerText = "Ingrese un teléfono válido.";
-        formularioValido = false;
+    //     phoneAlert.style.display = "block";
+    //     phoneAlert.innerText = "Ingrese un teléfono válido.";
+    //     formularioValido = false;
 
-    } else {
+    // } else {
 
-        phoneAlert.style.display = "none";
-    }
+    //     phoneAlert.style.display = "none";
+    // }
+
+    // Teléfono
+
+const regexPhone = /^\d{10}$/;
+const numerosRepetidos = /^(\d)\1{9}$/;
+
+if (!regexPhone.test(phoneIpt.value.trim())) {
+
+    phoneAlert.style.display = "block";
+    phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
+    formularioValido = false;
+
+} else if (numerosRepetidos.test(phoneIpt.value)) {
+
+    phoneAlert.style.display = "block";
+    phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
+    formularioValido = false;
+
+} else if (
+    phoneIpt.value === "1234567890" ||
+    phoneIpt.value === "0123456789"
+) {
+
+    phoneAlert.style.display = "block";
+    phoneAlert.innerText = "Ingrese un teléfono válido.";
+    formularioValido = false;
+
+} else {
+
+    phoneAlert.style.display = "none";
+
+}
 
     //Rol
     if (roleIpt.value == "") {
