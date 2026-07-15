@@ -36,33 +36,34 @@
 <div class="container-fluid pt-4">
     <div class="row justify-content-center">
     <!-- COLUMNA IZQUIERDA -->   
-        <aside class="col-lg-3 d-none d-lg-block">
+       <!-- <aside class="col-lg-3 d-none d-lg-block">
             <div class="card border-info custom-card-bg p-3 sticky-top custom-sticky-aside">
                 <h5 class="text-white mb-3">Mi Perfil</h5>
-                <hr class="text-secondary opacity-25">
+                <hr class="text-secondary opacity-25">-->
                 
                 <!-- Estado 1: Usuario Invitado / No ha iniciado sesión -->
-                <div id="perfil-invitado" class="text-center my-4">
+              <!-- <div id="perfil-invitado" class="text-center my-4">
                     <p class="text-white-50 small mb-3">Únete a la comunidad STEM para conectar con mentores y compartir ideas.</p>
-                    <!-- El botón vincula directamente a la página de login requerida en el proyecto -->
+
+                   
                     <a href="login.html" class="btn btn-login-accent w-100 fw-bold py-2">
                         Iniciar Sesión
                     </a>
-                </div>
+                </div> -->
         
                 <!-- Estado 2: Usuario Autenticado (Oculto inicialmente por CSS o JS) -->
-                <div id="perfil-autenticado" class="text-center my-3" style="display: none;">
+                <!--<div id="perfil-autenticado" class="text-center my-3" style="display: none;">
                     <div class="bg-secondary rounded-circle mx-auto mb-2" style="width: 70px; height: 70px;"></div>
                     <h6 class="text-white m-0">Usuario Nexora</h6>
                     <small class="text-muted">Estudiante STEM</small>
                 </div>
             </div>
-        </aside>
+        </aside> -->
 
     <!--Formulario de crear publicacion-->
 
     <!-- COLUMNA CENTRAL: El Feed  -->
-    <main class="col-12 col-md-10 col-lg-6">
+    <main class="col-12">
 
     <div class="post-card m-2 w-100 mx-auto" id="seccionPublicarDudaFija">
         <div class="p-1">
@@ -85,12 +86,12 @@
 
             <div class="d-flex justify-content-between align-items-center">
                 
-                <div>
+                <!--<div>
                     <label for="imagen" class="btnCardOptions" style="padding: 6px 16px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; border-radius: 8px;">
                         <i class="fa-solid fa-camera-retro" style="font-size: 1.2rem;"></i>
                     </label>
                     <input type="file" id="imagen" accept="image/*" style="display: none;">
-                </div>
+                </div>-->
 
                 <div class="d-flex gap-2">
                     <button type="button" id="btnCancelarDuda" class="btn">CANCELAR</button>
@@ -120,7 +121,10 @@
     </section>
     </main>
 
+    <!--SECCION DE STEAM-->
+
     <!-- COLUMNA DERECHA: Tendencias / Dudas Populares -->
+     <!--
     <aside class="col-lg-3 d-none d-lg-block">
         <div class="card border-info custom-card-bg p-3 sticky-top custom-sticky-aside">
             <h5 class="text-white mb-3">Tendencias STEM</h5>
@@ -137,9 +141,10 @@
                 </li>
             </ul>
         </div>
-    </aside>
+    </aside>-->
 
 </div>
+
 </div>
 
     <footer id="footer"></footer>
