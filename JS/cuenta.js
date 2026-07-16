@@ -34,36 +34,33 @@ const regexPhone = /^\d{10}$/;
 const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
 
 
-   //Validar contraseña con lista
-
-    function validateRequirement(elementId, requirement) {
-        const element = document.getElementById(elementId);
-
+// Validar contraseña con lista en tiempo real
+function validateRequirement(elementId, requirement) {
+    const element = document.getElementById(elementId);
+    if (element) {
         if (requirement) {
             element.classList.remove("invalid");
             element.classList.add("valid");
         } else {
             element.classList.remove("valid");
             element.classList.add("invalid");
-        }//else
-    }//  validateRequirement
+        }
+    }
+}
 
-    passwordIpt.addEventListener("input", (evento) => {
-    
-        const password = evento.target.value;
-
-        validateRequirement("lengthPassword", password.length>= 8);
-        validateRequirement("mayuscPassword", /[A-Z]/.test(password));
-        validateRequirement("minuscPassword", /[a-z]/.test(password));
-     validateRequirement("numberPassword", /[0-9]/.test(password));
-    });
+passwordIpt.addEventListener("input", (evento) => {
+    const password = evento.target.value;
+    validateRequirement("lengthPassword", password.length >= 8);
+    validateRequirement("mayuscPassword", /[A-Z]/.test(password));
+    validateRequirement("minuscPassword", /[a-z]/.test(password));
+    validateRequirement("numberPassword", /[0-9]/.test(password));
+});
 
 
-//Cargar rango de fechas
+// Cargar rango de fechas dinámico
 dateIpt.addEventListener("click", () => {
     const hoy = new Date();
     const max = new Date(hoy);
-    const dateUser = new Date(dateIpt.value);
     max.setFullYear(hoy.getFullYear() - 12);
     const min = new Date(hoy);
     min.setFullYear(hoy.getFullYear() - 120);
@@ -72,42 +69,30 @@ dateIpt.addEventListener("click", () => {
 });
 
 
-// Validación
+// Validación y Envío del Formulario
 formBtn.addEventListener("click", (e) => {
-
     e.preventDefault();
-
     let formularioValido = true;
 
     // Nombre
-    if (
-        !regexName.test(nameIpt.value) ||
-        nameIpt.value.length < 3 ||
-        nameIpt.value.length > 10
-    ) {
+    if (!regexName.test(nameIpt.value) || nameIpt.value.length < 3 || nameIpt.value.length > 10) {
         nameAlert.style.display = "block";
-        nameAlert.innerText =
-            "El nombre debe contener entre 3 y 10 letras.";
+        nameAlert.innerText = "El nombre debe contener entre 3 y 10 letras.";
         formularioValido = false;
     } else {
         nameAlert.style.display = "none";
     }
 
     // Apellido
-    if (
-        !regexName.test(lastIpt.value) ||
-        lastIpt.value.length < 3 ||
-        lastIpt.value.length > 10
-    ) {
+    if (!regexName.test(lastIpt.value) || lastIpt.value.length < 3 || lastIpt.value.length > 10) {
         lastAlert.style.display = "block";
-        lastAlert.innerText =
-            "El apellido debe contener entre 3 y 10 letras.";
+        lastAlert.innerText = "El apellido debe contener entre 3 y 10 letras.";
         formularioValido = false;
     } else {
         lastAlert.style.display = "none";
     }
 
-    //fecha
+    // Fecha de Nacimiento
     const hoy = new Date();
     const max = new Date(hoy);
     const dateUser = new Date(dateIpt.value);
@@ -116,9 +101,9 @@ formBtn.addEventListener("click", (e) => {
     min.setFullYear(hoy.getFullYear() - 120);
 
     if (dateIpt.value != "") {
-        if (dateIpt.value != "" && (dateUser > max || dateUser < min)) {
+        if (dateUser > max || dateUser < min) {
             dateAlert.style.display = "block";
-            dateAlert.innerHTML = "Debes tener 12 años o mas para crear una cuenta";
+            dateAlert.innerHTML = "Debes tener 12 años o más para crear una cuenta";
             formularioValido = false;
         } else {
             dateAlert.style.display = "none";
@@ -129,9 +114,7 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
     }
 
-
-
-    //genero
+    // Género
     if (genderIpt.value == "") {
         genderAlert.style.display = "block";
         genderAlert.innerHTML = "Por favor, selecciona tu género antes de continuar.";
@@ -140,7 +123,7 @@ formBtn.addEventListener("click", (e) => {
         genderAlert.style.display = "none";
     }
 
-         //Contraseña
+    // Contraseña
     if (passwordIpt.value != "") {
         if (!regexPassword.test(passwordIpt.value)) {
             passwordAlert.style.display = "block";
@@ -148,7 +131,6 @@ formBtn.addEventListener("click", (e) => {
             formularioValido = false;
         } else {
             passwordAlert.style.display = "none";
-
         }
     } else {
         passwordAlert.style.display = "block";
@@ -156,9 +138,8 @@ formBtn.addEventListener("click", (e) => {
         formularioValido = false;
     }
 
-
-    //Confirmar contraseña
-    if (passwordConfirmIpt.value != ("")) {
+    // Confirmar Contraseña
+    if (passwordConfirmIpt.value != "") {
         if (passwordConfirmIpt.value != passwordIpt.value) {
             passwordConfirmAlert.style.display = "block";
             passwordConfirmAlert.innerHTML = "Las contraseñas no coinciden.";
@@ -179,96 +160,31 @@ formBtn.addEventListener("click", (e) => {
     // Correo
     if (!regexEmail.test(emailIpt.value)) {
         emailAlert.style.display = "block";
-        emailAlert.innerText =
-            "Ingrese un correo electrónico válido.";
+        emailAlert.innerText = "Ingrese un correo electrónico válido.";
         formularioValido = false;
     } else {
         emailAlert.style.display = "none";
     }
 
     // Teléfono
+    const numerosRepetidos = /^(\d)\1{9}$/;
+    if (!regexPhone.test(phoneIpt.value.trim())) {
+        phoneAlert.style.display = "block";
+        phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
+        formularioValido = false;
+    } else if (numerosRepetidos.test(phoneIpt.value)) {
+        phoneAlert.style.display = "block";
+        phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
+        formularioValido = false;
+    } else if (phoneIpt.value === "1234567890" || phoneIpt.value === "0123456789") {
+        phoneAlert.style.display = "block";
+        phoneAlert.innerText = "Ingrese un teléfono válido.";
+        formularioValido = false;
+    } else {
+        phoneAlert.style.display = "none";
+    }
 
-    // const numerosRepetidos = /^(\d)\1{9}$/;
-
-    // function telefonoInvalido(numero) {
-    //     const contador = {};
-
-    //     for (const digito of numero) {
-    //         contador[digito] = (contador[digito] || 0) + 1;
-
-    //         if (contador[digito] >= 9) {
-    //             return true;
-    //         }
-    //     }
-
-    //     return false;
-    // }
-
-    // if (!regexPhone.test(phoneIpt.value)) {
-
-    //     phoneAlert.style.display = "block";
-    //     phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
-    //     formularioValido = false;
-
-    // } else if (numerosRepetidos.test(phoneIpt.value)) {
-
-    //     phoneAlert.style.display = "block";
-    //     phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
-    //     formularioValido = false;
-
-    // } else if (telefonoInvalido(phoneIpt.value)) {
-
-    //     phoneAlert.style.display = "block";
-    //     phoneAlert.innerText = "El teléfono no puede contener 9 dígitos iguales.";
-    //     formularioValido = false;
-
-    // } else if (
-    //     phoneIpt.value === "1234567890" ||
-    //     phoneIpt.value === "0123456789"
-    // ) {
-
-    //     phoneAlert.style.display = "block";
-    //     phoneAlert.innerText = "Ingrese un teléfono válido.";
-    //     formularioValido = false;
-
-    // } else {
-
-    //     phoneAlert.style.display = "none";
-    // }
-
-    // Teléfono
-
-const regexPhone = /^\d{10}$/;
-const numerosRepetidos = /^(\d)\1{9}$/;
-
-if (!regexPhone.test(phoneIpt.value.trim())) {
-
-    phoneAlert.style.display = "block";
-    phoneAlert.innerText = "Ingrese un teléfono de 10 dígitos válido.";
-    formularioValido = false;
-
-} else if (numerosRepetidos.test(phoneIpt.value)) {
-
-    phoneAlert.style.display = "block";
-    phoneAlert.innerText = "El teléfono no puede contener los 10 dígitos iguales.";
-    formularioValido = false;
-
-} else if (
-    phoneIpt.value === "1234567890" ||
-    phoneIpt.value === "0123456789"
-) {
-
-    phoneAlert.style.display = "block";
-    phoneAlert.innerText = "Ingrese un teléfono válido.";
-    formularioValido = false;
-
-} else {
-
-    phoneAlert.style.display = "none";
-
-}
-
-    //Rol
+    // Rol
     if (roleIpt.value == "") {
         roleAlert.style.display = "block";
         roleAlert.innerHTML = "Por favor, selecciona tu rol.";
@@ -277,7 +193,7 @@ if (!regexPhone.test(phoneIpt.value.trim())) {
         roleAlert.style.display = "none";
     }
 
-    //Especialidad
+    // Especialidad
     if (areaIpt.value == "") {
         areaAlert.style.display = "block";
         areaAlert.innerHTML = "Por favor, selecciona tu especialidad.";
@@ -286,64 +202,58 @@ if (!regexPhone.test(phoneIpt.value.trim())) {
         areaAlert.style.display = "none";
     }
 
-    //Crear Formato JSON
+    // Guardar en JSON si el formulario es válido
     if (formularioValido) {
-        
-        // Cambiar el botón mientras se envía
         const originalText = formBtn.textContent;
-
         formBtn.textContent = 'Creando...';
         formBtn.disabled = true;
-     
 
-        //AQUI DEBE IR EL JSON---------------------------
-        // 1. Crear el objeto con los datos del usuario
-    const nuevoUsuario = {
-        nombre: nameIpt.value.trim(),
-        apellido: lastIpt.value.trim(),
-        fechaNacimiento: dateIpt.value,
-        genero: genderIpt.value,
-        email: emailIpt.value.trim(),
-        telefono: phoneIpt.value,
-        password: passwordIpt.value, 
-        rol: roleIpt.value,
-        area: areaIpt.value
-    };
+        // 1. Crear el objeto con los datos del nuevo usuario
+        const nuevoUsuario = {
+            nombre: nameIpt.value.trim(),
+            apellido: lastIpt.value.trim(),
+            fechaNacimiento: dateIpt.value,
+            genero: genderIpt.value,
+            email: emailIpt.value.trim(),
+            telefono: phoneIpt.value,
+            password: passwordIpt.value, 
+            rol: roleIpt.value,
+            area: areaIpt.value
+        };
 
-    // 2. Obtener los usuarios ya guardados o inicializar un arreglo vacío si es el primero
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    // 3. Añadir el nuevo registro a la lista
-    usuariosGuardados.push(nuevoUsuario);
+        // 2. Obtener lista existente
+        const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
+        
+        // 3. Empujar nuevo usuario
+        usuariosGuardados.push(nuevoUsuario);
 
-    // 4. Guardar la lista actualizada de vuelta en el localStorage en formato String
-    localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
-    // 5. Simular éxito y limpiar o redirigir
-    setTimeout(() => {
-        alert("¡Cuenta creada con éxito! Ya puedes iniciar sesión.");
-    
-    // Aquí puedes disparar la lógica de tu botón 'delBtn' para limpiar los campos
-    delBtn.click(); 
-    
-    // Restaurar el botón de envío
-    formBtn.textContent = originalText;
-    formBtn.disabled = false;
-    
-    window.location.href = "login.html";
+        // 4. Guardar base de datos actualizada
+        localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
 
-    }, 1500);//setTimeout
+        // 5. Opcional: Si quieres que el último usuario registrado inicie sesión automáticamente al crearse
+        localStorage.setItem('nombreUsuario', `${nuevoUsuario.nombre} ${nuevoUsuario.apellido}`);
+        localStorage.setItem('carreraUsuario', nuevoUsuario.area);
 
-
-    }//if formularioValido
+        setTimeout(() => {
+            alert("¡Cuenta creada con éxito! Serás redirigido.");
+            delBtn.click(); // Limpia los campos
+            formBtn.textContent = originalText;
+            formBtn.disabled = false;
+            
+            // Aquí decides si mandarlo a iniciar sesión al login o directo al perfil
+            window.location.href = "login.html"; 
+        }, 1500);
+    }
 });
 
-// Limitar teléfono a 10 dígitos
+// Limitar teléfono a 10 dígitos en tiempo real
 phoneIpt.addEventListener("input", function () {
     this.value = this.value.replace(/\D/g, "").slice(0, 10);
 });
 
-// Botón borrar
+// Botón de Borrar (Limpieza)
 delBtn.addEventListener("click", (e) => {
-     e.preventDefault();
+    e.preventDefault();
 
     nameIpt.value = "";
     lastIpt.value = "";
@@ -353,28 +263,26 @@ delBtn.addEventListener("click", (e) => {
     passwordConfirmIpt.value = "";
     emailIpt.value = "";
     phoneIpt.value = "";
-    roleIpt.value="";
-    areaIpt.value="";
-
+    roleIpt.value = "";
+    areaIpt.value = "";
 
     nameAlert.style.display = "none";
     lastAlert.style.display = "none";
-    dateAlert.style.display = "none"
+    dateAlert.style.display = "none";
     genderAlert.style.display = "none";
     passwordAlert.style.display = "none";
     passwordConfirmAlert.style.display = "none";
     emailAlert.style.display = "none";
     phoneAlert.style.display = "none";
-    roleAlert.style.display="none";
-    areaAlert.style.display="none";
+    roleAlert.style.display = "none";
+    areaAlert.style.display = "none";
     
-    lengthPassword.classList.remove("valid");
-    lengthPassword.classList.add("invalid");
-    mayuscPassword.classList.remove("valid");
-    mayuscPassword.classList.add("invalid");
-    minuscPassword.classList.remove("valid");
-    minuscPassword.classList.add("invalid");
-    numberPassword.classList.remove("valid");
-    numberPassword.classList.add("invalid")
-
+    document.getElementById("lengthPassword").classList.remove("valid");
+    document.getElementById("lengthPassword").classList.add("invalid");
+    document.getElementById("mayuscPassword").classList.remove("valid");
+    document.getElementById("mayuscPassword").classList.add("invalid");
+    document.getElementById("minuscPassword").classList.remove("valid");
+    document.getElementById("minuscPassword").classList.add("invalid");
+    document.getElementById("numberPassword").classList.remove("valid");
+    document.getElementById("numberPassword").classList.add("invalid");
 });

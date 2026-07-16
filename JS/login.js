@@ -5,12 +5,16 @@ const usuariosPrueba = [
     {
         email: "usuario@nexora.com",
         password: "123456",
-        nombre: "Usuario Demo"
+        nombre: "Usuario",
+        apellido: "Demo",
+        area: "Diseño UX/UI" 
     },
     {
         email: "admin@nexora.com",
         password: "admin123",
-        nombre: "Administrador"
+        nombre: "Administrador",
+        apellido: "Nexora",
+        area: "Systems Engineer" 
     }
 ];
 
@@ -131,12 +135,17 @@ function manejarLogin(event) {
                 email: usuario.email,
                 nombre: usuario.nombre
             }));
-            
+            const nombreCompleto = `${usuario.nombre} ${usuario.apellido || ''}`.trim();
+            const carreraOSpecialidad = usuario.area || "Software Developer";
+
+            localStorage.setItem('nombreUsuario', nombreCompleto);
+            localStorage.setItem('carreraUsuario', carreraOSpecialidad);
+
             mostrarExito(`¡Bienvenido ${usuario.nombre}! Redirigiendo...`);
             
             // Redirigir a la página de inicio después de 2 segundos
             setTimeout(() => {
-                window.location.href = './index.html'; // Cambia esto a tu página de inicio
+                window.location.href = './perfil.html'; 
             }, 2000);
         } else {
             // Login fallido
@@ -160,7 +169,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (usuarioLogueado) {
         const usuario = JSON.parse(usuarioLogueado);
         mostrarExito(`Ya has iniciado sesión como ${usuario.nombre}`);
+        setTimeout(() => {
+            window.location.href = './perfil.html';
+        }, 1200);
     }
+    
 
     // Manejar clic en "Crear Cuenta"
     document.getElementById('btnCrearCuenta').addEventListener('click', function() {
@@ -171,12 +184,10 @@ document.addEventListener('DOMContentLoaded', function() {
 // Función para cerrar sesión (útil para otras páginas)
 function cerrarSesion() {
     localStorage.removeItem('usuarioLogueado');
+    localStorage.removeItem('nombreUsuario');
+    localStorage.removeItem('carreraUsuario');
     window.location.href = './login.html';
 }
 
 // Hacer la función cerrarSesion globalmente disponible
 window.cerrarSesion = cerrarSesion;
-// Manejar clic en "Crear Cuenta"
-document.getElementById('btnCrearCuenta').addEventListener('click', function() {
-    window.location.href = './cuenta.html'; // Cambia a tu página de crear cuenta
-});
