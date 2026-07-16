@@ -1,0 +1,198 @@
+/*AVATAR*/
+
+.perfil-avatar {
+    background-color: white;
+    width: 150px; /* Tamaño fijo ideal para el círculo blanco */
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto; /* Centrado automático */
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* Imagen del robot dentro del círculo en el banner */
+#fotoPerfil {
+    width: 115%;
+    height: 115%;
+    border-radius: 50%;
+    object-fit: contain; /* Evita que la ilustración se corte */
+}
+
+/* MODAL */
+.avatar-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .75);
+    justify-content: center;
+    align-items: center; 
+    z-index: 9999;
+    padding: 20px 15px; 
+    
+    overflow-y: auto; 
+}
+
+.avatar-box {
+    width: 100%;
+    max-width: 700px;
+    background: #1f2937;
+    border-radius: 15px;
+    padding: 30px;
+    color: white;
+    position: relative;
+    animation: zoom .25s ease-out;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+   
+    margin: auto; 
+}
+
+.avatar-contenido {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 25px;
+}
+
+/* Previsualización del avatar */
+.avatar-preview {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.avatar-preview img {
+    width: 100%;
+    max-width: 200px; 
+    aspect-ratio: 1 / 1; 
+    border-radius: 50%;
+    background: white;
+    border: 5px solid #18b7ff;
+    object-fit: contain;
+}
+
+/* Opciones*/
+.avatar-opciones {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.avatar-opciones label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 0.95rem;
+}
+
+.avatar-opciones select,
+.avatar-opciones input {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: #F8FAFC;
+}
+
+/* Botones */
+#generarAvatar {
+    margin-top: 20px;
+    padding: 12px;
+    background: #18b7ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+#generarAvatar:hover {
+    background: #0ea5e9;
+}
+
+.avatar-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.avatar-botones button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.avatar-botones button:hover {
+    opacity: 0.9;
+}
+
+#guardarAvatar {
+    background: #18b7ff;
+    color: white;
+}
+
+#cancelarAvatar {
+    background: #dc3545;
+    color: white;
+}
+
+.cerrar-modal {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #9ca3af;
+    transition: color 0.2s;
+}
+
+.cerrar-modal:hover {
+    color: white;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(.85);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* RESPONSIVA */
+@media (max-width: 768px) {
+    .avatar-box {
+        padding: 20px; 
+    }
+    
+    .avatar-contenido {
+        flex-direction: column; 
+        margin-top: 15px;
+    }
+
+    .avatar-preview img {
+        max-width: 150px; 
+    }
+
+    .avatar-botones {
+        flex-direction: column-reverse; 
+
+    .avatar-botones button {
+        width: 100%;
+    }
+}
+}

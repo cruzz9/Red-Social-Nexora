@@ -14,6 +14,7 @@
         rel="stylesheet">
      <link rel="stylesheet" href="./CSS/perfil.css">
      <link rel="stylesheet" href="./CSS/navbar.css">
+     <link rel="stylesheet" href="./CSS/avatar.css">
 
 
 </head>
@@ -21,266 +22,279 @@
 
 <body>
 
-    <!-- NAVBAR -->
     <header>
         <nav id="header"></nav>
     </header>
 
     <main class="container py-5">
 
-        <!-- ================= PERFIL ================= -->
+   <!-- PERFIL -->
+        <section class="profile-card mb-4">
+          
+            <div class="row align-items-center mb-4">
+                
+                <div class="col-lg-3 col-md-4 text-center text-md-start">
+                    <div class="perfil-avatar">
+                        <img id="fotoPerfil" class="profile-img" src="AVATAR.png" alt="Avatar">
+                    </div>
+                </div>
 
-        <section class="profile-card">
+                <div class="col-lg-6 col-md-5 text-center text-md-start">
+                    <h2 id="nombrePerfil" class="profile-name">Juan Perez</h2>
+                    <p id="carreraPerfil" class="profile-career">Software Developer</p>
+                </div>
 
-            <!-- Banner -->
-            <div class="profile-banner">
-                <img src="./assets/banner.png"
-                    class="img-fluid w-100"
-                    alt="">
-            </div>
-
-            <div class="row align-items-center profile-content">
-
-                <!-- Foto -->
-                <div class="col-lg-2 text-center">
-
-                    <img
-                        src="./assets/fotodeperfil.png"
-                        class="profile-img"
-                        alt="">
-
-                    <button class="btn btn-edit mt-3">
-                        Editar Perfil
+                <div class="col-lg-3 col-md-3 text-center text-md-end d-flex flex-column gap-2 align-items-center align-items-md-end mt-3 mt-md-0">
+                    <button id="editarAvatar" class="btn-profile-action">
+                        <i class="fas fa-magic"></i> Personalizar Avatar
                     </button>
-
-                </div>
-
-                <!-- Información -->
-                <div class="col-lg-6">
-
-                    <h2 class="profile-name">
-                        Carlos Medina
-                    </h2>
-
-                    <p class="profile-career">
-                        Ingeniero Químico
-                    </p>
-
-                    <p class="profile-location">
-                        Universidad Nacional Autónoma de México
-                    </p>
-
+                    <button id="btnEditar" class="btn-profile-action">
+                        <i class="fas fa-edit"></i> Editar Perfil
+                    </button>
                 </div>
             </div>
-            
+
+            <!-- Estadísticas -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="estadisticas-perfil-horizontal">
+                        <div class="estadistica-h">
+                            <span class="stat-number">490</span>
+                            <small class="stat-label">Siguiendo</small>
+                        </div>
+                        <div class="estadistica-h">
+                            <span class="stat-number">1.2K</span>
+                            <small class="stat-label">Seguidores</small>
+                        </div>
+                        <div class="estadistica-h">
+                            <span class="stat-number">470</span>
+                            <small class="stat-label">Conexiones</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <div class="row mt-4">
+        <!--  CONTENIDO  -->
 
-            <div class="col-lg-3">
+        <div class="row g-4">
 
-                <aside class="sidebar-left">
+            <!--  IZQUIERDA -->
 
-                    <!-- sobre mi -->
+            <aside class="col-lg-3 d-flex align-items-start">
 
-                    <div class="card mb-3">
+                <div class="card w-100 sticky-card">
 
-                        <h3>Sobre mí</h3>
+                    <h4>Sobre mí</h4>
 
-                        <p>
-                            Enfocado en procesos industriales,
-                            sostenibilidad y optimización de recursos.
-                        </p>
+                    <p id="sobreMi">Cuéntanos de ti...</p>
 
-                    </div>
+                </div>
 
-                    <!-- habilidades-->
+            </aside>
 
-                    <div class="card mb-3">
+            <!-- CENTRO -->
 
-                        <h3>Habilidades</h3>
+            <section class="col-lg-6 order-3 order-lg-2">
 
-                        <div class="skill">
+                <!-- Nueva Publicación -->
 
-                            <span>Python</span>
+                <div
+                    class="post-card"
+                    id="nuevaPublicacion">
 
-                            <div class="progress">
+                    <div
+                        class="post-header"
+                        id="togglePublicacion">
 
-                                <div
-                                    class="bar"
-                                    style="width:80%">
-                                </div>
+                        <div class="icono-publicar">
 
-                            </div>
+                            +
 
                         </div>
 
-                        <div class="skill">
+                        <h2>
 
-                            <span>Aspen Hysys</span>
+                            Nueva Publicación
 
-                            <div class="progress">
+                        </h2>
 
-                                <div
-                                    class="bar"
-                                    style="width:70%">
-                                </div>
+                    </div>
 
-                            </div>
+                    <div class="post-body">
+
+                        <textarea id="textoPublicacion"placeholder="Escribe tu idea..."></textarea>
+
+                        <div class="botones-publicacion">
+
+                            <button class="btn-cancelar">
+
+                                Cancelar
+
+                            </button>
+
+                            <button class="btn-publicar">
+
+                                <i class="bi bi-send-fill"></i>
+
+                                Publicar
+
+                            </button>
 
                         </div>
-
-                        <div class="skill">
-
-                            <span>AutoCAD</span>
-
-                            <div class="progress">
-
-                                <div
-                                    class="bar"
-                                    style="width:65%">
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <!-- card logros -->
-
-                    <div class="card">
-
-                        <h3>Logros</h3>
-
-                        <ul>
-
-                            <li>
-                                ✔ Six Sigma Yellow Belt
-                            </li>
-
-                            <li>
-                                ✔ Proyecto energético
-                            </li>
-
-                        </ul>
-
-                    </div>
-
-                </aside>
-
-            </div>
-
-
-            <div class="col-lg-6">
-
-                <!-- publicaciones-->
-
-                <div class="crear-post mb-4">
-
-                    <div class="crear-top">
-
-                        <img
-                            src="./assets/fotodeperfil.png"
-                            class="fotoPerfil">
-
-                        <input
-                            type="text"
-                            placeholder="¿Qué estás compartiendo?">
-
-                    </div>
-
-                    <div class="crear-bottom">
-
-                        <button>📷 Imagen</button>
-
-                        <button>😊 Emoji</button>
-
-                        <button class="publicar">
-                            Publicar
-                        </button>
 
                     </div>
 
                 </div>
 
-                <!-- post -->
+                <!-- AQUÍ VAN LAS PUBLICACIONES -->
 
-                <div class="post">
+                <div id="contenedorPublicaciones"></div>
 
-                    <div class="post-header">
+            </section>
 
-                        <img
-                            src="./assets/fotodeperfil.png">
+            <!-- DERECHA -->
 
-                        <div>
+            <aside class="col-lg-3 order-2 order-lg-3">
 
-                            <h5>Carlos Medina</h5>
+                <div class="card w-100 sticky-card">
 
-                            <small>Hace 2 horas</small>
+                    <h4>
 
-                        </div>
+                        Sobre tu carrera
 
-                    </div>
+                    </h4>
 
-                    <p>
-
-                        Esta semana participé en la optimización de un proceso
-                        químico reduciendo un 15% el consumo energético.
-
-                    </p>
-
-                    <img
-                        src="./assets/publicacion.png"
-                        class="img-fluid rounded">
-
-                    <div class="acciones mt-3">
-
-                        ❤️ 💬 🔄
-
-                    </div>
-
+                    <p id="sobreCarrera">Presenta tu carrera...</p>
                 </div>
 
-            </div>
-
-
-            <div class="col-lg-3">
-
-                <div class="side-card mb-3">
-
-                    <h4>Datos sobre tu carrera</h4>
-
-                    <h6 class="career-myth">Mito</h6>
-
-                    <p>
-                        Se trabaja únicamente en laboratorios.
-                    </p>
-
-                    <h6 class="career-reality">Realidad</h6>
-
-                    <p>
-                     Existe demanda en industrias alimentarias,
-                     farmacéuticas, energéticas y ambientales.
-                    </p>
-
-                </div>
-
-            </div>
+            </aside>
 
         </div>
 
     </main>
 
-</body>
+    <!-- MODAL AVATAR -->
+
+    <div
+        id="modalAvatar"
+        class="avatar-modal">
+
+        <div class="avatar-box">
+
+            <span
+                id="cerrarAvatar"
+                class="cerrar-modal">
+
+                &times;
+
+            </span>
+
+            <h2>
+
+                🎨 Personalizar Avatar
+
+            </h2>
+
+            <div class="avatar-contenido">
+
+                <!-- Preview -->
+
+                <div class="avatar-preview">
+
+                    <img
+                        id="previewAvatar"
+                        class="preview-avatar">
+
+                </div>
+
+                <!-- Opciones -->
+
+                <div class="avatar-opciones">
+
+                    <label>
+
+                        Estilo
+
+                    </label>
+
+                    <select id="estilo">
+
+                        <option value="adventurer">Adventurer</option>
+                        <option value="adventurer-neutral">Adventurer Neutral</option>
+                        <option value="bottts">Bottts</option>
+                        <option value="fun-emoji">Fun Emoji</option>
+                        <option value="pixel-art">Pixel Art</option>
+
+                    </select>
+
+                    <label>
+
+                        Color de fondo
+
+                    </label>
+
+                    <select id="fondo">
+
+                        <option value="b6e3f4">Azul</option>
+                        <option value="ffd5dc">Rosa</option>
+                        <option value="ffdfbf">Naranja</option>
+                        <option value="d1d4f9">Morado</option>
+                        <option value="ffffff">Blanco</option>
+
+                    </select>
+
+                    <label>
+
+                        Nombre del Avatar
+
+                    </label>
+
+                    <input
+                        id="seed"
+                        type="text"
+                        placeholder="...">
+
+                    <button id="generarAvatar">
+
+                        🎲 Generar Aleatorio
+
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="avatar-botones">
+
+                <button id="cancelarAvatar">
+
+                    Cancelar
+
+                </button>
+
+                <button id="guardarAvatar">
+
+                    Guardar Avatar
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <footer id="footer"></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="./JS/navbar.js" type="module"></script>
+    <script src="./JS/perfil.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="./JS/footer.js"></script>
+    <script src="./JS/avatar.js"></script>
 </body>
 
 </html>
