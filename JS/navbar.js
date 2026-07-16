@@ -85,6 +85,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // Lógica del menú hamburguesa (código existente de tu app)
     const btnMenu = document.getElementById("btnMenu");
+    const apages = document.getElementById("apages");
+
+    if(btnMenu && apages){
+        btnMenu.addEventListener("click", () => {
+            apages.classList.toggle("active");
+        });
+    }
     // ... (aquí mantienen la lógica de apertura/cierre de su menú móvil) ...
 
 
