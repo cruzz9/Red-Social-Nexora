@@ -1,4 +1,3 @@
-
 // Inputs
 const nameIpt = document.getElementById("nameIpt");
 const lastIpt = document.getElementById("lastIpt");
@@ -33,6 +32,12 @@ const regexName = (/^[A-Za-zÑñÁáÉéÍíÓóÚúüÜ]+(?:[' -][A-Za-zÑñÁ�
 const regexPhone = /^\d{10}$/;
 const regexPassword = (/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])[a-zA-Z0-9]{8,}$/);
 
+const mapaEspecialidades = {
+    "technology": 1,
+    "classic": 2,
+    "applied": 3,
+    "math": 4
+};
 
 // Validar contraseña con lista en tiempo real
 function validateRequirement(elementId, requirement) {
@@ -207,20 +212,29 @@ formBtn.addEventListener("click", (e) => {
         formBtn.textContent = 'Creando...';
         formBtn.disabled = true;
 
+        const especialidadId = mapaEspecialidades[areaIpt.value];
+
+        if (!especialidadId) {
+            alert("La especialidad seleccionada no es válida.");
+            formBtn.textContent = originalText;
+            formBtn.disabled = false;
+            return;
+        }
+
         // 1. Crear el objeto con los datos del nuevo usuario
         const nuevoUsuario = {
             nombre: nameIpt.value.trim(),
             apellido: lastIpt.value.trim(),
-            fechaNacimiento: dateIpt.value,
+            nacimiento: dateIpt.value,
             genero: genderIpt.value,
             email: emailIpt.value.trim(),
             telefono: phoneIpt.value,
-            password: passwordIpt.value, 
+            contrasena: passwordIpt.value,
             rol: roleIpt.value,
-            area: areaIpt.value
+            especialidad: { id: especialidadId }
         };
 
-        const URL_API = 'http://localhost:8080/api';
+        const URL_API = 'http://localhost:8080/api/usuarios/registro';
 
         fetch(URL_API, {
             method: 'POST',
@@ -238,8 +252,7 @@ formBtn.addEventListener("click", (e) => {
         .then(data => {
             alert("¡Cuenta creada con éxito! Serás redirigido.");
 
-            localStorage.setItem('nombreUsuario', `${nuevoUsuario.nombre} ${nuevoUsuario.apellido}`);
-            localStorage.setItem('carreraUsuario', nuevoUsuario.area);
+            localStorage.setItem('nombreUsuario', `${data.nombre} ${data.apellido}`);
 
             delBtn.click();
             window.location.href = "login.html";

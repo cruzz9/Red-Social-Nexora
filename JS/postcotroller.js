@@ -1,4 +1,3 @@
-
 class PostsController {
     constructor(currentId = 0) {
         this.posts = [];
@@ -373,17 +372,21 @@ document.addEventListener("DOMContentLoaded", () => {
             btnPublicarDudaCard.textContent = "Publicando...";
             btnPublicarDudaCard.disabled = true;
 
+            // El backend solo guarda contenido, likes y usuario (ver Publicacion.java)
+            const token = localStorage.getItem("token");
+            const usuarioId = localStorage.getItem("usuarioId");
+
             const nuevaPublicacionData = {
-                img: imagenBase64,
-                nombre: nombreFinal,
-                especialidad: { id: especialidadObj.id },
-                descripcion: descripcionDuda
+                contenido: descripcionDuda,
+                likes: 0,
+                usuario: { id: Number(usuarioId) }
             };
 
             fetch(`${BASE_URL}/publicaciones`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify(nuevaPublicacionData)
             })
@@ -391,13 +394,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!response.ok) throw new Error("Error en la respuesta del servidor");
                 return response.json();
             })
-            .then(publicacionGuardada => {
-                // Agregar al controlador con los datos exactos del backend
+            .then(() => {
+                // El backend no devuelve img/nombre/especialidad, se arma la tarjeta con los datos locales
                 testController.addPost(
-                    publicacionGuardada.img,
-                    publicacionGuardada.nombre,
-                    publicacionGuardada.especialidad,
-                    publicacionGuardada.descripcion
+                    imagenBase64,
+                    nombreFinal,
+                    especialidadObj,
+                    descripcionDuda
                 );
                 
                 const alertContainer = document.getElementById("alertContainer");
