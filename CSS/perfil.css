@@ -8,10 +8,13 @@
 }
 
 /*BODY*/
-body{
-    background:#111827;
-    font-family:'Plus Jakarta Sans',sans-serif;
-    color:var(--blanco);
+Body {
+    background-image: radial-gradient(circle at 0% 0%, #043854 0%, #0b0f19 50%, #05070a 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    margin: 0;
 }
 
 /*CARD*/
@@ -142,13 +145,12 @@ body{
     gap:18px;
 }
 
-.post-header h2{
-
-    color:white;
-
-    font-size:2rem;
-
-    margin:0;
+.post-header {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F8FAFC;
 }
 
 .icono-publicar{
@@ -299,7 +301,7 @@ textarea{
 
 .publicacion{
 
-    background:#1f2937;
+    background:var(--gris);
     border:1px solid #0ea5e9;
     border-radius:15px;
     padding:20px;
@@ -337,21 +339,20 @@ textarea{
 }
 
 .usuario-info h5{
-
-    margin:0;
-    font-size:1.1rem;
-    font-weight:700;
-    color:#fff;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #F8FAFC;
 
 }
 
 .usuario-info span{
-
-    display:block;
-    margin-top:2px;
-    font-size:.9rem;
-    color:#cbd5e1;
-
+ 
+  font-size: 13px;
+  color: var(--azul);
+  margin: 1px 0;
+  line-height: 1.1;
 }
 
 .publicacion-contenido{
@@ -364,7 +365,7 @@ textarea{
 
 .publicacion hr{
 
-    border-color:rgba(255,255,255,.15);
+    border-color:var(--blanco);
     margin:15px 0;
 
 }
@@ -569,4 +570,54 @@ textarea{
     .estadistica-h .stat-label {
         font-size: 0.8rem;
     }
+}
+
+/* Contenedor de los botones para alineación */
+.container.d-flex.justify-content-end {
+    gap: 10px !important; /* Espacio entre los dos botones */
+}
+
+/* Botón personalizado estilo captura */
+.btnCard {
+    background-color: transparent !important; /* Fondo transparente */
+    border: 1.5px solid #0076ff !important;   /* Borde azul brillante */
+    color: #0076ff !important;                /* Color del icono y del número */
+    border-radius: 12px !important;            /* Bordes redondeados idénticos a tu foto */
+    padding: 8px 16px !important;             /* Espaciado interno */
+    font-size: 1.1rem !important;             /* Tamaño del icono */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 44px !important;                  /* Altura fija */
+    min-width: 50px !important;               /* Ancho mínimo para que no se deformen */
+    box-shadow: none !important;              /* Quitar sombras de Bootstrap */
+    transition: all 0.2s ease-in-out !important;
+}
+
+/* Alineación del número al lado del icono */
+.btnCard .like-count {
+    font-weight: 500 !important;
+    font-size: 1.1rem !important;
+    color: #0076ff !important;
+    margin-left: 10px !important;             /* Separación exacta entre la mano y el número */
+}
+
+/* --- QUITAR EFECTOS MOLESTOS DE BOOTSTRAP --- */
+
+/* Al pasar el cursor por encima */
+.btnCard:hover {
+    background-color: rgba(0, 118, 255, 0.08) !important; /* Un sutil destello azul de fondo */
+    border-color: #0076ff !important;
+    color: #0076ff !important;
+}
+
+/* Cuando se hace clic o está seleccionado (focus) */
+.btnCard:focus, 
+.btnCard:active, 
+.btnCard:focus-visible {
+    background-color: transparent !important;
+    border-color: #0076ff !important;
+    color: #0076ff !important;
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(0, 118, 255, 0.2) !important; /* Sutil brillo exterior */
 }
