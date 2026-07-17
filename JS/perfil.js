@@ -11,7 +11,7 @@ function editarPerfil() {
     `;
 
     sobreCarrera.outerHTML = `
-        <textarea id="txtSobreCarrera">${sobreCarrera.textContent}</textContent>
+        <textarea id="txtSobreCarrera">${sobreCarrera.textContent}</textarea>
     `;
 
     btnEditar.textContent = "Guardar";
