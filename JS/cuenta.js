@@ -202,7 +202,6 @@ formBtn.addEventListener("click", (e) => {
         areaAlert.style.display = "none";
     }
 
-    // Guardar en JSON si el formulario es válido
     if (formularioValido) {
         const originalText = formBtn.textContent;
         formBtn.textContent = 'Creando...';
@@ -221,29 +220,39 @@ formBtn.addEventListener("click", (e) => {
             area: areaIpt.value
         };
 
-        // 2. Obtener lista existente
-        const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-        
-        // 3. Empujar nuevo usuario
-        usuariosGuardados.push(nuevoUsuario);
+        const URL_API = 'http://localhost:8080/api';
 
-        // 4. Guardar base de datos actualizada
-        localStorage.setItem("usuarios", JSON.stringify(usuariosGuardados));
-
-        // 5. Opcional: Si quieres que el último usuario registrado inicie sesión automáticamente al crearse
-        localStorage.setItem('nombreUsuario', `${nuevoUsuario.nombre} ${nuevoUsuario.apellido}`);
-        localStorage.setItem('carreraUsuario', nuevoUsuario.area);
-
-        setTimeout(() => {
+        fetch(URL_API, {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(nuevoUsuario)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Error al registrar usuario.");
+            }
+            return response.json();
+        })
+        .then(data => {
             alert("¡Cuenta creada con éxito! Serás redirigido.");
-            delBtn.click(); // Limpia los campos
+
+            localStorage.setItem('nombreUsuario', `${nuevoUsuario.nombre} ${nuevoUsuario.apellido}`);
+            localStorage.setItem('carreraUsuario', nuevoUsuario.area);
+
+            delBtn.click();
+            window.location.href = "login.html";
+        })
+        .catch(error => {
+            console.error("Hubo un problema:", error);
+            alert("No se pudo registrar al usuario. Por favor inténtalo más tarde.");
+        })
+        .finally(() => {
             formBtn.textContent = originalText;
             formBtn.disabled = false;
-            
-            // Aquí decides si mandarlo a iniciar sesión al login o directo al perfil
-            window.location.href = "login.html"; 
-        }, 1500);
-    }
+        });
+    } 
 });
 
 // Limitar teléfono a 10 dígitos en tiempo real

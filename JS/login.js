@@ -93,7 +93,7 @@ function mostrarExito(mensaje) {
 }
 
 // Manejar el envío del formulario
-function manejarLogin(event) {
+async function manejarLogin(event) {
     event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
     
     // Obtener valores de los campos
@@ -124,35 +124,49 @@ function manejarLogin(event) {
         }
     });
     
-    // Simular tiempo de verificación
-    setTimeout(() => {
-        // Autenticar usuario
-        const usuario = autenticarUsuario(email, password);
-        
-        if (usuario) {
-            // Login exitoso - guardar sesión del usuario
-            localStorage.setItem('usuarioLogueado', JSON.stringify({
-                email: usuario.email,
-                nombre: usuario.nombre
-            }));
-            const nombreCompleto = `${usuario.nombre} ${usuario.apellido || ''}`.trim();
-            const carreraOSpecialidad = usuario.area || "Software Developer";
+    try {
+        // Hacemos la petición POST real al servidor de Java
+        const respuesta = await fetch(`http://localhost:8080/api/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        });
 
-            localStorage.setItem('nombreUsuario', nombreCompleto);
-            localStorage.setItem('carreraUsuario', carreraOSpecialidad);
+        Swal.close();
 
-            mostrarExito(`¡Bienvenido ${usuario.nombre}! Redirigiendo...`);
-            
-            // Redirigir a la página de inicio después de 2 segundos
-            setTimeout(() => {
-                window.location.href = './perfil.html'; 
-            }, 2000);
-        } else {
-            // Login fallido
-            Swal.close(); // Cerrar el loader
-            mostrarError('Usuario o contraseña inválidos');
+        if(!respuesta.ok){
+            throw new Error('Usuario o contraseña incorrectos');
         }
-    }, 1500);
+
+        const usuario = await respuesta.json();
+
+        localStorage.setItem('Usuario logueado', JSON.stringify({
+            email: usuario.email,
+            nombre: usuario.nombre
+        }));
+
+        const nombreCompleto = `${usuario.nombre} ${usuario.apellido || ''}`, trim();
+        const carreraOSpecialidad = usuario.area || "Sotware Developer";
+        
+        localStorage.setItem('nombreUsuario', nombreCompleto);
+        localStorage.setItem('carreraUsuario', carreraOSpecialidad);
+
+        mostrarExito(`¡Bienvenido ${usuario.nombre}! Redirigiendo...`);
+
+        setTimeout(() => {
+            window.location.href = './perfil.html';
+        }, 2000);
+    } catch (error){
+        Swal.close();
+        mostrarError('Usuario o contraseña invalidos o error de conexión en el servidor.');
+        console.error(error);
+    }
+
 }
 
 // Event Listener cuando el DOM está cargado

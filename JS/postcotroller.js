@@ -171,14 +171,14 @@ function mostrarAlerta(mensaje, tipo = "danger") {
 //FUNCION PARA CARGAR ESPECIALIDADES
 
 // Variable global para almacenar las especialidades
-
+const BASE_URL = 'http://localhost:8080/api';
 let especialidadesDisponibles = [];
 
 async function cargarEspecialidades() {
     try {
         // IMPORTANTE: Cambia esta URL por la real de tu backend Spring Boot
         // Ejemplo: 'http://localhost:8080/api/especialidades'
-        const response = await fetch('');
+        const response = await fetch(`${BASE_URL}/especialidades`);
 
         if (response.ok) {
             especialidadesDisponibles = await response.json();
@@ -403,13 +403,58 @@ document.addEventListener("DOMContentLoaded", () => {
             if (idEdicion) {
                 // MODO EDICIÓN
                 testController.editarPost(Number(idEdicion), descripcionDuda, imagenBase64);
-            } else {
-                // MODO CREACIÓN: Pasamos el objeto especialidad completo
-                testController.addPost(imagenBase64, "Tú", especialidadObj, descripcionDuda);
 
-                // NOTA PARA EL FUTURO: Cuando se conecte esto al backend real, 
-                // en lugar de testController.addPost, haremos un fetch POST enviando:
-                // { img: imagenBase64, nombre: "Tú", especialidadId: especialidadObj.id, descripcion: descripcionDuda }
+                const alertContainer = document.getElementById("alertContainer");
+                if(alertContainer) alertContainer.innerHTML = "";
+                resetearFormulario();
+                renderFeed();
+            } else {
+                const textoOriginalBtn = btnPublicarDudaCard.innerHTML;
+                btnPublicarDudaCard.textContent = "Publicando...";
+                btnPublicarDudaCard.disabled = true;
+
+                const nuevaPublicacionData = {
+                    img: imagenBase64,
+                    nombre: "Tú",
+                    especialidad: {id: especialidadObj.id},
+                    descripcion: descripionDuda
+                };
+
+                fetch(`${BASE_URL}/publicaciones`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(nuevaPublicacionData)
+                })
+                .then(response => {
+                    if(!response.ok) throw new Error ("Error en la respuesta del servidor");
+                    return response.json();
+                })
+                .then (publicacionGuardada => {
+                    testController.addPost(
+                        publicacionGuardada.img,
+                        publicacionGuardada.nombre,
+                        especialidadObj,
+                        publicacionGuardada.descripcion
+                    );
+                        const alertContainer = document.getElementById("alertContainer");
+                        if(alertContainer) alertContainer.innerHTML = "";
+
+                        resetearFormulario();
+                        renderFeed();
+                })
+                .catch(error => {
+                    console.error("Error al enviar la publicación:", error);
+                    mostrarAlerta("No se pudo conectar con el servidor de Nexora. La publicación se guardo localmente.", "warning");
+                    testController.addPost(imagenBase64, "Tú", especialidadObj, descripcionDuda);
+                    resetearFormulario();
+                    renderFeed();
+                })
+                .finally(() => {
+                    btnPublicarDudaCard.innerHTML = textoOriginalBtn;
+                    btnPublicarDudaCard.disabled = false;
+                });
             }
 
             const alertContainer = document.getElementById("alertContainer");
