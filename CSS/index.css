@@ -53,11 +53,13 @@
 
 /* Foto de perfil redonda */
 .profile-pic {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
   margin-right: 12px;
+  background:#fff;
+  border:2px solid rgba(255,255,255,.15);
 }
 
 /* Contenedor de los textos del autor */

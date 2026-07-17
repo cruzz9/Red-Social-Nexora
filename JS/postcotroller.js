@@ -1,3 +1,4 @@
+
 class PostsController {
     constructor(currentId = 0) {
         this.posts = [];
@@ -5,25 +6,22 @@ class PostsController {
     }
 
     addPost(img, nombre, especialidad, descripcion) {
-        this.currentId++;
 
-        // Ahora sí funcionará, porque el parámetro se llama 'especialidad'
-        const especialidadObj = typeof especialidad === 'string'
-            ? { id: 0, especialidad: especialidad }
-            : especialidad;
+        this.currentId++;
 
         const newPost = {
             id: this.currentId,
             img: img,
             nombre: nombre,
-            especialidad: especialidadObj,
+            especialidad: especialidad,
             descripcion: descripcion,
             comentarios: [],
             likes: []
         };
+
         this.posts.push(newPost);
         this.saveToLocalStorage();
-    }//addPost
+    }
 
 
     saveToLocalStorage() {
@@ -39,7 +37,7 @@ class PostsController {
             this.posts = JSON.parse(posts);
             this.currentId = this.posts[this.posts.length - 1].id;
 
-            //Migración: Agregar likes, comentarios y especialidad a posts antiguos
+            //Migración básica simplificada (sin especialidades)
             this.posts.forEach(post => {
                 // Migración 1: Agregar array de likes si no existe
                 if (!post.likes) post.likes = [];
@@ -47,22 +45,7 @@ class PostsController {
                 // Migración 2: Agregar array de comentarios si no existe
                 if (!post.comentarios) post.comentarios = [];
 
-                // Migración 3: Agregar especialidad a posts antiguos
-                if (!post.especialidad && post.rol) {
-                    // Convertir el rol antiguo a objeto de especialidad
-                    post.especialidad = {
-                        id: 0,
-                        especialidad: post.rol
-                    };
-                } else if (!post.especialidad) {
-                    // Si no tiene ni especialidad ni rol, poner "Duda Pendiente"
-                    post.especialidad = {
-                        id: 0,
-                        especialidad: "Duda Pendiente"
-                    };
-                }
-
-                // Migración 4: Convertir comentarios de texto a objetos
+                // Migración 3: Convertir comentarios de texto a objetos
                 post.comentarios = post.comentarios.map(c => {
                     if (typeof c === 'string') {
                         return {
@@ -117,7 +100,15 @@ class PostsController {
         if (post) {
             if (!post.comentarios) post.comentarios = [];
             //Se genera el avatar usando el mismo servicio que los posts
-            const avatarUrl = `https://api.dicebear.com/7.x/bottts/svg?seed=${autor}`;
+            const datosAvatar = JSON.parse(localStorage.getItem("avatarUsuario"));
+
+            let avatarUrl = `https://api.dicebear.com/9.x/adventurer/svg?seed=${autor}`;
+
+            if (datosAvatar) {
+                avatarUrl = `https://api.dicebear.com/9.x/${datosAvatar.estilo}/svg?seed=${datosAvatar.seed}&backgroundColor=${datosAvatar.fondo}`;
+            }
+
+            avatar: avatarUrl;
 
             // Se crea el objeto completo segun el modelo del backend
             const nuevoComentario = {
@@ -168,8 +159,8 @@ function mostrarAlerta(mensaje, tipo = "danger") {
 
 }
 
-//FUNCION PARA CARGAR ESPECIALIDADES
 
+<<<<<<< HEAD
 // Variable global para almacenar las especialidades
 const BASE_URL = 'http://localhost:8080/api';
 let especialidadesDisponibles = [];
@@ -214,13 +205,31 @@ function renderizarSelectEspecialidades() {
 }
 
 ////////////////////////////////////////////////////////////////////
+=======
+>>>>>>> 0bdcc2f8210f5b0cf7c817267a55342f512c0bfa
 
 // 4. Renderizado en el DOM al cargar la estructura HTML
 document.addEventListener("DOMContentLoaded", () => {
+    // Definimos explícitamente prodRow para evitar errores de referencia en el navegador
     const prodRow = document.getElementById("prodRow");
-    if (!prodRow) return;
 
-    cargarEspecialidades();
+    function obtenerAvatarActual(nombreUsuario) {
+        // Obtenemos los datos del usuario logueado actualmente
+        const usuarioLogueado = JSON.parse(localStorage.getItem("usuarioLogueado"));
+        const nombreSesion = usuarioLogueado ? usuarioLogueado.nombre : localStorage.getItem("nombreUsuario");
+        
+        // Obtenemos los datos visuales del avatar configurado en sesión
+        const datosAvatar = JSON.parse(localStorage.getItem("avatarUsuario"));
+
+        // Si el post pertenece al usuario activo (o es marcado como "Tú") Y tiene avatar configurado, lo usamos
+        if (datosAvatar && nombreSesion && (nombreUsuario === nombreSesion || nombreUsuario === "Tú")) {
+            return `https://api.dicebear.com/9.x/${datosAvatar.estilo}/svg?seed=${datosAvatar.seed}&backgroundColor=${datosAvatar.fondo}`;
+        }
+
+        // Para cualquier otro usuario, generamos un avatar único basado en su propio nombre
+        const seedUnico = encodeURIComponent(nombreUsuario || "Usuario");
+        return `https://api.dicebear.com/9.x/adventurer/svg?seed=${seedUnico}`;
+    }
 
     // Elementos del Formulario Principal (Creación/Edición)
     const toggleDudaForm = document.getElementById("toggleDudaForm");
@@ -228,7 +237,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnPublicarDudaCard = document.getElementById("btnPublicarDudaCard");
     const btnCancelarDuda = document.getElementById("btnCancelarDuda");
     const textoNuevaDuda = document.getElementById("textoNuevaDuda");
-    /* const inputImagen = document.getElementById("imagen"); */
     const preview = document.getElementById("preview");
 
     // Estado de la imagen en el formulario principal
@@ -236,6 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // --- RENDER FEED ---
     const renderFeed = () => {
+        if (!prodRow) return;
         prodRow.innerHTML = "";
         testController.posts.slice().reverse().forEach((post) => {
             let imagenAdjuntaHtml = "";
@@ -251,17 +260,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="post-card m-2 w-100" style="position: relative;"> 
                     <div class="post-header">
                     
-                    
-                    <img src="${(post.img && post.img.startsWith('https://api.dicebear.com')) ? post.img : 'https://api.dicebear.com/7.x/bottts/svg?seed=' + post.nombre}" alt="Foto de perfil" class="profile-pic">
-                            <div class="author-info">
+                        <img src="${obtenerAvatarActual(post.nombre)}"
+                        class="profile-pic">      
+                        <div class="author-info">
                             <div class="name-container"><span class="author-name">${post.nombre}</span></div>
                            
                             <p class="author-role" style="color: #38bdf8; font-weight: 500;">
-                                ${post.especialidad ? (typeof post.especialidad === 'object' ? post.especialidad.especialidad : post.especialidad) : 'Duda Pendiente'}
+                                ${
+                                    post.especialidad 
+                                        ? (typeof post.especialidad === 'object' ? (post.especialidad.especialidad || "Sin especialidad") : post.especialidad)
+                                        : "Sin especialidad"
+                                }
                             </p>
                         </div>
-
-
 
                         <div class="dropdown" style="position: absolute; top: 15px; right: 15px;"> 
                             <button type="button" class="btnCardOptions" data-bs-toggle="dropdown"><i class="fa-solid fa-ellipsis"></i></button>
@@ -294,17 +305,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const esObjeto = typeof c === 'object' && c !== null;
                 const contenido = esObjeto ? (c.contenido || '') : (c || '');
                 const autor = esObjeto ? (c.autor || 'Tú') : 'Tú';
-                const seed = encodeURIComponent(autor);
+                
+                // Usamos la misma función de avatares para los comentarios
                 const avatar = esObjeto && c.avatar
                     ? c.avatar
-                    : `https://api.dicebear.com/7.x/bottts/svg?seed=${seed}`;
+                    : obtenerAvatarActual(autor);
+
                 const fecha = esObjeto && c.fechaCreacion
                     ? new Date(c.fechaCreacion).toLocaleString()
                     : '';
 
                 return `
                                     <div class="d-flex mb-3">
-                                        <img src="${avatar}" alt="${autor}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;" onerror="this.src='https://api.dicebear.com/7.x/bottts/svg?seed=${seed}'">
+                                        <img src="${avatar}" alt="${autor}" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;" onerror="this.src='https://api.dicebear.com/9.x/adventurer/svg?seed=${encodeURIComponent(autor)}'">
                                         <div class="flex-grow-1">
                                             <div class="border rounded p-2" style="background-color: #1e293b; border-color: #334155;">
                                                 <div class="d-flex justify-content-between align-items-center mb-1">
@@ -328,33 +341,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     renderFeed();
 
-    // --- DETECTOR DE CAMBIO DE IMAGEN EN EL FORMULARIO PRINCIPAL ---
-    //maneja la selección de un archivo de imagen
-    /*
-    if (inputImagen) {
-        inputImagen.addEventListener("change", function() {
-            const archivo = this.files[0];
-            if (archivo) {
-                if (preview) {
-                    preview.src = URL.createObjectURL(archivo);
-                    preview.style.display = "block";
-                }
-                const reader = new FileReader();
-                reader.onloadend = function() {
-                    imagenBase64 = reader.result; 
-                };
-                reader.readAsDataURL(archivo);
-            }
-        });
-    } */
-    ////////////////////////////////////////////////////////////////
-
     // --- FUNCIÓN PARA RESETEAR EL FORMULARIO AL ESTADO INICIAL ---
     const resetearFormulario = () => {
         if (textoNuevaDuda) textoNuevaDuda.value = "";
         imagenBase64 = "#";
         if (preview) { preview.src = ""; preview.style.display = "none"; }
-        if (inputImagen) inputImagen.value = "";
         if (dudaFormContainer) dudaFormContainer.classList.add("d-none");
 
         // Restauramos el botón a su modo original conservando el icono de FontAwesome
@@ -387,14 +378,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            // 1. Obtener el ID seleccionado
-            const idEspecialidadSeleccionada = document.getElementById("especialidadUsuario").value;
+            // Intentamos obtener el nombre directamente de tu localStorage
+            const nombreUsuario = localStorage.getItem("nombreUsuario");
+            const carreraUsuario = localStorage.getItem("carreraUsuario") || "Sin especialidad";
 
-            // 2. Buscar el objeto completo en nuestro array
-            const especialidadObj = especialidadesDisponibles.find(e => e.id == idEspecialidadSeleccionada);
+            // Si por alguna razón no existen, intentamos buscar en 'usuarioLogueado' (que también se ve en tu captura)
+            const usuarioLogueado = JSON.parse(
+                localStorage.getItem("usuarioLogueado")
+            );
 
-            if (!especialidadObj) {
-                mostrarAlerta("Por favor, selecciona una especialidad válida.", "warning");
+            const nombreFinal = usuarioLogueado
+                ? usuarioLogueado.nombre
+                : "Usuario";
+
+            const especialidadFinal = usuarioLogueado
+                ? usuarioLogueado.especialidad
+                : "Sin especialidad";
+
+            // Si de plano no hay rastro de sesión activa, mostramos la alerta
+            if (!nombreFinal) {
+                mostrarAlerta("No hay un usuario autenticado.");
                 return;
             }
 
@@ -455,8 +458,38 @@ document.addEventListener("DOMContentLoaded", () => {
                     btnPublicarDudaCard.innerHTML = textoOriginalBtn;
                     btnPublicarDudaCard.disabled = false;
                 });
-            }
+           if (idEdicion) {
 
+                testController.editarPost(
+                    Number(idEdicion),
+                    descripcionDuda,
+                    imagenBase64
+                );
+
+            } else {
+
+                const usuarioLogueado = JSON.parse(
+                    localStorage.getItem("usuarioLogueado")
+                );
+
+                const nombreFinal = usuarioLogueado
+                    ? usuarioLogueado.nombre
+                    : "Usuario";
+
+
+                const especialidadFinal = usuarioLogueado
+                    ? usuarioLogueado.especialidad
+                    : "Sin especialidad";
+
+
+                testController.addPost(
+                    imagenBase64,
+                    nombreFinal,
+                    especialidadFinal,
+                    descripcionDuda
+                );
+            }
+            
             const alertContainer = document.getElementById("alertContainer");
             if (alertContainer) alertContainer.innerHTML = "";
 
@@ -466,104 +499,98 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- LISTENERS DEL FEED (PRODROW) ---
-    prodRow.addEventListener("click", (evento) => {
-        if (evento.target.closest("a")) evento.preventDefault();
+    if (prodRow) {
+        prodRow.addEventListener("click", (evento) => {
+            if (evento.target.closest("a")) evento.preventDefault();
 
-        const botonLike = evento.target.closest(".btn-like");
-        if (botonLike) {
-            const idPost = Number(botonLike.dataset.id);
-            testController.toggleLike(idPost);
-            renderFeed();
-            return;
-        }
-
-        // ACCIÓN: ELIMINAR
-        const botonEliminar = evento.target.closest(".btn-eliminar");
-        if (botonEliminar) {
-            const idPost = parseInt(botonEliminar.getAttribute("data-id"));
-            if (confirm("¿Estás seguro de que deseas eliminar esta publicación?")) {
-                testController.eliminarPost(idPost);
+            const botonLike = evento.target.closest(".btn-like");
+            if (botonLike) {
+                const idPost = Number(botonLike.dataset.id);
+                testController.toggleLike(idPost);
                 renderFeed();
-            }
-            return;
-        }
-
-        // ACCIÓN: ENVIAR A EDICIÓN (CARGAR EN LA TARJETA DE CREACIÓN SUPERIOR)
-        const botonEditar = evento.target.closest(".btn-editar");
-        if (botonEditar) {
-            const idPost = Number(botonEditar.dataset.id);
-            const post = testController.posts.find(p => p.id === idPost);
-
-            if (!post) return;
-
-            // 1. Abrir la tarjeta contenedora de arriba si estaba oculta
-            if (dudaFormContainer) dudaFormContainer.classList.remove("d-none");
-
-            // 2. Transferir los datos del post al formulario de creación
-            if (textoNuevaDuda) textoNuevaDuda.value = post.descripcion;
-            imagenBase64 = post.img;
-
-            if (preview) {
-                if (post.img && post.img !== "#") {
-                    preview.src = post.img;
-                    preview.style.display = "block";
-                } else {
-                    preview.src = "";
-                    preview.style.display = "none";
-                }
-            }
-
-            // 3. Mutar el botón para que actúe en modo "Guardar"
-            if (btnPublicarDudaCard) {
-                btnPublicarDudaCard.textContent = "Guardar Cambios";
-                btnPublicarDudaCard.dataset.editId = post.id;
-            }
-
-            // 4. Mostrar botón cancelar por si se arrepiente
-            if (btnCancelarDuda) btnCancelarDuda.classList.remove("d-none");
-
-            // 5. Hacer scroll suave hacia arriba
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            if (textoNuevaDuda) textoNuevaDuda.focus();
-            return;
-        }
-
-        // MOSTRAR/OCULTAR COMENTARIOS////
-        const botonMostrar = evento.target.closest(".btnMostrarComentarios");
-        if (botonMostrar) {
-            const comentarios = botonMostrar.closest(".post-content").querySelector(".comentarios");
-            comentarios.style.display = comentarios.style.display === "none" ? "block" : "none";
-            return;
-        }
-        // Aqui es donde liz puede hacer la lógica para publicar comentarios, pero la dejó comentada para que no se ejecute automáticamente.
-        // 6. PUBLICAR COMENTARIO
-        // Detectamos si el clic fue en un botón de publicar comentario
-        // Esto se hace para que no se ejecute la lógica de publicar comentario al hacer clic en cualquier otro lugar del feed
-        // y solo se ejecute cuando se haga clic en el botón específico de publicar comentario.
-
-        // PUBLICAR COMENTARIO
-        const botonComentario = evento.target.closest(".btn-comentar");
-        if (botonComentario) {
-            const idPost = Number(botonComentario.dataset.id);
-            const contenedor = botonComentario.closest(".comentarios");
-            const input = contenedor.querySelector(".comentario-input");
-            const textoComentario = input.value.trim();
-
-            if (textoComentario === "") {
-                // función de alerta personalizada 
-                mostrarAlerta("Por favor, escribe el contenido del comentario.", "warning");
                 return;
             }
 
-            // Enviamos el autor "Tú" 
-            testController.addComentario(idPost, textoComentario, "Tú");
+            // ACCIÓN: ELIMINAR
+            const botonEliminar = evento.target.closest(".btn-eliminar");
+            if (botonEliminar) {
+                const idPost = parseInt(botonEliminar.getAttribute("data-id"));
+                if (confirm("¿Estás seguro de que deseas eliminar esta publicación?")) {
+                    testController.eliminarPost(idPost);
+                    renderFeed();
+                }
+                return;
+            }
 
-            // Se limpia el input después de publicar para que no quede el texto escrito
-            input.value = "";
+            // ACCIÓN: ENVIAR A EDICIÓN (CARGAR EN LA TARJETA DE CREACIÓN SUPERIOR)
+            const botonEditar = evento.target.closest(".btn-editar");
+            if (botonEditar) {
+                const idPost = Number(botonEditar.dataset.id);
+                const post = testController.posts.find(p => p.id === idPost);
 
-            renderFeed();
-            return;
-        }
+                if (!post) return;
 
-    });
+                // 1. Abrir la tarjeta contenedora de arriba si estaba oculta
+                if (dudaFormContainer) dudaFormContainer.classList.remove("d-none");
+
+                // 2. Transferir los datos del post al formulario de creación
+                if (textoNuevaDuda) textoNuevaDuda.value = post.descripcion;
+                imagenBase64 = post.img;
+
+                if (preview) {
+                    if (post.img && post.img !== "#") {
+                        preview.src = post.img;
+                        preview.style.display = "block";
+                    } else {
+                        preview.src = "";
+                        preview.style.display = "none";
+                    }
+                }
+
+                // 3. Mutar el botón para que actúe en modo "Guardar"
+                if (btnPublicarDudaCard) {
+                    btnPublicarDudaCard.textContent = "Guardar Cambios";
+                    btnPublicarDudaCard.dataset.editId = post.id;
+                }
+
+                // 4. Mostrar botón cancelar por si se arrepiente
+                if (btnCancelarDuda) btnCancelarDuda.classList.remove("d-none");
+
+                // 5. Hacer scroll suave hacia arriba
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (textoNuevaDuda) textoNuevaDuda.focus();
+                return;
+            }
+
+            // MOSTRAR/OCULTAR COMENTARIOS////
+            const botonMostrar = evento.target.closest(".btnMostrarComentarios");
+            if (botonMostrar) {
+                const comentarios = botonMostrar.closest(".post-content").querySelector(".comentarios");
+                comentarios.style.display = comentarios.style.display === "none" ? "block" : "none";
+                return;
+            }
+
+            // PUBLICAR COMENTARIO
+            const botonComentario = evento.target.closest(".btn-comentar");
+            if (botonComentario) {
+                const idPost = Number(botonComentario.dataset.id);
+                const contenedor = botonComentario.closest(".comentarios");
+                const input = contenedor.querySelector(".comentario-input");
+                const textoComentario = input.value.trim();
+
+                if (textoComentario === "") {
+                    mostrarAlerta("Por favor, escribe el contenido del comentario.", "warning");
+                    return;
+                }
+
+                testController.addComentario(idPost, textoComentario, "Tú");
+
+                input.value = "";
+
+                renderFeed();
+                return;
+            }
+
+        });
+    }
 });
